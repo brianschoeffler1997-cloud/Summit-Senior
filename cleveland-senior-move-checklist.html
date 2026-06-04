@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Cleveland Senior Move Checklist | Summit Senior Services</title>
+<meta name="description" content="A free 14-page guide for Cleveland-area families navigating a senior move. 12 steps from the first conversation through settling in. By Brian Schoeffler, Summit Senior Services."/>
+<meta name="robots" content="index, follow"/>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #1a2e44;
+    --gold: #c9a84c;
+    --cream: #f8f5ef;
+    --warm-gray: #6b6560;
+    --light: #ffffff;
+    --border: #e2ddd6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #e1e5ec; color: var(--navy); font-family: 'DM Sans', sans-serif; }
+
+  /* On-screen viewing chrome */
+  .toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--navy);
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  }
+  .toolbar .left { display: flex; align-items: center; gap: 14px; color: #fff; }
+  .toolbar .left img { height: 30px; }
+  .toolbar .left .title {
+    font-family: 'Playfair Display', serif; font-weight: 600; font-size: 14px; line-height: 1;
+  }
+  .toolbar .left .sub {
+    font-size: 11px; color: rgba(255,255,255,0.55);
+    letter-spacing: 0.16em; text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .toolbar .right { display: flex; gap: 10px; }
+  .tb-btn {
+    background: var(--gold); color: var(--navy);
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: 0.06em;
+    border: none; border-radius: 2px;
+    padding: 10px 18px;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .tb-btn.outline {
+    background: transparent; color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .tb-btn:hover { filter: brightness(0.95); }
+
+  /* Pages container */
+  .stack { padding: 32px 24px 60px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+
+  /* One printable page (8.5 x 11 in, ~816 x 1056 px @ 96dpi) */
+  .page {
+    width: 816px;
+    min-height: 1056px;
+    background: var(--cream);
+    color: var(--navy);
+    padding: 64px 72px;
+    box-shadow:
+      0 1px 0 rgba(0,0,0,0.04),
+      0 14px 30px -10px rgba(15, 29, 43, 0.18),
+      0 4px 10px -4px rgba(15, 29, 43, 0.08);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Page-edge marks: tiny corner ornaments */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 6px;
+    background: var(--navy);
+  }
+  .page::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 64px; right: 64px; height: 1px;
+    background: var(--border);
+  }
+
+  /* Page header (small top bar above content) */
+  .ph {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 36px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ph .brand {
+    display: flex; align-items: center; gap: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9.5px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+  .ph .brand .star { color: var(--gold); font-size: 11px; }
+  .ph .doc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9.5px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  /* Page footer (bottom of every page) */
+  .pf {
+    position: absolute;
+    bottom: 32px; left: 72px; right: 72px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9.5px;
+    color: var(--warm-gray);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+  .pf .num { font-weight: 600; color: var(--navy); }
+
+  /* ============================
+     COVER PAGE
+     ============================ */
+  .cover {
+    background:
+      radial-gradient(ellipse at 50% 35%, rgba(201,168,76,0.18) 0%, transparent 65%),
+      var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 56px 72px;
+    text-align: center;
+  }
+  .cover::before { background: var(--gold); height: 10px; }
+  .cover .top-mark {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 12px;
+  }
+  .cover .top-mark .star { color: var(--gold); font-size: 12px; }
+  .cover .mark-img { width: 130px; height: auto; margin: 36px auto 22px; }
+  .cover .free-tag {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--navy); color: var(--gold);
+    padding: 6px 14px 6px 11px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin: 0 auto 18px;
+    max-width: 580px;
+  }
+  .cover h1 em { color: var(--gold); font-style: normal; }
+  .cover .strap {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--warm-gray);
+    line-height: 1.5;
+    max-width: 480px;
+    margin: 0 auto 8px;
+  }
+  .cover .author-line {
+    margin-top: auto;
+    padding-top: 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--warm-gray);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+  .cover .author-line b { color: var(--navy); font-weight: 600; }
+  .cover .author-line .rule {
+    display: block; width: 50px; height: 1px;
+    background: var(--gold); margin: 14px auto;
+  }
+  .cover .meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9.5px;
+    color: var(--warm-gray);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-top: 14px;
+  }
+
+  /* ============================
+     INTRO / "Note from Brian" PAGE
+     ============================ */
+  .intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.12;
+    color: var(--navy);
+    margin: 12px 0 28px;
+    max-width: 540px;
+  }
+  .intro h2 em { color: var(--gold); font-style: normal; }
+  .intro .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .intro p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--warm-gray);
+    font-weight: 300;
+    margin: 0 0 18px;
+    max-width: 600px;
+  }
+  .intro p strong { color: var(--navy); font-weight: 500; }
+  .intro .sig {
+    margin-top: 36px;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .intro .sig-line {
+    margin-top: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--warm-gray);
+    letter-spacing: 0.06em;
+  }
+  .toc {
+    margin-top: 36px;
+    padding-top: 26px;
+    border-top: 1px solid var(--border);
+  }
+  .toc-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .toc-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px 30px;
+  }
+  .toc-item {
+    display: flex; align-items: baseline; gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 400;
+  }
+  .toc-item .n {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--gold);
+    width: 22px;
+    flex-shrink: 0;
+  }
+
+  /* ============================
+     STEP PAGE
+     ============================ */
+  .step-meta {
+    display: flex; align-items: baseline; gap: 14px;
+    margin-bottom: 8px;
+  }
+  .step-num-big {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 96px;
+    line-height: 0.85;
+    color: var(--gold);
+    letter-spacing: -0.04em;
+  }
+  .step-counter {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    padding-bottom: 6px;
+  }
+  .step h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.1;
+    color: var(--navy);
+    margin: 14px 0 18px;
+    max-width: 600px;
+    letter-spacing: -0.01em;
+  }
+  .step .lede {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--warm-gray);
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 0 28px;
+  }
+  .step .subhead {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 14px;
+  }
+  .step .checklist {
+    list-style: none; padding: 0; margin: 0 0 30px;
+    max-width: 620px;
+  }
+  .step .checklist li {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--navy);
+    font-weight: 400;
+  }
+  .step .checklist li:last-child { border-bottom: none; }
+  .step .checklist .box {
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step .brian-note {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 18px 22px 18px 20px;
+    display: flex; gap: 14px;
+    align-items: flex-start;
+    max-width: 620px;
+  }
+  .step .brian-note .avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--navy);
+  }
+  .step .brian-note .avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 18%;
+  }
+  .step .brian-note .body {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--navy);
+  }
+  .step .brian-note .body b {
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 10.5px;
+    color: var(--gold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ============================
+     PRINT
+     ============================ */
+  @page { size: 8.5in 11in; margin: 0; }
+  @media print {
+    body, html { background: #fff; }
+    .toolbar { display: none; }
+    .stack { padding: 0; gap: 0; }
+    .page {
+      box-shadow: none;
+      width: 8.5in;
+      min-height: 11in;
+      page-break-after: always;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="left">
+    <img src="assets/summit-logo-white.png" alt="Summit"/>
+    <div>
+      <div class="title">The Cleveland Senior Move Checklist</div>
+      <div class="sub">Summit Senior Services · 14 pages · v1</div>
+    </div>
+  </div>
+  <div class="right">
+    <button class="tb-btn" onclick="window.print()">
+      <span>⇣</span> Save / Print as PDF
+    </button>
+    <a class="tb-btn outline" href="index.html">← Back to Summit</a>
+  </div>
+</div>
+
+<div class="stack">
+
+  <!-- =========== COVER =========== -->
+  <div class="page cover">
+    <div class="top-mark"><span class="star">✦</span>Summit Senior Services · Cleveland, Ohio</div>
+    <img class="mark-img" src="assets/summit-logo-transparent.png" alt="Summit Senior Services"/>
+
+    <div>
+      <div class="free-tag"><span>✦</span>Free Guide</div>
+      <h1>The Cleveland Senior <em>Move Checklist.</em></h1>
+      <p class="strap">12 steps for a calm, dignified senior move — from the first kitchen-table conversation to the night your parent sleeps in their new home.</p>
+    </div>
+
+    <div class="author-line">
+      <span class="rule"></span>
+      Written by <b>Brian Schoeffler</b>, founder, Summit Senior Services
+      <div class="meta">216-236-3966 · summitseniorservicesohio.com</div>
+    </div>
+  </div>
+
+  <!-- =========== INTRO / NOTE FROM BRIAN =========== -->
+  <div class="page intro">
+    <div class="ph">
+      <div class="brand"><span class="star">✦</span>Summit Senior Services</div>
+      <div class="doc">The Cleveland Senior Move Checklist</div>
+    </div>
+
+    <p class="eyebrow">A Note Before You Start</p>
+    <h2>If you're reading this, you're already <em>doing the right thing.</em></h2>
+
+    <p>Most families I work with arrive feeling overwhelmed — not because they're underqualified, but because no one has ever handed them a map. Helping a parent leave a longtime home is a project that lives at the intersection of <strong>logistics, emotion, and family dynamics.</strong> All three are hard. All three are running at the same time. And you're usually doing it on top of your own job, your own kids, your own life.</p>
+
+    <p>This guide is the map I wish every Cleveland family had on day one. It's not a sales pitch. Whether you hire Summit or do every step of this yourself, the order matters and the small details matter. <strong>Read it once, then come back to whichever step you're on.</strong></p>
+
+    <p>If you'd rather have someone walk through it with you in person — and handle the parts that don't fit into a checklist — that's exactly what we do. Call me directly at <strong>216-236-3966</strong>. The first conversation is free, takes about thirty minutes, and never ends with a sales pitch.</p>
+
+    <div class="sig">Brian</div>
+    <div class="sig-line">— Brian Schoeffler, founder, Summit Senior Services</div>
+
+    <div class="toc">
+      <p class="toc-title">The 12 Steps</p>
+      <div class="toc-grid">
+        <div class="toc-item"><span class="n">1.</span>Have the first conversation</div>
+        <div class="toc-item"><span class="n">7.</span>Coordinate the move-in window</div>
+        <div class="toc-item"><span class="n">2.</span>Walk every room together</div>
+        <div class="toc-item"><span class="n">8.</span>Schedule the movers</div>
+        <div class="toc-item"><span class="n">3.</span>Get the new floor plan</div>
+        <div class="toc-item"><span class="n">9.</span>Set up donations &amp; sales</div>
+        <div class="toc-item"><span class="n">4.</span>Sort heirlooms with family first</div>
+        <div class="toc-item"><span class="n">10.</span>Pack a "first night" box</div>
+        <div class="toc-item"><span class="n">5.</span>Keep, donate, sell, or discard</div>
+        <div class="toc-item"><span class="n">11.</span>Move day: supervise, don't lift</div>
+        <div class="toc-item"><span class="n">6.</span>Decide on an appraisal</div>
+        <div class="toc-item"><span class="n">12.</span>Settle in — make it home</div>
+      </div>
+    </div>
+
+    <div class="pf"><span>Summit Senior Services · summitseniorservicesohio.com</span><span class="num">02 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 1 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 01 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">1</span><span class="step-counter">Step 01 of 12 · Months Out</span></div>
+    <h2>Have the first conversation.</h2>
+    <p class="lede">The hardest part of a senior move isn't the boxes — it's the talking. The single best thing you can do is start this conversation while it's still optional. Most families wait until a fall, a hospital stay, or a memory issue forces it. The kindest path is to start sooner, when your parent has full agency in the choice.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Have the conversation at their kitchen table, not yours. They need to be on home ground.</li>
+      <li><span class="box"></span>Pick a calm moment. Not a holiday, not after a doctor visit, not a crisis.</li>
+      <li><span class="box"></span>Open with a question, not a statement. "What do you imagine the next chapter looking like?"</li>
+      <li><span class="box"></span>Listen far more than you talk. The first conversation is for information, not decisions.</li>
+      <li><span class="box"></span>End without a conclusion. Say "Let's think about this and talk again in a week."</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>Most families wait too long because they're trying to protect mom or dad. The kindest thing is actually to start when it's still optional — you'll get a better outcome and a more peaceful parent on the other end.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">03 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 2 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 02 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">2</span><span class="step-counter">Step 02 of 12 · Months Out</span></div>
+    <h2>Walk every room together — first pass.</h2>
+    <p class="lede">Before you decide anything, do a sticky-note walkthrough. This pass is about <em>noticing</em>, not deciding. You'll be surprised how much of the work gets done just by your parent saying out loud what they want for each item — once, in a calm walkthrough, with no boxes in the room yet.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Three colors of sticky notes: green ("going with us"), pink ("not coming"), yellow ("not sure").</li>
+      <li><span class="box"></span>Don't open drawers or closets yet. Stay at the room and big-furniture level.</li>
+      <li><span class="box"></span>Cap the walkthrough at 90 minutes. Decision fatigue is real and worse for older parents.</li>
+      <li><span class="box"></span>Do the basement and garage on a separate day — they take 3× the time.</li>
+      <li><span class="box"></span>Take photos of every wall before anything moves. You'll forget what was there.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>The yellow "not sure" pile will be the biggest. That's normal. We come back to it three or four times before move day. Don't force a decision in the first pass — you'll regret half of them.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">04 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 3 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 03 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">3</span><span class="step-counter">Step 03 of 12 · Weeks Out</span></div>
+    <h2>Get the new place's floor plan and measure twice.</h2>
+    <p class="lede">The single biggest mistake families make is shipping furniture that won't fit. A Beachwood 5-bedroom does not pack into a 1-bedroom at Wiggins Place. Decide what's coming based on what physically fits the new space — not what your parent emotionally wants to keep.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Ask the senior community for a to-scale floor plan with measurements. They all have one.</li>
+      <li><span class="box"></span>Measure every piece of "must-keep" furniture: length, width, height. Write it down.</li>
+      <li><span class="box"></span>Lay it out on paper (or in a free tool like Floorplanner) before you commit.</li>
+      <li><span class="box"></span>Measure doorways and elevator openings at the new place. Not the rooms — the openings.</li>
+      <li><span class="box"></span>Identify what gets sold or donated <em>because it won't fit</em>, not because it isn't loved.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>I've seen too many families ship a beloved sectional that won't fit through the new doorway. The movers carry it back down. The family pays twice. The parent watches it go. Measure first.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">05 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 4 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 04 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">4</span><span class="step-counter">Step 04 of 12 · Weeks Out</span></div>
+    <h2>Sort heirlooms with the family — first.</h2>
+    <p class="lede">Before a single item gets donated or sold, do a family heirloom round. This is where the most family conflict happens in senior moves — and where, handled well, the most healing happens too. Adult children and grandchildren deserve a chance to claim what matters to them, before anything goes anywhere.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Schedule a weekend where every adult child can come (in person or on video).</li>
+      <li><span class="box"></span>Walk through the house together. Anyone can "claim" any item by writing their name on it.</li>
+      <li><span class="box"></span>If two people claim the same thing, the parent decides — not the sibling group.</li>
+      <li><span class="box"></span>Give grandkids a chance after the adult children, even for small things.</li>
+      <li><span class="box"></span>Photograph anything emotional that's going to a sibling. Pictures preserve the memory.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>This is where most family fights happen, and they happen because someone donates the wrong china before someone else got to claim it. Do this round all the way through — and document it — before you bring in any donation team.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">06 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 5 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 05 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">5</span><span class="step-counter">Step 05 of 12 · Weeks Out</span></div>
+    <h2>Decide: keep, donate, sell, or discard.</h2>
+    <p class="lede">With the heirloom round done and the floor plan in hand, every remaining item gets sorted into one of four piles. Write the decisions down. This sounds bureaucratic — it isn't. A written sorting list is how you keep mom from re-keeping items she already let go of two weeks ago.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>"Keep" is the most disciplined pile. If it doesn't fit the new floor plan, it isn't "keep."</li>
+      <li><span class="box"></span>"Sell" is for items worth $100 or more. Antiques, furniture in good shape, jewelry, art.</li>
+      <li><span class="box"></span>"Donate" is everything functional under $100. Be generous here — storage units are how downsizing fails.</li>
+      <li><span class="box"></span>"Discard" is what no charity will take: broken items, mattresses, half-used cleaning supplies.</li>
+      <li><span class="box"></span>Keep the list in writing. Re-deciding the same item three times is exhausting.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>Be more generous with the donate pile than you think you should be. Almost no one ever uses a storage unit for more than 18 months — and the storage costs more than the things would sell for. When in doubt, donate.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">07 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 6 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 06 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">6</span><span class="step-counter">Step 06 of 12 · Weeks Out</span></div>
+    <h2>Decide whether you need an appraisal.</h2>
+    <p class="lede">Most homes don't need a professional appraisal. Some absolutely do. If your parent's home contains real silver, original art, antique furniture, fine jewelry, rare books, or significant collections, spend $200–$400 to know what they're worth before anything moves. Once it's donated, it's gone.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Walk the home with the heirloom-round list in hand. Flag anything that <em>might</em> have value.</li>
+      <li><span class="box"></span>If you flag more than 5 items, get an appraiser. If 0–2, you can probably skip it.</li>
+      <li><span class="box"></span>Look for AAA (Appraisers Association of America) or ASA-credentialed appraisers in Cleveland.</li>
+      <li><span class="box"></span>Expect a 2-hour walkthrough at $200–$400 with a written summary report.</li>
+      <li><span class="box"></span>The report tells you whether to auction, consign, or donate each item.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>Shaker Heights and parts of Cleveland Heights especially — the houses are old enough that there's almost always something. Get the appraisal. The cost is rounding-error compared to what gets accidentally donated otherwise.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">08 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 7 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 07 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">7</span><span class="step-counter">Step 07 of 12 · Weeks Out</span></div>
+    <h2>Coordinate the move-in window with the senior community.</h2>
+    <p class="lede">Every well-run senior community in Cleveland has a strict move-in policy. Elevator reservations, vendor check-in procedures, time-of-day restrictions, who has the unit key. If you don't coordinate this in advance, move day becomes a five-hour wait in a lobby. Call the community's move-in coordinator the moment a date is set.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Ask for the move-in coordinator's name and direct phone. Use it. Often.</li>
+      <li><span class="box"></span>Reserve the elevator in writing for a specific 4-hour window.</li>
+      <li><span class="box"></span>Confirm the moving company's vendor check-in: insurance certificates, COIs, arrival door.</li>
+      <li><span class="box"></span>Confirm who hands you the unit key — and when. Some require an in-person walkthrough first.</li>
+      <li><span class="box"></span>Ask about parking for the moving truck. Some communities have very specific rules.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>Menorah Park, Judson, South Franklin Circle — every community has different rules. The community's coordinator wants to help you; they just need to be asked early. Don't wait until the week before.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">09 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 8 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 08 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">8</span><span class="step-counter">Step 08 of 12 · Weeks Out</span></div>
+    <h2>Schedule movers — and packers, if you're using them.</h2>
+    <p class="lede">Don't book the first moving company that returns your call. Get three quotes from <em>local</em> Cleveland-area movers — ideally ones that specialize in senior moves. They cost the same as a national chain, and they care more. Packers should arrive 2–3 days before move day, not the morning of.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Get three written quotes. The cheapest and the most expensive are almost always the wrong choice.</li>
+      <li><span class="box"></span>Ask explicitly: do you specialize in senior moves? If they pause, they don't.</li>
+      <li><span class="box"></span>Confirm they have at least $100,000 of cargo insurance and full liability coverage.</li>
+      <li><span class="box"></span>Schedule packers for 2–3 days before move day. Packing a 4-bed home in one morning is a recipe for breakage.</li>
+      <li><span class="box"></span>Read recent Google reviews carefully. Look for the word "patient." It matters here.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>A national-chain crew will get the job done. A local crew will get it done <em>and</em> stop to help your dad find his glasses. You're paying for both. Hire local.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">10 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 9 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 09 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">9</span><span class="step-counter">Step 09 of 12 · Days Out</span></div>
+    <h2>Set up donation pickups and online listings.</h2>
+    <p class="lede">The "donate" and "sell" piles need to leave the house <em>before</em> moving day, not after. Schedule donation pickups 1–2 weeks out. Photograph and list items for online sale 2–3 weeks out. Anything still in the house on move day either comes with you, costs you, or stresses you. Pre-empt all three.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Schedule donation pickups for 7–14 days before move day. Confirm in writing.</li>
+      <li><span class="box"></span>Call charities first — many don't take furniture, mattresses, or large items.</li>
+      <li><span class="box"></span>For online sales: take 3–4 well-lit photos per item. Light, light, more light.</li>
+      <li><span class="box"></span>List on Facebook Marketplace first; eBay for collectibles; consignment for furniture in good shape.</li>
+      <li><span class="box"></span>Never agree to sell anything emotionally significant without checking with your parent first.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>Facebook Marketplace beats a traditional estate sale 80% of the time. Faster, more private, better prices on most items. We've sold everything from a Steinway to a snowblower in 48 hours.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">11 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 10 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 10 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">10</span><span class="step-counter">Step 10 of 12 · Days Out</span></div>
+    <h2>Pack a "first night" box — and keep it with you.</h2>
+    <p class="lede">Of every box that gets packed, one matters more than the rest. The "first night" box has everything your parent will need before the movers finish unpacking. Pack it last, label it brightly, and keep it physically with you — not on the moving truck. The first night decides how the next morning feels.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Toothbrush, toothpaste, hairbrush, deodorant, soap.</li>
+      <li><span class="box"></span>Three days of medications, in their original bottles, plus a spare pair of reading glasses.</li>
+      <li><span class="box"></span>Two pairs of pajamas, two days of clothes, slippers.</li>
+      <li><span class="box"></span>Phone charger, one favorite photograph in a small frame, the TV remote.</li>
+      <li><span class="box"></span>Their pillow. Not a pillow — their pillow. It matters more than you think.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>The first night in a new place is the hardest single moment of the whole transition. This box is what makes the morning feel survivable. Don't put it on the truck. Keep it in your own car.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">12 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 11 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 11 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">11</span><span class="step-counter">Step 11 of 12 · Move Day</span></div>
+    <h2>Move day — supervise, don't lift.</h2>
+    <p class="lede">Your job on move day is not to carry boxes. Your job is to be the calm one. Two people minimum: one at the old house with a written room-by-room list, one at the new apartment receiving boxes and directing where they go. The movers do the lifting. You do the deciding.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Arrive 30 minutes before the movers. Walk every room one last time.</li>
+      <li><span class="box"></span>Take a photo of every wall, every closet, every corner. Even ones you've photographed before.</li>
+      <li><span class="box"></span>Have a printed list. Every room. Every piece of furniture. Where it's going.</li>
+      <li><span class="box"></span>One person at the destination from minute one. Boxes need to be directed, not piled.</li>
+      <li><span class="box"></span>Take your parent somewhere else during the actual move if possible. A grandkid's house, lunch with a friend.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>Watching the movers empty their childhood home is hard for any parent. If they can be elsewhere, even for a few hours, they should be. You stay. Be the calm one.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">13 / 14</span></div>
+  </div>
+
+  <!-- =========== STEP 12 =========== -->
+  <div class="page step">
+    <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 12 of 12</div></div>
+
+    <div class="step-meta"><span class="step-num-big">12</span><span class="step-counter">Step 12 of 12 · First Night & After</span></div>
+    <h2>Settle in — make it feel like home.</h2>
+    <p class="lede">A senior move is not over when the truck pulls away. The first 48 hours decide whether your parent ends up loving the new place or resenting it. The work is small, specific, and almost all visual. Hang the pictures. Make the bed. Queue up the TV shows. Stay an extra hour.</p>
+
+    <p class="subhead">What to actually do</p>
+    <ul class="checklist">
+      <li><span class="box"></span>Make the bed before you leave. Always. Fresh sheets, their pillow.</li>
+      <li><span class="box"></span>Hang at least three pictures on the wall by the end of day one. Familiar faces, not blank walls.</li>
+      <li><span class="box"></span>Set up the TV with their familiar channels and favorite shows already queued.</li>
+      <li><span class="box"></span>Stock the refrigerator with five things they already love. Comfort food, not "starter food."</li>
+      <li><span class="box"></span>Stay an extra hour after the movers leave. The quiet is the hardest part.</li>
+    </ul>
+
+    <div class="brian-note">
+      <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
+      <div class="body"><b>From Brian</b>We don't consider a job done until your parent looks around and says some version of "I think I'm okay here." That's the metric. Everything else is just boxes.</div>
+    </div>
+
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">14 / 14</span></div>
+  </div>
+
+</div>
+
+<script>
+  // Disable print toolbar on print
+  window.addEventListener('beforeprint', () => document.querySelector('.toolbar').style.display = 'none');
+  window.addEventListener('afterprint', () => document.querySelector('.toolbar').style.display = 'flex');
+</script>
+</body>
+</html>

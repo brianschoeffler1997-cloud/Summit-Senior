@@ -17,10 +17,10 @@
 <link rel="canonical" href="https://www.summitseniorservicesohio.com/service-area.html"/>
 
 <!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="favicon.ico"/>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-32x32.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"/>
 
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
@@ -194,6 +194,40 @@
   .county-card ul li:last-child { border-bottom: none; }
   .county-card ul li::before { content: '→'; color: var(--gold); font-size: 0.75rem; }
 
+  /* Cities that have their own landing page get a real link treatment */
+  .county-card ul li.has-page { padding: 0; border-bottom: 1px solid var(--border); }
+  .county-card ul li.has-page:last-child { border-bottom: none; }
+  .county-card ul li.has-page::before { content: none; }
+  .county-card ul li.has-page a {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.45rem 0.55rem 0.45rem 0.5rem;
+    margin: 0 -0.5rem;
+    border-radius: 3px;
+    color: var(--navy);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .county-card ul li.has-page a::before {
+    content: '→'; color: var(--gold); font-size: 0.75rem;
+  }
+  .county-card ul li.has-page a::after {
+    content: 'page';
+    margin-left: auto;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201, 168, 76, 0.5);
+    border-radius: 2px;
+    padding: 2px 6px;
+  }
+  .county-card ul li.has-page a:hover {
+    background: rgba(201, 168, 76, 0.10);
+    color: var(--gold);
+  }
+
   /* NOT SURE BOX */
   .not-sure {
     background: var(--navy);
@@ -245,7 +279,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo"><img src="summit-logo-white.png" alt="Summit Senior Services"/></a>
+  <a href="index.html" class="logo"><img src="assets/summit-logo-white.png" alt="Summit Senior Services"/></a>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -341,13 +375,13 @@
       <p class="county-name">Cuyahoga County</p>
       <ul>
         <li>Cleveland</li>
-        <li>Beachwood</li>
-        <li>Shaker Heights</li>
+        <li class="has-page"><a href="senior-moving-beachwood.html">Beachwood</a></li>
+        <li class="has-page"><a href="senior-moving-shaker-heights.html">Shaker Heights</a></li>
         <li>Cleveland Heights</li>
         <li>Lyndhurst</li>
         <li>Mayfield Heights</li>
         <li>Pepper Pike</li>
-        <li>Solon</li>
+        <li class="has-page"><a href="senior-moving-solon.html">Solon</a></li>
         <li>Strongsville</li>
         <li>Brecksville</li>
         <li>Westlake</li>
