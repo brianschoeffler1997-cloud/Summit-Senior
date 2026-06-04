@@ -1,205 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NC3J1Q6676"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-NC3J1Q6676');
-</script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Privacy Policy | Summit Senior Services</title>
-<meta name="description" content="Privacy policy for Summit Senior Services. How we collect, use, and protect the information you share with us through our website and consultations."/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://www.summitseniorservicesohio.com/privacy.html"/>
+<meta name="description" content="Summit Senior Services privacy policy. We collect only what we need to schedule your free consultation, never sell or share your data."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
 
-<!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="favicon.ico"/>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --navy: #1a2e44;
-    --gold: #c9a84c;
-    --cream: #f8f5ef;
-    --warm-gray: #6b6560;
-    --light: #ffffff;
-    --border: #e2ddd6;
+  .legal {
+    max-width: var(--container-narrow);
+    margin: 0 auto;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--navy); }
-
-  nav { background: var(--navy); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-  .logo { text-decoration: none; flex-shrink: 0; }
-  .logo img { height: 56px; width: auto; display: block; }
-  .nav-links { display: flex; align-items: center; gap: 0.25rem; }
-  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.82rem; font-weight: 400; padding: 0.4rem 0.75rem; border-radius: 2px; white-space: nowrap; }
-  .nav-links a:hover, .nav-links a.active { color: var(--light); }
-  .nav-right { display: flex; align-items: center; gap: 1rem; }
-  .nav-cta { background: var(--gold); color: var(--navy); font-weight: 500; font-size: 0.82rem; padding: 0.55rem 1.25rem; border-radius: 2px; text-decoration: none; white-space: nowrap; }
-  .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--light); border-radius: 2px; }
-  .mobile-menu { display: none; flex-direction: column; background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 1.5rem 1rem; }
-  .mobile-menu a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.95rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
-  .mobile-menu .mobile-cta { margin-top: 0.75rem; background: var(--gold); color: var(--navy); font-weight: 500; text-align: center; padding: 0.75rem; border-radius: 2px; border-bottom: none; }
-  @media (max-width: 768px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } .mobile-menu.open { display: flex; } }
-
-  .hero {
-    background: var(--navy);
-    padding: 3.5rem 2rem 3rem;
-    text-align: center;
+  .legal h2 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin: 2.5rem 0 0.85rem;
+    line-height: 1.25;
   }
-  .hero-eyebrow {
-    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+  .legal h2:first-of-type { margin-top: 0; }
+  .legal p, .legal li {
+    font-size: 1rem;
+    color: var(--warm-gray);
+    line-height: 1.8;
+    margin-bottom: 1rem;
   }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 600; color: var(--light); line-height: 1.2;
+  .legal p strong { color: var(--navy); font-weight: 500; }
+  .legal ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
   }
-
-  main { max-width: 760px; margin: 0 auto; padding: 3.5rem 2rem 4.5rem; }
-  .effective {
-    font-size: 0.82rem; color: var(--warm-gray);
-    text-transform: uppercase; letter-spacing: 0.12em;
-    margin-bottom: 2rem;
+  .legal ul li { margin-bottom: 0.5rem; }
+  .legal a { color: var(--gold-700); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.4); }
+  .legal a:hover { color: var(--gold); }
+  .legal-meta {
+    font-size: 0.85rem;
+    color: var(--warm-gray);
+    font-style: italic;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
   }
-  h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.35rem; color: var(--navy);
-    margin-top: 2.5rem; margin-bottom: 0.9rem;
-  }
-  h2:first-of-type { margin-top: 0; }
-  p, li {
-    font-size: 0.96rem; color: var(--warm-gray);
-    line-height: 1.8; font-weight: 300; margin-bottom: 1rem;
-  }
-  ul { padding-left: 1.4rem; margin-bottom: 1rem; }
-  li { margin-bottom: 0.4rem; }
-  a.inline { color: var(--navy); text-decoration: underline; text-decoration-color: var(--gold); }
-
-  footer { background: var(--navy); padding: 2rem; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.35); }
-  footer strong { color: rgba(255,255,255,0.6); font-weight: 400; }
-  .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem; }
-
-  .mobile-cta-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--navy); border-top: 2px solid var(--gold); z-index: 1000; padding: 0.6rem 0.75rem; gap: 0.5rem; }
-  .mobile-cta-bar a { flex: 1; text-align: center; text-decoration: none; font-size: 0.78rem; font-weight: 500; padding: 0.65rem 0.25rem; border-radius: 3px; }
-  .mcta-call { background: var(--gold); color: var(--navy); }
-  .mcta-quote { background: var(--light); color: var(--navy); }
-  .mcta-text { background: transparent; color: var(--light); border: 1px solid rgba(255,255,255,0.3); }
-  .mcta-icon { display: block; font-size: 1rem; margin-bottom: 2px; }
-  @media (max-width: 768px) { .mobile-cta-bar { display: flex; } body { padding-bottom: 72px; } }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="logo"><img src="summit-logo-white.png" alt="Summit Senior Services"/></a>
+<nav class="site-nav">
+  <a href="index.html" class="logo"><img src="assets/summit-logo-white.png" alt="Summit Senior Services"/></a>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="index.html#services">Services</a>
+    <a href="services.html">Services</a>
     <a href="service-area.html">Service Area</a>
     <a href="contact.html">FAQ &amp; Contact</a>
   </div>
   <div class="nav-right">
     <a href="contact.html" class="nav-cta">Free Consultation</a>
-    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
-  <a href="index.html#services">Services</a>
+  <a href="services.html">Services</a>
   <a href="service-area.html">Service Area</a>
   <a href="contact.html">FAQ &amp; Contact</a>
   <a href="contact.html" class="mobile-cta">Free Consultation</a>
 </div>
 
-<div class="hero">
-  <p class="hero-eyebrow">Summit Senior Services</p>
-  <h1>Privacy Policy</h1>
-</div>
+<header class="page-hero">
+  <p class="eyebrow">Legal</p>
+  <h1>Privacy <em>policy.</em></h1>
+  <p>Short version: we collect only what we need to schedule your free consultation, and we never sell or share your information.</p>
+</header>
 
-<main>
-  <p class="effective">Effective May 11, 2026</p>
+<section class="band-light">
+  <div class="legal">
+    <p class="legal-meta">Last updated: May 2026 · Summit Senior Services · Cleveland, Ohio</p>
 
-  <p>This Privacy Policy describes how Summit Senior Services ("we," "us," or "our") collects, uses, and protects information when you visit our website at summitseniorservicesohio.com or interact with us through our consultation and service process. We respect your privacy and aim to be straightforward about what we do with the information you share.</p>
+    <h2>1. Who we are</h2>
+    <p>Summit Senior Services is a locally-owned senior moving and downsizing company based in Greater Cleveland, Ohio, operated by Brian Schoeffler. You can reach us at <a href="mailto:info@SummitSeniorServicesOhio.com">info@SummitSeniorServicesOhio.com</a> or <a href="tel:2162363966">(216) 236-3966</a>.</p>
 
-  <h2>Information We Collect</h2>
-  <p>We collect information you choose to provide to us, including when you fill out our contact form, schedule a consultation, or communicate with us by phone, text, or email. This may include:</p>
-  <ul>
-    <li>Your name and the name of the family member or loved one we're helping</li>
-    <li>Phone number and email address</li>
-    <li>Address of the property involved in your move or downsizing project</li>
-    <li>Details about your situation, timeline, and the services you're interested in</li>
-    <li>Any other information you voluntarily share with us during the consultation or project</li>
-  </ul>
-  <p>Our website does not currently use cookies, advertising trackers, or third-party analytics that identify individual visitors. If we add analytics in the future, we will update this policy.</p>
+    <h2>2. What we collect</h2>
+    <p>When you submit our consultation form or contact us by phone, email, or text, we collect:</p>
+    <ul>
+      <li>Your name</li>
+      <li>Your phone number</li>
+      <li>Your email address (if provided)</li>
+      <li>Your city or service area</li>
+      <li>Your preferred timeline</li>
+      <li>Any details you choose to share about your situation</li>
+    </ul>
+    <p>Our website also uses Google Analytics to understand how visitors find and use the site. This produces anonymized, aggregated data — page views, browser type, time on site. It does not identify you personally.</p>
 
-  <h2>How We Use Your Information</h2>
-  <p>We use the information you provide to:</p>
-  <ul>
-    <li>Respond to your inquiry and schedule your free consultation</li>
-    <li>Prepare a custom plan and quote for your project</li>
-    <li>Coordinate the services you've agreed to with us</li>
-    <li>Communicate with you and any family members you've authorized us to keep in the loop</li>
-    <li>Follow up after a completed project to ensure you're satisfied</li>
-  </ul>
+    <h2>3. How we use it</h2>
+    <p>We use the information you provide for one purpose: <strong>to follow up about your free consultation and, if you become a client, to coordinate your move.</strong> Specifically, we use your contact details to:</p>
+    <ul>
+      <li>Schedule your in-home consultation</li>
+      <li>Send you a written plan and quote after we meet</li>
+      <li>Keep you updated during the project, if you hire us</li>
+    </ul>
+    <p>We do not add you to a marketing list, send you newsletters, or follow up after you've told us you're not interested.</p>
 
-  <h2>How We Share Your Information</h2>
-  <p>We do not sell, rent, or trade your personal information. We share information only when necessary to complete the services you've engaged us for — for example, with a moving crew, donation partner, or senior living community you've asked us to coordinate with. We do not share your information with marketers or third parties for their own purposes.</p>
-  <p>We may disclose information if required by law, by a valid subpoena, or to protect the safety of any person.</p>
+    <h2>4. What we don't do</h2>
+    <p><strong>We do not sell, rent, or share your personal information.</strong> Period. We don't advertise on social media platforms that buy contact lists, and we don't trade leads with referral services. Your information stays with us.</p>
 
-  <h2>How We Protect Your Information</h2>
-  <p>We take reasonable steps to safeguard the information you share with us. Communications and records are kept confidential and accessible only to team members directly involved in your project. We retain your information only as long as needed to provide our services and to meet legitimate business and legal requirements.</p>
+    <h2>5. How we store it</h2>
+    <p>Contact form submissions are processed through Formspree, a third-party form-handling service. Once we receive your inquiry, we store the basic contact details in standard business tools (email, calendar, and a project-management system) protected by strong passwords and two-factor authentication.</p>
 
-  <h2>Your Choices</h2>
-  <p>You can ask us at any time to update, correct, or delete the personal information we have about you. You can also ask us to stop contacting you. To make any of these requests, reach out using the contact information below.</p>
+    <h2>6. How long we keep it</h2>
+    <p>If you contact us and decide not to work with Summit, we keep your information for one year in case you reach back out — then delete it. If you become a client, we retain project records for seven years for tax, insurance, and business purposes.</p>
 
-  <h2>Children's Privacy</h2>
-  <p>Our services are intended for adults. We do not knowingly collect personal information from anyone under the age of 18.</p>
+    <h2>7. Your rights</h2>
+    <p>You can ask us to:</p>
+    <ul>
+      <li>Show you what information we have about you</li>
+      <li>Correct anything that's wrong</li>
+      <li>Delete your information from our records</li>
+    </ul>
+    <p>Email <a href="mailto:info@SummitSeniorServicesOhio.com">info@SummitSeniorServicesOhio.com</a> with the subject line "Privacy Request" and we'll respond within five business days.</p>
 
-  <h2>Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the effective date at the top of this page and, where appropriate, provide additional notice.</p>
+    <h2>8. Cookies</h2>
+    <p>Our website uses a small number of cookies for basic functionality (e.g., keeping the navigation menu open on mobile) and for the Google Analytics tracking mentioned above. You can disable cookies in your browser settings without affecting your ability to use the site.</p>
 
-  <h2>Contact Us</h2>
-  <p>If you have questions about this policy or how your information is handled, please reach out:</p>
-  <p>
-    Summit Senior Services<br/>
-    Greater Cleveland, Ohio<br/>
-    Phone: <a class="inline" href="tel:2162363966">216-236-3966</a><br/>
-    Email: <a class="inline" href="mailto:info@SummitSeniorServicesOhio.com">info@SummitSeniorServicesOhio.com</a>
-  </p>
-</main>
+    <h2>9. Updates to this policy</h2>
+    <p>If we change this policy, we'll update the "Last updated" date at the top of this page. Substantive changes won't apply retroactively to information already collected.</p>
 
-<footer>
-  <strong>Summit Senior Services</strong> &nbsp;·&nbsp; Greater Cleveland, Ohio &nbsp;·&nbsp; Senior Moving &amp; Downsizing<br/><br/>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="service-area.html">Service Area</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy Policy</a>
+    <h2>10. Questions</h2>
+    <p>If anything here is unclear, just ask. Call <a href="tel:2162363966">(216) 236-3966</a> or email <a href="mailto:info@SummitSeniorServicesOhio.com">info@SummitSeniorServicesOhio.com</a> and you'll get a real reply from a real person — same as everything else we do.</p>
   </div>
-  © 2026 Summit Senior Services. All rights reserved.
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
+      <p>Senior moving &amp; downsizing for Greater Cleveland. Personal, hands-on care from the first call to the last box.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="services.html">All Services</a>
+      <a href="services.html#downsizing">Downsizing</a>
+      <a href="services.html#move">Move Coordination</a>
+      <a href="services.html#sales">Online Item Sales</a>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <a href="cleveland-senior-move-checklist.html">Free Move Checklist</a>
+      <a href="service-area.html">Service Area</a>
+      <a href="contact.html#faq">FAQ</a>
+      <a href="about.html">About Brian</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="tel:2162363966">(216) 236-3966</a>
+      <a href="mailto:info@SummitSeniorServicesOhio.com">info@SummitSeniorServicesOhio.com</a>
+      <span>Cleveland, Ohio</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Summit Senior Services. All rights reserved.</div>
+    <div><a href="privacy.html" style="color:rgba(255,255,255,0.5); text-decoration:none;">Privacy Policy</a> · Fully Insured · Locally Owned</div>
+  </div>
 </footer>
 
 <div class="mobile-cta-bar">
-  <a href="tel:2162363966" class="mcta-call"><span class="mcta-icon">📞</span>Call Now</a>
-  <a href="contact.html" class="mcta-quote"><span class="mcta-icon">✉️</span>Free Consult</a>
-  <a href="sms:2162363966" class="mcta-text"><span class="mcta-icon">💬</span>Text Us</a>
+  <a href="tel:2162363966" class="mcta-call"><span class="mcta-icon">☎</span>Call Now</a>
+  <a href="contact.html" class="mcta-quote"><span class="mcta-icon">✉</span>Free Consult</a>
+  <a href="sms:2162363966" class="mcta-text"><span class="mcta-icon">✦</span>Text Us</a>
 </div>
 
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+</script>
 </body>
 </html>

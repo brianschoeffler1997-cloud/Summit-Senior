@@ -17,8 +17,15 @@
     --light: #ffffff;
     --border: #e2ddd6;
   }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: #e1e5ec; color: var(--navy); font-family: 'DM Sans', sans-serif; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #e1e5ec;
+    color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
   /* On-screen viewing chrome */
   .toolbar {
@@ -395,15 +402,39 @@
      ============================ */
   @page { size: 8.5in 11in; margin: 0; }
   @media print {
-    body, html { background: #fff; }
-    .toolbar { display: none; }
-    .stack { padding: 0; gap: 0; }
+    body, html { background: #fff !important; }
+    .toolbar { display: none !important; }
+    .stack { padding: 0 !important; gap: 0 !important; }
     .page {
-      box-shadow: none;
-      width: 8.5in;
-      min-height: 11in;
+      box-shadow: none !important;
+      width: 8.5in !important;
+      min-height: 11in !important;
       page-break-after: always;
+      break-after: page;
+      /* Force background and color rendering */
+      background: var(--cream) !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
+    .page.cover {
+      background:
+        radial-gradient(ellipse at 50% 35%, rgba(201,168,76,0.18) 0%, transparent 65%),
+        var(--cream) !important;
+    }
+    .page::before,
+    .page::after,
+    .ph,
+    .pf,
+    .step-num-big,
+    .free-tag,
+    .step .brian-note,
+    .step .checklist .box,
+    .cover .free-tag {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    /* Don't break inside checklist items, notes, headings */
+    .step h2, .step .lede, .step .brian-note, .checklist li { break-inside: avoid; }
   }
 </style>
 </head>
@@ -418,8 +449,8 @@
     </div>
   </div>
   <div class="right">
-    <button class="tb-btn" id="pdf-btn" onclick="generatePDF()">
-      <span>⇣</span> <span class="btn-label">Download as PDF</span>
+    <button class="tb-btn" onclick="window.print()">
+      <span>⇣</span> Save / Print as PDF
     </button>
     <a class="tb-btn outline" href="index.html">← Back to Summit</a>
   </div>
@@ -788,96 +819,15 @@
 </div>
 
 <script>
-  /**
-   * Generate a real PDF file from the checklist content.
-   * Bypasses the browser print dialog entirely — no "Background graphics"
-   * checkbox to remember, no font fallbacks, no margin guessing.
-   *
-   * Strategy: load html2canvas + jsPDF as separate scripts (their UMD
-   * builds expose globals reliably), render each `.page` element to a
-   * canvas, drop each onto its own letter-sized PDF page.
-   */
-  function loadScript(src) {
-    return new Promise((resolve, reject) => {
-      const s = document.createElement('script');
-      s.src = src;
-      s.onload = resolve;
-      s.onerror = () => reject(new Error('Failed to load: ' + src));
-      document.head.appendChild(s);
-    });
+  // Wait for fonts to fully load, then trigger the print dialog.
+  // Cream backgrounds rely on print-color-adjust which user must accept;
+  // in Chrome the default "Background graphics" checkbox is OFF.
+  async function triggerPrint() {
+    try { await document.fonts.ready; } catch (e) {}
+    setTimeout(() => window.print(), 500);
   }
-
-  async function loadPdfLibs() {
-    if (!window.html2canvas) {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
-    }
-    if (!window.jspdf || !window.jspdf.jsPDF) {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-    }
-  }
-
-  async function generatePDF() {
-    const btn = document.getElementById('pdf-btn');
-    const label = btn.querySelector('.btn-label');
-    const originalLabel = label.textContent;
-    const toolbar = document.querySelector('.toolbar');
-
-    btn.disabled = true;
-    btn.style.opacity = '0.8';
-    btn.style.cursor = 'wait';
-    label.textContent = 'Loading…';
-    // Yield once so the initial label change paints before lib download.
-    await new Promise(r => setTimeout(r, 30));
-
-    try {
-      await loadPdfLibs();
-      try { await document.fonts.ready; } catch (e) {}
-
-      const { jsPDF } = window.jspdf;
-      const pages = document.querySelectorAll('.page');
-      const total = pages.length;
-
-      const pdf = new jsPDF({ unit: 'in', format: 'letter', orientation: 'portrait', compress: true });
-
-      // Hide the toolbar during capture so it doesn't end up in the PDF.
-      // We use html2canvas's `ignoreElements` instead of display:none so
-      // the toolbar stays visible to the user during rendering — that's
-      // where the progress label lives.
-      const toolbarEl = toolbar;
-
-      for (let i = 0; i < total; i++) {
-        label.textContent = `Rendering page ${i + 1} of ${total}…`;
-        // eslint-disable-next-line no-await-in-loop
-        await new Promise(r => setTimeout(r, 30));
-        // eslint-disable-next-line no-await-in-loop
-        const canvas = await html2canvas(pages[i], {
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#f8f5ef',
-          logging: false,
-          ignoreElements: (el) => el === toolbarEl || toolbarEl.contains(el),
-        });
-        const img = canvas.toDataURL('image/jpeg', 0.94);
-        if (i > 0) pdf.addPage();
-        pdf.addImage(img, 'JPEG', 0, 0, 8.5, 11, undefined, 'FAST');
-      }
-
-      label.textContent = 'Saving…';
-      pdf.save('cleveland-senior-move-checklist.pdf');
-
-      label.textContent = 'Done. ✓';
-      setTimeout(() => { label.textContent = originalLabel; }, 2200);
-    } catch (err) {
-      console.error('PDF generation failed:', err);
-      label.textContent = 'Try again';
-      alert("Couldn't generate the PDF: " + (err && err.message ? err.message : 'unknown error') + "\n\nAs a fallback you can press Ctrl+P (or Cmd+P) and choose 'Save as PDF'.");
-    } finally {
-      btn.disabled = false;
-      btn.style.opacity = '';
-      btn.style.cursor = '';
-    }
-  }
+  if (document.readyState === 'complete') triggerPrint();
+  else window.addEventListener('load', triggerPrint);
 </script>
 </body>
 </html>
