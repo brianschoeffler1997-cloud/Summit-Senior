@@ -240,6 +240,16 @@
   .promise-attr strong { color: var(--navy); font-weight: 500; }
 
   /* ─────────── "See all services" link below grid ─────────── */
+  a.service-card {
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  a.service-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -18px rgba(26,46,68,0.4);
+  }
   .see-all {
     margin-top: 2.5rem;
     text-align: center;
@@ -498,26 +508,26 @@
     </div>
 
     <div class="services-grid">
-      <div class="service-card">
+      <a class="service-card" href="senior-downsizing-services-cleveland.html">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></div>
         <h3>Downsizing &amp; Sorting</h3>
         <p>We help you make thoughtful decisions about what to keep, donate, sell, or discard — at your pace, with zero pressure. Then we handle every load-out so you don't have to.</p>
-      </div>
-      <div class="service-card">
+      </a>
+      <a class="service-card" href="senior-packing-unpacking-cleveland.html">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
         <h3>Packing &amp; Unpacking</h3>
         <p>Professional, careful packing of an entire home or just specific rooms — and full unpacking and setup at the new location so it feels like home from the moment you walk in.</p>
-      </div>
-      <div class="service-card">
+      </a>
+      <a class="service-card" href="senior-move-management-cleveland.html">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg></div>
         <h3>Senior Move Coordination</h3>
         <p><strong>We personally handle the move</strong> — sorting, packing, loading, transport, unloading, unpacking, and setup. No third-party moving company, no rotating crew. The same hands that boxed it up unbox it at the new home.</p>
-      </div>
-      <div class="service-card">
+      </a>
+      <a class="service-card" href="donation-junk-removal-cleveland.html">
         <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div>
         <h3>Donation &amp; Disposal</h3>
         <p>We coordinate donations to local Cleveland charities, arrange responsible junk removal, and make sure as little as possible ends up in a landfill. Nothing is left for the family to deal with afterward.</p>
-      </div>
+      </a>
     </div>
 
     <div class="see-all">
@@ -660,9 +670,9 @@
     <div class="footer-col">
       <h5>Services</h5>
       <a href="services.html">All Services</a>
-      <a href="services.html#downsizing">Downsizing</a>
-      <a href="services.html#move">Move Coordination</a>
-      <a href="services.html#sales">Online Item Sales</a>
+      <a href="senior-downsizing-services-cleveland.html">Downsizing &amp; Sorting</a>
+      <a href="senior-move-management-cleveland.html">Move Coordination</a>
+      <a href="online-estate-sales-cleveland.html">Online Item Sales</a>
     </div>
     <div class="footer-col">
       <h5>Resources</h5>
