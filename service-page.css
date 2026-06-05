@@ -91,6 +91,35 @@
 .svc-hero-phone a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 500; }
 .svc-hero-phone a:hover { color: var(--gold); }
 
+/* Hero with companion poster image */
+.svc-hero-inner.has-figure {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+  gap: 3.5rem;
+  align-items: center;
+}
+.svc-hero-inner.has-figure .svc-hero h1,
+.svc-hero-inner.has-figure h1 { max-width: 100%; }
+.svc-hero-content { min-width: 0; }
+.svc-hero-figure {
+  margin: 0;
+  justify-self: end;
+  width: 100%;
+  max-width: 430px;
+}
+.svc-hero-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(201,168,76,0.4);
+  box-shadow: 0 34px 70px -28px rgba(0,0,0,0.6);
+}
+@media (max-width: 900px) {
+  .svc-hero-inner.has-figure { grid-template-columns: 1fr; gap: 2.5rem; }
+  .svc-hero-figure { justify-self: center; max-width: 360px; }
+}
+
 /* ─────────── OVERVIEW (text + aside) ─────────── */
 .svc-overview-inner {
   display: grid;
