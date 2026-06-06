@@ -1,386 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-headline="serif" data-corners="soft">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Services | Summit Senior Services — Greater Cleveland, OH</title>
-<meta name="description" content="Full senior moving and downsizing services for Greater Cleveland — packing, move coordination, downsizing, donation, online item sales, home cleanout, settling-in support."/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css"/>
-
-<style>
-  /* Large detail cards (8 services, 2-column) */
-  .svc-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-  .svc-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 2rem 1.85rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-  }
-  .band-cream .svc-card { background: var(--light); }
-  .svc-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 0.4rem;
-  }
-  .svc-icon {
-    width: 42px; height: 42px;
-    display: grid; place-items: center;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-xs);
-    background: var(--light);
-  }
-  .band-cream .svc-icon { background: var(--cream); }
-  .svc-icon svg { width: 22px; height: 22px; stroke: var(--gold); stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .svc-num {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 0.95rem;
-    color: var(--gold);
-    letter-spacing: 0.04em;
-    font-weight: 500;
-  }
-  .svc-card h3 {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    color: var(--navy);
-    font-weight: 600;
-    letter-spacing: -0.005em;
-    line-height: 1.25;
-  }
-  .svc-card p {
-    font-size: 0.95rem;
-    color: var(--warm-gray);
-    line-height: 1.7;
-  }
-  .svc-includes {
-    margin-top: 0.85rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 0.85rem;
-  }
-  .svc-includes span {
-    font-size: 0.78rem;
-    color: var(--navy);
-    padding: 0.2rem 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .svc-includes span::before {
-    content: '✦';
-    color: var(--gold);
-    font-size: 0.7rem;
-    line-height: 1;
-  }
-  @media (max-width: 760px) {
-    .svc-grid { grid-template-columns: 1fr; }
-  }
-
-  /* Clickable card behavior */
-  a.svc-card {
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
-  }
-  a.svc-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px -18px rgba(26,46,68,0.4);
-  }
-  .svc-more {
-    margin-top: 1rem;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--gold-700);
-    letter-spacing: 0.02em;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    transition: gap 0.15s;
-  }
-  a.svc-card:hover .svc-more { gap: 0.6rem; }
-
-  /* Inline CTA card */
-  .svc-cta {
-    margin-top: 2.5rem;
-    background: var(--navy);
-    border-radius: var(--radius-md);
-    padding: 2.25rem 2rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .svc-cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.12), transparent 60%);
-    pointer-events: none;
-  }
-  .svc-cta-text { position: relative; }
-  .svc-cta-text .eyebrow { color: var(--gold); display: inline-block; margin-bottom: 0.5rem; }
-  .svc-cta-text h3 {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    color: var(--light);
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-    line-height: 1.3;
-  }
-  .svc-cta-text p {
-    color: rgba(255,255,255,0.65);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    max-width: 560px;
-  }
-  .svc-cta .btn-primary { position: relative; }
-  @media (max-width: 700px) {
-    .svc-cta { grid-template-columns: 1fr; text-align: left; }
-  }
-
-  /* Pricing note */
-  .pricing-note {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    padding: 1.5rem 1.75rem;
-    border-radius: var(--radius-md);
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .pricing-note h4 {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    color: var(--navy);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  .pricing-note p {
-    font-size: 0.94rem;
-    color: var(--warm-gray);
-    line-height: 1.7;
-  }
-</style>
+<title>Senior Moving &amp; Downsizing Services | Summit Senior Services — Greater Cleveland, OH</title>
+<meta name="description" content="Eight senior moving and downsizing services for Greater Cleveland — downsizing, packing, move coordination, online item sales, donation, home cleanout, settling-in, and space planning. Use as much or as little as you need."/>
+<link rel="canonical" href="https://www.summitseniorservicesohio.com/services.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.summitseniorservicesohio.com/services.html"/>
+<meta property="og:title" content="Senior Moving &amp; Downsizing Services | Summit Senior Services — Greater Cleveland, OH"/>
+<meta property="og:description" content="Eight senior moving and downsizing services for Greater Cleveland — downsizing, packing, move coordination, estate cleanout, settling-in support, and more. Free in-home consultation."/>
+<meta property="og:image" content="https://www.summitseniorservicesohio.com/assets/og-image.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+<link rel="stylesheet" href="summit-redesign.css"/>
+<link rel="stylesheet" href="summit-pages.css"/>
 </head>
 <body>
 
-<nav class="site-nav">
-  <a href="index.html" class="logo"><img src="assets/summit-logo-white.png" alt="Summit Senior Services"/></a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html" class="active">Services</a>
-    <a href="service-area.html">Service Area</a>
-    <a href="contact.html">FAQ &amp; Contact</a>
-  </div>
-  <div class="nav-right">
-    <a href="contact.html" class="nav-cta">Free Consultation</a>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+<!-- ─────────── NAV ─────────── -->
+<nav class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Summit Senior Services — home">
+      <img class="logo-white" src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
+      <img class="logo-navy" src="assets/summit-logo-transparent.png" alt="Summit Senior Services"/>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="service-area.html">Service Area</a>
+      <a href="contact.html">FAQ &amp; Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:2162363966" class="nav-phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>(216) 236-3966</a>
+      <a href="contact.html" class="btn btn--gold nav-cta">Free Consultation</a>
+      <button class="hamburger" onclick="summitMenu(true)" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html" class="active">Services</a>
-  <a href="service-area.html">Service Area</a>
-  <a href="contact.html">FAQ &amp; Contact</a>
-  <a href="contact.html" class="mobile-cta">Free Consultation</a>
+  <button class="close" onclick="summitMenu(false)" aria-label="Close menu">&times;</button>
+  <a href="index.html" onclick="summitMenu(false)">Home</a>
+  <a href="about.html" onclick="summitMenu(false)">About</a>
+  <a href="services.html" onclick="summitMenu(false)">Services</a>
+  <a href="service-area.html" onclick="summitMenu(false)">Service Area</a>
+  <a href="contact.html" onclick="summitMenu(false)">FAQ &amp; Contact</a>
+  <a href="contact.html" class="m-cta btn" onclick="summitMenu(false)">Free Consultation</a>
 </div>
 
-<header class="page-hero">
-  <p class="eyebrow">What We Do</p>
-  <h1>Every service you need, <em>tailored to your situation.</em></h1>
-  <p>No two families are the same — and we don't sell one-size-fits-all packages. Use as much or as little as you need.</p>
+<!-- ─────────── PAGE HERO ─────────── -->
+<header class="page-hero page-hero--photo" data-screen-label="01 Services hero">
+  <div class="hero-bg"><image-slot id="services-hero-bg" shape="rect" fit="cover" src="assets/hero-services.jpg" placeholder="Drop a hero photo"></image-slot><div class="hero-shade"></div></div><div class="container">
+    <div class="page-hero-inner">
+      <p class="eyebrow" data-sl="up">What We Do</p>
+      <h1 data-sl="up" style="--sl-d:90ms">Every service you need, <em>tailored to your situation.</em></h1>
+      <p class="page-hero-sub" data-sl="up" style="--sl-d:180ms">No two families are the same — so we don't sell one-size-fits-all packages. Use all eight services, or just the parts you need.</p>
+      <div class="page-hero-actions" data-sl="up" style="--sl-d:260ms">
+        <a href="contact.html" class="btn btn--primary">Book a Free Consultation</a>
+        <a href="tel:2162363966" class="btn btn--ghost">Call (216) 236-3966</a>
+      </div>
+    </div>
+  </div>
 </header>
 
-<!-- 8 SERVICES -->
-<section class="band-light">
-  <div class="band-inner">
-    <div class="band-header">
-      <span class="eyebrow">Full Service Menu</span>
-      <h2 class="section-title">Eight ways we help — <em>or just the parts you need.</em></h2>
-      <p class="section-body">Every plan is custom. We'll never sell you services you don't need, and we won't withhold ones you do. Below is everything we handle, in roughly the order most families use them.</p>
+<!-- ─────────── FULL SERVICE MENU ─────────── -->
+<section class="section band-light" data-screen-label="02 Service menu">
+  <div class="container">
+    <div class="section-head" data-sl="up">
+      <p class="eyebrow">Full Service Menu</p>
+      <h2 class="h-section">Eight ways we help — or just the parts you need.</h2>
+      <p class="lead">Every plan is custom. We'll never sell you services you don't need, and we won't withhold ones you do. Here's everything we handle, in roughly the order most families use them.</p>
     </div>
 
-    <div class="svc-grid">
-
-      <a class="svc-card" id="downsizing" href="senior-downsizing-services-cleveland.html">
-        <div class="svc-head">
-          <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></div>
-          <span class="svc-num">01</span>
+    <div class="menu-grid" data-sl-stagger="80">
+      <a class="menu-card" href="senior-downsizing-services-cleveland.html" data-sl="up">
+        <div class="menu-card-head">
+          <span class="menu-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></span>
+          <span class="menu-num">01</span>
         </div>
         <h3>Downsizing &amp; Sorting</h3>
-        <p>Thoughtful, room-by-room decisions about what to keep, donate, sell, or discard — at your pace and with zero pressure. We do the heavy lifting, the boxing, and the load-out so the family never has to.</p>
-        <div class="svc-includes">
-          <span>Room-by-room sorting</span>
-          <span>Heirloom round</span>
-          <span>Decision documentation</span>
-          <span>Load-out</span>
-        </div>
-        <span class="svc-more">View details →</span>
+        <p>Thoughtful, room-by-room decisions about what to keep, donate, sell, or discard — at your pace, with zero pressure. We do the heavy lifting, the boxing, and the load-out so the family never has to.</p>
+        <div class="menu-tags"><span>Room-by-room</span><span>Heirloom round</span><span>Load-out</span></div>
+        <span class="menu-more">View details<svg viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="svc-card" href="senior-packing-unpacking-cleveland.html">
-        <div class="svc-head">
-          <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
-          <span class="svc-num">02</span>
+      <a class="menu-card" href="senior-packing-unpacking-cleveland.html" data-sl="up">
+        <div class="menu-card-head">
+          <span class="menu-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></span>
+          <span class="menu-num">02</span>
         </div>
         <h3>Packing &amp; Unpacking</h3>
         <p>Professional, careful packing of an entire home or just specific rooms — and full unpacking and setup at the new location so it feels like home the moment you walk in.</p>
-        <div class="svc-includes">
-          <span>Full or partial</span>
-          <span>Fragile-grade materials</span>
-          <span>Setup at new home</span>
-        </div>
-        <span class="svc-more">View details →</span>
+        <div class="menu-tags"><span>Full or partial</span><span>Fragile-grade materials</span><span>Setup at new home</span></div>
+        <span class="menu-more">View details<svg viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="svc-card" id="move" href="senior-move-management-cleveland.html">
-        <div class="svc-head">
-          <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg></div>
-          <span class="svc-num">03</span>
+      <a class="menu-card" href="senior-move-management-cleveland.html" data-sl="up">
+        <div class="menu-card-head">
+          <span class="menu-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg></span>
+          <span class="menu-num">03</span>
         </div>
         <h3>Senior Move Coordination</h3>
-        <p><strong>We personally handle the move</strong> — sorting, packing, loading, transport, unloading, unpacking, and setup at the new home. No third-party moving company, no rotating crew. The same hands that box it up at your parent's house unbox it at theirs.</p>
-        <div class="svc-includes">
-          <span>We do the moving</span>
-          <span>On-site supervision</span>
-          <span>Damage prevention</span>
-          <span>Same-day setup</span>
-        </div>
-        <span class="svc-more">View details →</span>
+        <p><strong>We personally handle the move</strong> — sorting, packing, loading, transport, unloading, and setup at the new home. No third-party crew. The same hands that box it up unbox it at the new home.</p>
+        <div class="menu-tags"><span>We do the moving</span><span>On-site supervision</span><span>Same-day setup</span></div>
+        <span class="menu-more">View details<svg viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="svc-card" id="sales" href="online-estate-sales-cleveland.html">
-        <div class="svc-head">
-          <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/><path d="M6 11h.01M10 11h.01M14 11h.01M18 11h.01"/></svg></div>
-          <span class="svc-num">04</span>
+      <a class="menu-card" href="online-estate-sales-cleveland.html" data-sl="up">
+        <div class="menu-card-head">
+          <span class="menu-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/><path d="M6 11h.01M10 11h.01M14 11h.01M18 11h.01"/></svg></span>
+          <span class="menu-num">04</span>
         </div>
         <h3>Online Item Sales</h3>
-        <p>A private, modern alternative to the traditional estate sale. We photograph, list, and sell items on Facebook Marketplace and other platforms — handling all buyer inquiries, pickups, and transactions so the family never has to.</p>
-        <div class="svc-includes">
-          <span>Professional photos</span>
-          <span>Listing &amp; pricing</span>
-          <span>Buyer coordination</span>
-          <span>Pickup management</span>
-        </div>
-        <span class="svc-more">View details →</span>
+        <p>A private, modern alternative to the traditional estate sale. We photograph, list, and sell items on Facebook Marketplace and other platforms — handling all buyer inquiries, pickups, and transactions.</p>
+        <div class="menu-tags"><span>Professional photos</span><span>Listing &amp; pricing</span><span>Buyer coordination</span></div>
+        <span class="menu-more">View details<svg viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="svc-card" href="donation-junk-removal-cleveland.html">
-        <div class="svc-head">
-          <div class="svc-icon"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div>
-          <span class="svc-num">05</span>
+      <a class="menu-card" href="donation-junk-removal-cleveland.html" data-sl="up">
+        <div class="menu-card-head">
+          <span class="menu-icon"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></span>
+          <span class="menu-num">05</span>
         </div>
         <h3>Donation &amp; Disposal</h3>
         <p>We coordinate donations to local Cleveland charities, arrange responsible junk removal, and make sure as little as possible ends up in a landfill. Nothing is left for the family to deal with afterward.</p>
-        <div class="svc-includes">
-          <span>Local charities</span>
-          <span>Junk hauling</span>
-          <span>Tax receipts</span>
-        </div>
-        <span class="svc-more">View details →</span>
+        <div class="menu-tags"><span>Local charities</span><span>Junk hauling</span><span>Tax receipts</span></div>
+        <span class="menu-more">View details<svg viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="svc-card" href="estate-cleanout-cleveland.html">
-        <div class="svc-head">
-          <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
-          <span class="svc-num">06</span>
+      <a class="menu-card" href="estate-cleanout-cleveland.html" data-sl="up">
+        <div class="menu-card-head">
+          <span class="menu-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+          <span class="menu-num">06</span>
         </div>
         <h3>Home Cleanout</h3>
         <p>After a sale or move, we can arrange a full cleanout of the property — leaving it clean, empty, and ready for listing or handover. Especially helpful when the family is selling and lives out of state.</p>
-        <div class="svc-includes">
-          <span>Full property cleanout</span>
-          <span>Listing-ready</span>
-          <span>Out-of-state support</span>
-        </div>
-        <span class="svc-more">View details →</span>
+        <div class="menu-tags"><span>Full cleanout</span><span>Listing-ready</span><span>Out-of-state support</span></div>
+        <span class="menu-more">View details<svg viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="svc-card" href="settling-in-services-cleveland.html">
-        <div class="svc-head">
-          <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-          <span class="svc-num">07</span>
+      <a class="menu-card" href="settling-in-services-cleveland.html" data-sl="up">
+        <div class="menu-card-head">
+          <span class="menu-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></span>
+          <span class="menu-num">07</span>
         </div>
         <h3>Settling-In Support</h3>
-        <p>The part most movers skip. We hang pictures, connect electronics, organize closets, set up the kitchen, and stay until your parent or loved one can find their morning coffee without thinking about it.</p>
-        <div class="svc-includes">
-          <span>Picture hanging</span>
-          <span>TV &amp; tech setup</span>
-          <span>Closet organization</span>
-          <span>Kitchen setup</span>
-        </div>
-        <span class="svc-more">View details →</span>
+        <p>The part most movers skip. We hang pictures, connect electronics, organize closets, and set up the kitchen — and we stay until your parent can find their morning coffee without thinking about it.</p>
+        <div class="menu-tags"><span>Picture hanging</span><span>TV &amp; tech setup</span><span>Kitchen setup</span></div>
+        <span class="menu-more">View details<svg viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="svc-card" href="floor-plan-space-planning-cleveland.html">
-        <div class="svc-head">
-          <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <span class="svc-num">08</span>
+      <a class="menu-card" href="floor-plan-space-planning-cleveland.html" data-sl="up">
+        <div class="menu-card-head">
+          <span class="menu-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <span class="menu-num">08</span>
         </div>
         <h3>Floor Plan &amp; Space Planning</h3>
-        <p>We get the new home's floor plan, measure every piece of must-keep furniture, and decide what fits <em>before</em> moving day — not after the sectional can't make the doorway.</p>
-        <div class="svc-includes">
-          <span>To-scale layouts</span>
-          <span>Furniture measure-up</span>
-          <span>Doorway &amp; elevator check</span>
-        </div>
-        <span class="svc-more">View details →</span>
+        <p>We get the new home's floor plan, measure every must-keep piece of furniture, and decide what fits <em>before</em> moving day — not after the sectional can't make the doorway.</p>
+        <div class="menu-tags"><span>To-scale layouts</span><span>Furniture measure-up</span><span>Doorway check</span></div>
+        <span class="menu-more">View details<svg viewBox="0 0 24 24" aria-hidden="true" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-
     </div>
 
-    <!-- Embedded CTA -->
-    <div class="svc-cta">
-      <div class="svc-cta-text">
-        <span class="eyebrow">Not Sure Which Services You Need?</span>
-        <h3>That's exactly what the free consultation is for.</h3>
-        <p>We come to you, assess the situation, and put together a clear, custom plan — with transparent pricing and no obligation.</p>
+    <div class="midcta" data-sl="up" style="margin-top:clamp(2.5rem,5vw,3.5rem)">
+      <div>
+        <h3>Not sure which services you need?</h3>
+        <p>That's exactly what the free consultation is for. We come to you, assess the situation, and put together a clear, custom plan — with transparent pricing and no obligation.</p>
       </div>
-      <a href="contact.html" class="btn-primary">Book Your Free Consult</a>
+      <a href="contact.html" class="btn btn--gold">Book Your Free Consult</a>
     </div>
   </div>
 </section>
 
-<!-- WHO WE SERVE -->
-<section class="band-cream">
-  <div class="band-inner">
-    <div class="band-header">
-      <span class="eyebrow">Who We Serve</span>
-      <h2 class="section-title">Built for seniors <em>and</em> the families helping them.</h2>
+<!-- ─────────── WHO WE SERVE ─────────── -->
+<section class="section band-navy" data-screen-label="03 Who we serve">
+  <div class="container">
+    <div class="section-head" data-sl="up">
+      <p class="eyebrow">Who We Serve</p>
+      <h2 class="h-section">Built for seniors and the families helping them.</h2>
     </div>
-    <div class="who-grid">
-      <div class="who-card">
+    <div class="who-grid" data-sl-stagger="90">
+      <div class="who-card" data-sl="up">
         <span class="who-tag">For Seniors</span>
         <h3>A transition handled with respect.</h3>
-        <p>You've earned a move that's done with patience and dignity — not pressure to go faster than you're comfortable with. We protect what matters most and make sure your next home feels like home from day one.</p>
+        <p>You've earned a move done with patience and dignity — not pressure to go faster than you're comfortable with. We protect what matters most and make sure your next home feels like home from day one.</p>
       </div>
-      <div class="who-card">
+      <div class="who-card" data-sl="up">
         <span class="who-tag">For Adult Children</span>
         <h3>Boots on the ground in Cleveland.</h3>
         <p>Managing a parent's move from across town — or across the country — is overwhelming. We become your local hands and eyes, with clear, proactive updates by phone, text, or email at every step.</p>
       </div>
-      <div class="who-card">
+      <div class="who-card" data-sl="up">
         <span class="who-tag">Family-Home Downsizing</span>
         <h3>From a full house to a smaller space.</h3>
         <p>Decades of belongings, no clear place to start. We guide you through sorting, donating, selling, and letting go — without the stress, and without pressure to part with anything you're not ready to.</p>
       </div>
-      <div class="who-card">
+      <div class="who-card" data-sl="up">
         <span class="who-tag">Senior-Living Moves</span>
         <h3>Independent, assisted, or memory care.</h3>
         <p>Moves into a care community require precision. We coordinate directly with the community's move-in team so the right items arrive in the right rooms at the right time, with minimal disruption.</p>
@@ -389,50 +206,58 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="band-light">
-  <div class="band-inner">
-    <div class="band-header">
-      <span class="eyebrow">How It Works</span>
-      <h2 class="section-title">Simple from the <em>very first call.</em></h2>
-      <p class="section-body">Four steps, no surprises. Most families are settled in within four to six weeks of that first consultation — but we'll move at whatever pace feels right.</p>
+<!-- ─────────── HOW IT WORKS ─────────── -->
+<section class="section band-light" data-screen-label="04 How it works">
+  <div class="container">
+    <div class="section-head" data-sl="up">
+      <p class="eyebrow">How It Works</p>
+      <h2 class="h-section">Simple from the very first call.</h2>
+      <p class="lead">Four steps, no surprises. Most families are settled in within four to six weeks of that first consultation — but we'll move at whatever pace feels right.</p>
     </div>
-    <div class="steps">
-      <div class="step"><div class="step-num">01</div><h3>Free In-Home Visit</h3><p>We come to you, listen to the situation, and walk you through exactly what we'd do — no pressure, no obligation.</p></div>
-      <div class="step"><div class="step-num">02</div><h3>Custom Written Plan</h3><p>You receive a clear, written plan covering timeline, services, and pricing — so there are never any surprises.</p></div>
-      <div class="step"><div class="step-num">03</div><h3>We Handle Everything</h3><p>From the first sort through to the last box, we manage every detail. You stay informed without being overwhelmed.</p></div>
-      <div class="step"><div class="step-num">04</div><h3>Settled &amp; Supported</h3><p>We're not done until your loved one is truly comfortable in the new space — beds made, pictures up, kettle on.</p></div>
+    <div class="steps" data-sl-stagger="90">
+      <div class="step" data-sl="up"><div class="step-num">01</div><h3>Free In-Home Visit</h3><p>We come to you, listen to the situation, and walk you through exactly what we'd do — no pressure, no obligation.</p></div>
+      <div class="step" data-sl="up"><div class="step-num">02</div><h3>Custom Written Plan</h3><p>You receive a clear, written plan covering timeline, services, and pricing — so there are never any surprises.</p></div>
+      <div class="step" data-sl="up"><div class="step-num">03</div><h3>We Handle Everything</h3><p>From the first sort through to the last box, we manage every detail. You stay informed without being overwhelmed.</p></div>
+      <div class="step" data-sl="up"><div class="step-num">04</div><h3>Settled &amp; Supported</h3><p>We're not done until your loved one is truly comfortable — beds made, pictures up, kettle on.</p></div>
     </div>
   </div>
 </section>
 
-<!-- PRICING NOTE -->
-<section class="band-cream">
-  <div class="band-inner">
-    <div class="pricing-note">
+<!-- ─────────── PRICING NOTE ─────────── -->
+<section class="section band-cream" data-screen-label="05 Pricing">
+  <div class="container">
+    <div class="pricing-note" data-sl="up">
       <h4>A note on pricing.</h4>
-      <p>Every family's situation is different — home size, services needed, and timeline all affect cost — which is why we don't publish fixed packages. After the free in-home consultation you'll receive a clear, written quote tailored to your specific needs. <strong>No surprises, no hidden fees.</strong></p>
+      <p>Every family's situation is different — home size, services needed, and timeline all affect cost — which is why we don't publish fixed packages. After the free in-home consultation, you'll receive a clear, written quote tailored to your specific needs. <strong>No surprises, no hidden fees.</strong></p>
     </div>
   </div>
 </section>
 
-<!-- CLOSING -->
-<section class="closing">
-  <div class="closing-inner">
-    <div class="closing-photo"><img src="assets/founder-photo.jpg" alt="Brian Schoeffler"/></div>
-    <div class="closing-text">
-      <h2>When you're ready, I'll come see you.</h2>
-      <p>The free in-home consultation is the easiest way to start. No pressure, no obligation — just a conversation about what's needed and what's possible.</p>
-      <div class="closing-sign">Brian<small>Founder, Summit Senior Services</small></div>
-    </div>
-    <div class="closing-actions">
-      <a href="contact.html" class="btn-dark">Request a Free Consultation</a>
-      <div class="ph">or call <a href="tel:2162363966">(216) 236-3966</a></div>
+<!-- ─────────── CLOSING CTA ─────────── -->
+<section class="section closing" data-screen-label="06 Closing">
+  <div class="container">
+    <div class="closing-grid">
+      <div class="closing-media" data-sl="left">
+        <img src="assets/founder-photo.jpg" alt="Brian Schoeffler, founder of Summit Senior Services, available for a free in-home consultation"/>
+      </div>
+      <div class="closing-text" data-sl="right">
+        <h2>When you're ready, I'll come see you.</h2>
+        <p>The free in-home consultation is the easiest way to start. No pressure, no obligation — just a conversation about what's needed and what's possible.</p>
+        <div class="closing-sign">
+          <span class="name">Brian</span>
+          <span class="role">Founder, Summit Senior Services</span>
+        </div>
+        <div class="closing-actions">
+          <a href="contact.html" class="btn btn--primary">Request a Free Consultation</a>
+          <span class="call">or call <a href="tel:2162363966">(216) 236-3966</a></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
+<!-- ─────────── FOOTER ─────────── -->
+<footer class="footer" data-screen-label="07 Footer">
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
@@ -443,13 +268,17 @@
       <a href="services.html">All Services</a>
       <a href="senior-downsizing-services-cleveland.html">Downsizing &amp; Sorting</a>
       <a href="senior-move-management-cleveland.html">Move Coordination</a>
+      <a href="senior-packing-unpacking-cleveland.html">Packing &amp; Unpacking</a>
+      <a href="estate-cleanout-cleveland.html">Estate Cleanout</a>
+      <a href="settling-in-services-cleveland.html">Settling-In Support</a>
+      <a href="floor-plan-space-planning-cleveland.html">Floor Plan &amp; Space Planning</a>
       <a href="online-estate-sales-cleveland.html">Online Item Sales</a>
     </div>
     <div class="footer-col">
       <h5>Resources</h5>
-      <a href="cleveland-senior-move-checklist.html">Free Move Checklist</a>
+      <a href="checklist.html">Free Move Checklist</a>
       <a href="service-area.html">Service Area</a>
-      <a href="contact.html#faq">FAQ</a>
+      <a href="contact.html">FAQ</a>
       <a href="about.html">About Brian</a>
     </div>
     <div class="footer-col">
@@ -461,18 +290,16 @@
   </div>
   <div class="footer-bottom">
     <div>© 2026 Summit Senior Services. All rights reserved.</div>
-    <div><a href="privacy.html" style="color:rgba(255,255,255,0.5); text-decoration:none;">Privacy Policy</a> · Fully Insured · Locally Owned</div>
+    <div><a href="privacy-policy.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Privacy Policy</a> · Fully Insured · Locally Owned</div>
   </div>
 </footer>
 
-<div class="mobile-cta-bar">
-  <a href="tel:2162363966" class="mcta-call"><span class="mcta-icon">☎</span>Call Now</a>
-  <a href="contact.html" class="mcta-quote"><span class="mcta-icon">✉</span>Free Consult</a>
-  <a href="sms:2162363966" class="mcta-text"><span class="mcta-icon">✦</span>Text Us</a>
+<div class="mcta">
+  <a href="tel:2162363966" class="call">☎ Call / Text</a>
+  <a href="contact.html" class="quote">Free Consult</a>
 </div>
 
-<script>
-  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-</script>
+<script src="image-slot.js"></script>
+<script src="summit-site.js"></script>
 </body>
 </html>

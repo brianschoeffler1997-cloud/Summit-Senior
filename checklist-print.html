@@ -7,403 +7,313 @@
 <meta name="description" content="A free 14-page guide for Cleveland-area families navigating a senior move. 12 steps from the first conversation through settling in. By Brian Schoeffler, Summit Senior Services."/>
 <meta name="robots" content="index, follow"/>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --navy: #1a2e44;
-    --gold: #c9a84c;
-    --cream: #f8f5ef;
-    --warm-gray: #6b6560;
-    --light: #ffffff;
-    --border: #e2ddd6;
+    --navy:        #1a2e44;
+    --navy-900:    #0f1d2b;
+    --gold:        #c9a84c;
+    --gold-700:    #a98c35;
+    --cream:       #f8f5ef;
+    --cream-deep:  #f1ece2;
+    --warm-gray:   #6b6560;
+    --border:      #e3ddd3;
+    --light:       #ffffff;
+    --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+    --sans:  'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: #e1e5ec; color: var(--navy); font-family: 'DM Sans', sans-serif; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #dfe3ea;
+    color: var(--navy);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-  /* On-screen viewing chrome */
+  /* ─────────── On-screen toolbar ─────────── */
   .toolbar {
     position: sticky; top: 0; z-index: 100;
     background: var(--navy);
-    padding: 14px 24px;
+    padding: 13px clamp(16px, 4vw, 30px);
     display: flex; align-items: center; justify-content: space-between;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    gap: 16px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08), 0 10px 24px -16px rgba(15,29,43,0.6);
   }
-  .toolbar .left { display: flex; align-items: center; gap: 14px; color: #fff; }
-  .toolbar .left img { height: 30px; }
+  .toolbar .left { display: flex; align-items: center; gap: 13px; color: #fff; min-width: 0; }
+  .toolbar .left img { height: 30px; flex: none; }
   .toolbar .left .title {
-    font-family: 'Playfair Display', serif; font-weight: 600; font-size: 14px; line-height: 1;
+    font-family: var(--serif); font-weight: 500; font-size: 15px; line-height: 1.1;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .toolbar .left .sub {
-    font-size: 11px; color: rgba(255,255,255,0.55);
+    font-size: 10.5px; color: rgba(255,255,255,0.55);
     letter-spacing: 0.16em; text-transform: uppercase;
     margin-top: 4px;
   }
-  .toolbar .right { display: flex; gap: 10px; }
+  .toolbar .right { display: flex; gap: 10px; flex: none; }
   .tb-btn {
     background: var(--gold); color: var(--navy);
-    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 12px;
-    letter-spacing: 0.06em;
-    border: none; border-radius: 2px;
-    padding: 10px 18px;
+    font-family: var(--sans); font-weight: 600; font-size: 13px;
+    letter-spacing: 0.02em;
+    border: none; border-radius: 6px;
+    padding: 11px 18px;
     cursor: pointer;
-    display: inline-flex; align-items: center; gap: 8px;
+    display: inline-flex; align-items: center; gap: 9px;
+    transition: background .15s ease, transform .15s ease;
+    white-space: nowrap;
   }
+  .tb-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .tb-btn:hover { background: var(--gold-700); }
+  .tb-btn:disabled { opacity: 0.65; cursor: default; }
   .tb-btn.outline {
     background: transparent; color: #fff;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.28);
   }
-  .tb-btn:hover { filter: brightness(0.95); }
+  .tb-btn.outline:hover { background: rgba(255,255,255,0.08); }
+  @media (max-width: 640px) {
+    .toolbar .left .title { font-size: 13px; }
+    .toolbar .left .sub { display: none; }
+    .tb-btn.outline { display: none; }
+    .tb-btn { padding: 11px 14px; }
+  }
 
-  /* Pages container */
-  .stack { padding: 32px 24px 60px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  /* ─────────── Pages stack ─────────── */
+  .stack { padding: 34px 18px 64px; display: flex; flex-direction: column; align-items: center; gap: 26px; }
 
-  /* One printable page (8.5 x 11 in, ~816 x 1056 px @ 96dpi) */
   .page {
-    width: 816px;
+    width: 816px; max-width: 100%;
     min-height: 1056px;
     background: var(--cream);
     color: var(--navy);
-    padding: 64px 72px;
+    padding: 66px 74px;
     box-shadow:
       0 1px 0 rgba(0,0,0,0.04),
-      0 14px 30px -10px rgba(15, 29, 43, 0.18),
-      0 4px 10px -4px rgba(15, 29, 43, 0.08);
+      0 18px 38px -14px rgba(15,29,43,0.22),
+      0 5px 12px -6px rgba(15,29,43,0.10);
     position: relative;
     overflow: hidden;
     page-break-after: always;
   }
   .page:last-child { page-break-after: auto; }
-
-  /* Page-edge marks: tiny corner ornaments */
   .page::before {
-    content: '';
-    position: absolute;
+    content: ''; position: absolute;
     top: 0; left: 0; right: 0; height: 6px;
     background: var(--navy);
   }
-  .page::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 64px; right: 64px; height: 1px;
-    background: var(--border);
-  }
 
-  /* Page header (small top bar above content) */
+  /* Page header / footer */
   .ph {
     display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 36px;
-    padding-bottom: 18px;
+    margin-bottom: 40px; padding-bottom: 18px;
     border-bottom: 1px solid var(--border);
   }
-  .ph .brand {
-    display: flex; align-items: center; gap: 9px;
-    font-family: 'DM Sans', sans-serif;
+  .ph .brand, .ph .doc {
     font-size: 9.5px; font-weight: 600;
     letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--warm-gray);
   }
+  .ph .brand { display: flex; align-items: center; gap: 9px; }
   .ph .brand .star { color: var(--gold); font-size: 11px; }
-  .ph .doc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 9.5px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--warm-gray);
-  }
-
-  /* Page footer (bottom of every page) */
+  .ph .doc { font-weight: 500; }
   .pf {
-    position: absolute;
-    bottom: 32px; left: 72px; right: 72px;
+    position: absolute; left: 74px; right: 74px; bottom: 38px;
     display: flex; justify-content: space-between; align-items: center;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 9.5px;
+    font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--warm-gray);
-    font-weight: 400;
-    letter-spacing: 0.06em;
+    padding-top: 14px; border-top: 1px solid var(--border);
   }
   .pf .num { font-weight: 600; color: var(--navy); }
 
-  /* ============================
-     COVER PAGE
-     ============================ */
+  /* ─────────── Cover ─────────── */
   .cover {
-    background:
-      radial-gradient(ellipse at 50% 35%, rgba(201,168,76,0.18) 0%, transparent 65%),
-      var(--cream);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 56px 72px;
-    text-align: center;
+    background: var(--navy);
+    color: #fff;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 74px;
   }
-  .cover::before { background: var(--gold); height: 10px; }
+  .cover::before { background: var(--gold); height: 8px; }
   .cover .top-mark {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--warm-gray);
-    margin-top: 12px;
+    display: flex; align-items: center; gap: 9px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.62);
   }
-  .cover .top-mark .star { color: var(--gold); font-size: 12px; }
-  .cover .mark-img { width: 130px; height: auto; margin: 36px auto 22px; }
+  .cover .top-mark .star { color: var(--gold); }
+  .cover .mark-img {
+    position: absolute; right: 54px; top: 64px;
+    width: 116px; opacity: 0.9;
+  }
   .cover .free-tag {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: var(--navy); color: var(--gold);
-    padding: 6px 14px 6px 11px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10.5px; font-weight: 700;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    border-radius: 999px;
-    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.16); color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 8px 14px; border-radius: 999px;
+    margin-bottom: 28px;
   }
   .cover h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 64px;
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    color: var(--navy);
-    margin: 0 auto 18px;
-    max-width: 580px;
+    font-family: var(--serif); font-weight: 500;
+    font-size: 64px; line-height: 1.04; letter-spacing: -0.015em;
+    margin: 0 0 26px;
   }
-  .cover h1 em { color: var(--gold); font-style: normal; }
+  .cover h1 em { font-style: italic; color: var(--gold); }
   .cover .strap {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 20px;
-    color: var(--warm-gray);
-    line-height: 1.5;
-    max-width: 480px;
-    margin: 0 auto 8px;
+    font-size: 19px; line-height: 1.62; color: rgba(255,255,255,0.82);
+    max-width: 30ch; margin: 0; font-weight: 300;
   }
   .cover .author-line {
-    margin-top: auto;
-    padding-top: 32px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    color: var(--warm-gray);
-    font-weight: 400;
-    letter-spacing: 0.04em;
+    font-size: 13.5px; color: rgba(255,255,255,0.7); line-height: 1.6;
   }
-  .cover .author-line b { color: var(--navy); font-weight: 600; }
+  .cover .author-line b { color: #fff; font-weight: 600; }
   .cover .author-line .rule {
-    display: block; width: 50px; height: 1px;
-    background: var(--gold); margin: 14px auto;
-  }
-  .cover .meta {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 9.5px;
-    color: var(--warm-gray);
-    letter-spacing: 0.18em; text-transform: uppercase;
-    margin-top: 14px;
-  }
-
-  /* ============================
-     INTRO / "Note from Brian" PAGE
-     ============================ */
-  .intro h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 38px;
-    font-weight: 600;
-    line-height: 1.12;
-    color: var(--navy);
-    margin: 12px 0 28px;
-    max-width: 540px;
-  }
-  .intro h2 em { color: var(--gold); font-style: normal; }
-  .intro .eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 6px;
-  }
-  .intro p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--warm-gray);
-    font-weight: 300;
-    margin: 0 0 18px;
-    max-width: 600px;
-  }
-  .intro p strong { color: var(--navy); font-weight: 500; }
-  .intro .sig {
-    margin-top: 36px;
-    font-family: 'Caveat', cursive;
-    font-weight: 600;
-    font-size: 36px;
-    color: var(--navy);
-    line-height: 1;
-  }
-  .intro .sig-line {
-    margin-top: 4px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    color: var(--warm-gray);
-    letter-spacing: 0.06em;
-  }
-  .toc {
-    margin-top: 36px;
-    padding-top: 26px;
-    border-top: 1px solid var(--border);
-  }
-  .toc-title {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold);
+    display: block; width: 54px; height: 2px; background: var(--gold);
     margin-bottom: 18px;
   }
+  .cover .author-line .meta {
+    margin-top: 6px; font-size: 12px; letter-spacing: 0.04em; color: rgba(255,255,255,0.5);
+  }
+
+  /* ─────────── Intro ─────────── */
+  .eyebrow {
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-700); margin: 0 0 16px;
+  }
+  .intro h2, .step h2 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 36px; line-height: 1.14; letter-spacing: -0.01em;
+    margin: 0 0 22px;
+  }
+  .intro h2 em, .step h2 em { font-style: italic; color: var(--gold-700); }
+  .intro p {
+    font-size: 14.5px; line-height: 1.74; color: #2c3e52; margin: 0 0 16px;
+    max-width: 60ch;
+  }
+  .intro p strong { font-weight: 600; color: var(--navy); }
+  .sig {
+    font-family: var(--serif); font-style: italic; font-size: 30px;
+    color: var(--navy); margin: 26px 0 4px;
+  }
+  .sig-line { font-size: 12.5px; color: var(--warm-gray); letter-spacing: 0.02em; }
+
+  .toc {
+    margin-top: 40px; padding: 28px 30px;
+    background: var(--cream-deep);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .toc-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-700); margin: 0 0 18px;
+  }
   .toc-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 8px 30px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 11px 34px;
   }
   .toc-item {
     display: flex; align-items: baseline; gap: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    color: var(--navy);
-    font-weight: 400;
+    font-size: 13.5px; color: var(--navy);
+    padding-bottom: 9px; border-bottom: 1px solid var(--border);
   }
-  .toc-item .n {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    color: var(--gold);
-    width: 22px;
-    flex-shrink: 0;
-  }
+  .toc-item .n { font-weight: 700; color: var(--gold-700); min-width: 22px; font-variant-numeric: tabular-nums; }
 
-  /* ============================
-     STEP PAGE
-     ============================ */
-  .step-meta {
-    display: flex; align-items: baseline; gap: 14px;
-    margin-bottom: 8px;
-  }
+  /* ─────────── Step pages ─────────── */
+  .step-meta { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; }
   .step-num-big {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 96px;
-    line-height: 0.85;
-    color: var(--gold);
-    letter-spacing: -0.04em;
+    font-family: var(--serif); font-weight: 500; font-style: italic;
+    font-size: 58px; line-height: 1; color: var(--gold);
   }
   .step-counter {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
     color: var(--warm-gray);
-    padding-bottom: 6px;
-  }
-  .step h2 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 34px;
-    line-height: 1.1;
-    color: var(--navy);
-    margin: 14px 0 18px;
-    max-width: 600px;
-    letter-spacing: -0.01em;
   }
   .step .lede {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--warm-gray);
-    font-weight: 300;
-    max-width: 600px;
-    margin: 0 0 28px;
+    font-size: 15px; line-height: 1.7; color: #2c3e52; margin: 0 0 30px;
+    max-width: 62ch;
   }
-  .step .subhead {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 14px;
+  .step .lede em { font-style: italic; color: var(--navy); }
+  .subhead {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold-700); margin: 0 0 16px;
   }
-  .step .checklist {
-    list-style: none; padding: 0; margin: 0 0 30px;
-    max-width: 620px;
-  }
-  .step .checklist li {
+  .checklist { list-style: none; padding: 0; margin: 0 0 32px; max-width: 640px; }
+  .checklist li {
     display: flex; align-items: flex-start; gap: 14px;
     padding: 11px 0;
     border-bottom: 1px solid var(--border);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: var(--navy);
-    font-weight: 400;
+    font-size: 14px; line-height: 1.55; color: #2c3e52;
   }
-  .step .checklist li:last-child { border-bottom: none; }
-  .step .checklist .box {
-    width: 16px; height: 16px;
-    border: 1.5px solid var(--gold);
-    border-radius: 2px;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .step .brian-note {
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li em { font-style: italic; color: var(--navy); }
+  .checklist .box {
+    width: 17px; height: 17px; flex: none; margin-top: 2px;
+    border: 1.5px solid var(--gold); border-radius: 4px;
     background: var(--light);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    border-radius: 4px;
-    padding: 18px 22px 18px 20px;
-    display: flex; gap: 14px;
-    align-items: flex-start;
-    max-width: 620px;
-  }
-  .step .brian-note .avatar {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-    background: var(--navy);
-  }
-  .step .brian-note .avatar img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 18%;
-  }
-  .step .brian-note .body {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: var(--navy);
-  }
-  .step .brian-note .body b {
-    font-style: normal;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 10.5px;
-    color: var(--gold);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 4px;
   }
 
-  /* ============================
-     PRINT
-     ============================ */
-  @page { size: 8.5in 11in; margin: 0; }
+  .brian-note {
+    display: flex; gap: 18px; align-items: flex-start;
+    background: var(--navy);
+    color: rgba(255,255,255,0.88);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-top: 6px;
+  }
+  .brian-note .avatar {
+    width: 52px; height: 52px; border-radius: 50%; overflow: hidden; flex: none;
+    border: 2px solid rgba(201,168,76,0.6);
+  }
+  .brian-note .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .brian-note .body { font-size: 13.5px; line-height: 1.62; }
+  .brian-note .body b {
+    display: block; color: var(--gold);
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+  .brian-note .body em { font-style: italic; color: #fff; }
+
+  /* ─────────── Closing page ─────────── */
+  .closing-page { display: flex; flex-direction: column; justify-content: center; text-align: center; }
+  .closing-page .free-tag {
+    align-self: center;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.14); color: var(--gold-700);
+    border: 1px solid rgba(201,168,76,0.45);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 8px 14px; border-radius: 999px; margin-bottom: 26px;
+  }
+  .closing-page h2 {
+    font-family: var(--serif); font-weight: 500; font-size: 40px; line-height: 1.12;
+    margin: 0 0 20px; letter-spacing: -0.01em;
+  }
+  .closing-page h2 em { font-style: italic; color: var(--gold-700); }
+  .closing-page p { font-size: 15.5px; line-height: 1.7; color: #2c3e52; max-width: 46ch; margin: 0 auto 14px; }
+  .closing-cta {
+    margin-top: 30px; padding: 30px;
+    background: var(--navy); color: #fff; border-radius: 14px;
+  }
+  .closing-cta .big {
+    font-family: var(--serif); font-size: 27px; font-weight: 500; margin-bottom: 8px;
+  }
+  .closing-cta .phone {
+    font-size: 32px; font-weight: 600; color: var(--gold); letter-spacing: 0.01em; margin: 10px 0 4px;
+  }
+  .closing-cta .small { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+  /* ─────────── Print ─────────── */
+  @page { size: letter portrait; margin: 0; }
   @media print {
-    body, html { background: #fff; }
-    .toolbar { display: none; }
+    html, body { background: #fff; }
+    .toolbar { display: none !important; }
     .stack { padding: 0; gap: 0; }
     .page {
-      box-shadow: none;
-      width: 8.5in;
-      min-height: 11in;
-      page-break-after: always;
+      box-shadow: none; margin: 0;
+      width: 8.5in; min-height: 11in; height: 11in;
+      padding: 0.66in 0.74in;
     }
+    .pf { left: 0.74in; right: 0.74in; bottom: 0.4in; }
+    .cover { padding: 0.74in; }
+    .step h2, .step .lede, .step .brian-note, .checklist li, .toc-item { break-inside: avoid; }
   }
 </style>
 </head>
@@ -414,18 +324,19 @@
     <img src="assets/summit-logo-white.png" alt="Summit"/>
     <div>
       <div class="title">The Cleveland Senior Move Checklist</div>
-      <div class="sub">Summit Senior Services · 14 pages · v1</div>
+      <div class="sub">Summit Senior Services · 14 pages</div>
     </div>
   </div>
   <div class="right">
-    <button class="tb-btn" id="pdf-btn" onclick="generatePDF()">
-      <span>⇣</span> <span class="btn-label">Download as PDF</span>
+    <button class="tb-btn" id="pdf-btn" onclick="window.print()">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span class="btn-label">Download / Print PDF</span>
     </button>
-    <a class="tb-btn outline" href="index.html">← Back to Summit</a>
+    <a class="tb-btn outline" href="checklist.html">← Back to Summit</a>
   </div>
 </div>
 
-<div class="stack">
+<div class="stack" id="stack">
 
   <!-- =========== COVER =========== -->
   <div class="page cover">
@@ -449,7 +360,7 @@
   <div class="page intro">
     <div class="ph">
       <div class="brand"><span class="star">✦</span>Summit Senior Services</div>
-      <div class="doc">The Cleveland Senior Move Checklist</div>
+      <div class="doc">A Note Before You Start</div>
     </div>
 
     <p class="eyebrow">A Note Before You Start</p>
@@ -488,11 +399,9 @@
   <!-- =========== STEP 1 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 01 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">1</span><span class="step-counter">Step 01 of 12 · Months Out</span></div>
     <h2>Have the first conversation.</h2>
     <p class="lede">The hardest part of a senior move isn't the boxes — it's the talking. The single best thing you can do is start this conversation while it's still optional. Most families wait until a fall, a hospital stay, or a memory issue forces it. The kindest path is to start sooner, when your parent has full agency in the choice.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Have the conversation at their kitchen table, not yours. They need to be on home ground.</li>
@@ -501,23 +410,19 @@
       <li><span class="box"></span>Listen far more than you talk. The first conversation is for information, not decisions.</li>
       <li><span class="box"></span>End without a conclusion. Say "Let's think about this and talk again in a week."</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>Most families wait too long because they're trying to protect mom or dad. The kindest thing is actually to start when it's still optional — you'll get a better outcome and a more peaceful parent on the other end.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">03 / 14</span></div>
   </div>
 
   <!-- =========== STEP 2 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 02 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">2</span><span class="step-counter">Step 02 of 12 · Months Out</span></div>
     <h2>Walk every room together — first pass.</h2>
     <p class="lede">Before you decide anything, do a sticky-note walkthrough. This pass is about <em>noticing</em>, not deciding. You'll be surprised how much of the work gets done just by your parent saying out loud what they want for each item — once, in a calm walkthrough, with no boxes in the room yet.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Three colors of sticky notes: green ("going with us"), pink ("not coming"), yellow ("not sure").</li>
@@ -526,23 +431,19 @@
       <li><span class="box"></span>Do the basement and garage on a separate day — they take 3× the time.</li>
       <li><span class="box"></span>Take photos of every wall before anything moves. You'll forget what was there.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>The yellow "not sure" pile will be the biggest. That's normal. We come back to it three or four times before move day. Don't force a decision in the first pass — you'll regret half of them.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">04 / 14</span></div>
   </div>
 
   <!-- =========== STEP 3 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 03 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">3</span><span class="step-counter">Step 03 of 12 · Weeks Out</span></div>
     <h2>Get the new place's floor plan and measure twice.</h2>
     <p class="lede">The single biggest mistake families make is shipping furniture that won't fit. A Beachwood 5-bedroom does not pack into a 1-bedroom at Wiggins Place. Decide what's coming based on what physically fits the new space — not what your parent emotionally wants to keep.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Ask the senior community for a to-scale floor plan with measurements. They all have one.</li>
@@ -551,23 +452,19 @@
       <li><span class="box"></span>Measure doorways and elevator openings at the new place. Not the rooms — the openings.</li>
       <li><span class="box"></span>Identify what gets sold or donated <em>because it won't fit</em>, not because it isn't loved.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>I've seen too many families ship a beloved sectional that won't fit through the new doorway. The movers carry it back down. The family pays twice. The parent watches it go. Measure first.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">05 / 14</span></div>
   </div>
 
   <!-- =========== STEP 4 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 04 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">4</span><span class="step-counter">Step 04 of 12 · Weeks Out</span></div>
     <h2>Sort heirlooms with the family — first.</h2>
     <p class="lede">Before a single item gets donated or sold, do a family heirloom round. This is where the most family conflict happens in senior moves — and where, handled well, the most healing happens too. Adult children and grandchildren deserve a chance to claim what matters to them, before anything goes anywhere.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Schedule a weekend where every adult child can come (in person or on video).</li>
@@ -576,23 +473,19 @@
       <li><span class="box"></span>Give grandkids a chance after the adult children, even for small things.</li>
       <li><span class="box"></span>Photograph anything emotional that's going to a sibling. Pictures preserve the memory.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>This is where most family fights happen, and they happen because someone donates the wrong china before someone else got to claim it. Do this round all the way through — and document it — before you bring in any donation team.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">06 / 14</span></div>
   </div>
 
   <!-- =========== STEP 5 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 05 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">5</span><span class="step-counter">Step 05 of 12 · Weeks Out</span></div>
     <h2>Decide: keep, donate, sell, or discard.</h2>
     <p class="lede">With the heirloom round done and the floor plan in hand, every remaining item gets sorted into one of four piles. Write the decisions down. This sounds bureaucratic — it isn't. A written sorting list is how you keep mom from re-keeping items she already let go of two weeks ago.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>"Keep" is the most disciplined pile. If it doesn't fit the new floor plan, it isn't "keep."</li>
@@ -601,23 +494,19 @@
       <li><span class="box"></span>"Discard" is what no charity will take: broken items, mattresses, half-used cleaning supplies.</li>
       <li><span class="box"></span>Keep the list in writing. Re-deciding the same item three times is exhausting.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>Be more generous with the donate pile than you think you should be. Almost no one ever uses a storage unit for more than 18 months — and the storage costs more than the things would sell for. When in doubt, donate.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">07 / 14</span></div>
   </div>
 
   <!-- =========== STEP 6 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 06 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">6</span><span class="step-counter">Step 06 of 12 · Weeks Out</span></div>
     <h2>Decide whether you need an appraisal.</h2>
     <p class="lede">Most homes don't need a professional appraisal. Some absolutely do. If your parent's home contains real silver, original art, antique furniture, fine jewelry, rare books, or significant collections, spend $200–$400 to know what they're worth before anything moves. Once it's donated, it's gone.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Walk the home with the heirloom-round list in hand. Flag anything that <em>might</em> have value.</li>
@@ -626,23 +515,19 @@
       <li><span class="box"></span>Expect a 2-hour walkthrough at $200–$400 with a written summary report.</li>
       <li><span class="box"></span>The report tells you whether to auction, consign, or donate each item.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>Shaker Heights and parts of Cleveland Heights especially — the houses are old enough that there's almost always something. Get the appraisal. The cost is rounding-error compared to what gets accidentally donated otherwise.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">08 / 14</span></div>
   </div>
 
   <!-- =========== STEP 7 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 07 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">7</span><span class="step-counter">Step 07 of 12 · Weeks Out</span></div>
     <h2>Coordinate the move-in window with the senior community.</h2>
     <p class="lede">Every well-run senior community in Cleveland has a strict move-in policy. Elevator reservations, vendor check-in procedures, time-of-day restrictions, who has the unit key. If you don't coordinate this in advance, move day becomes a five-hour wait in a lobby. Call the community's move-in coordinator the moment a date is set.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Ask for the move-in coordinator's name and direct phone. Use it. Often.</li>
@@ -651,23 +536,19 @@
       <li><span class="box"></span>Confirm who hands you the unit key — and when. Some require an in-person walkthrough first.</li>
       <li><span class="box"></span>Ask about parking for the moving truck. Some communities have very specific rules.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>Menorah Park, Judson, South Franklin Circle — every community has different rules. The community's coordinator wants to help you; they just need to be asked early. Don't wait until the week before.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">09 / 14</span></div>
   </div>
 
   <!-- =========== STEP 8 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 08 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">8</span><span class="step-counter">Step 08 of 12 · Weeks Out</span></div>
     <h2>Schedule movers — and packers, if you're using them.</h2>
     <p class="lede">Don't book the first moving company that returns your call. Get three quotes from <em>local</em> Cleveland-area movers — ideally ones that specialize in senior moves. They cost the same as a national chain, and they care more. Packers should arrive 2–3 days before move day, not the morning of.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Get three written quotes. The cheapest and the most expensive are almost always the wrong choice.</li>
@@ -676,23 +557,19 @@
       <li><span class="box"></span>Schedule packers for 2–3 days before move day. Packing a 4-bed home in one morning is a recipe for breakage.</li>
       <li><span class="box"></span>Read recent Google reviews carefully. Look for the word "patient." It matters here.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>A national-chain crew will get the job done. A local crew will get it done <em>and</em> stop to help your dad find his glasses. You're paying for both. Hire local.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">10 / 14</span></div>
   </div>
 
   <!-- =========== STEP 9 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 09 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">9</span><span class="step-counter">Step 09 of 12 · Days Out</span></div>
     <h2>Set up donation pickups and online listings.</h2>
     <p class="lede">The "donate" and "sell" piles need to leave the house <em>before</em> moving day, not after. Schedule donation pickups 1–2 weeks out. Photograph and list items for online sale 2–3 weeks out. Anything still in the house on move day either comes with you, costs you, or stresses you. Pre-empt all three.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Schedule donation pickups for 7–14 days before move day. Confirm in writing.</li>
@@ -701,23 +578,19 @@
       <li><span class="box"></span>List on Facebook Marketplace first; eBay for collectibles; consignment for furniture in good shape.</li>
       <li><span class="box"></span>Never agree to sell anything emotionally significant without checking with your parent first.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>Facebook Marketplace beats a traditional estate sale 80% of the time. Faster, more private, better prices on most items. We've sold everything from a Steinway to a snowblower in 48 hours.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">11 / 14</span></div>
   </div>
 
   <!-- =========== STEP 10 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 10 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">10</span><span class="step-counter">Step 10 of 12 · Days Out</span></div>
     <h2>Pack a "first night" box — and keep it with you.</h2>
     <p class="lede">Of every box that gets packed, one matters more than the rest. The "first night" box has everything your parent will need before the movers finish unpacking. Pack it last, label it brightly, and keep it physically with you — not on the moving truck. The first night decides how the next morning feels.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Toothbrush, toothpaste, hairbrush, deodorant, soap.</li>
@@ -726,23 +599,19 @@
       <li><span class="box"></span>Phone charger, one favorite photograph in a small frame, the TV remote.</li>
       <li><span class="box"></span>Their pillow. Not a pillow — their pillow. It matters more than you think.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>The first night in a new place is the hardest single moment of the whole transition. This box is what makes the morning feel survivable. Don't put it on the truck. Keep it in your own car.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">12 / 14</span></div>
   </div>
 
   <!-- =========== STEP 11 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 11 of 12</div></div>
-
     <div class="step-meta"><span class="step-num-big">11</span><span class="step-counter">Step 11 of 12 · Move Day</span></div>
     <h2>Move day — supervise, don't lift.</h2>
     <p class="lede">Your job on move day is not to carry boxes. Your job is to be the calm one. Two people minimum: one at the old house with a written room-by-room list, one at the new apartment receiving boxes and directing where they go. The movers do the lifting. You do the deciding.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Arrive 30 minutes before the movers. Walk every room one last time.</li>
@@ -751,23 +620,19 @@
       <li><span class="box"></span>One person at the destination from minute one. Boxes need to be directed, not piled.</li>
       <li><span class="box"></span>Take your parent somewhere else during the actual move if possible. A grandkid's house, lunch with a friend.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>Watching the movers empty their childhood home is hard for any parent. If they can be elsewhere, even for a few hours, they should be. You stay. Be the calm one.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">13 / 14</span></div>
   </div>
 
   <!-- =========== STEP 12 =========== -->
   <div class="page step">
     <div class="ph"><div class="brand"><span class="star">✦</span>Summit Senior Services</div><div class="doc">Step 12 of 12</div></div>
-
-    <div class="step-meta"><span class="step-num-big">12</span><span class="step-counter">Step 12 of 12 · First Night & After</span></div>
+    <div class="step-meta"><span class="step-num-big">12</span><span class="step-counter">Step 12 of 12 · First Night &amp; After</span></div>
     <h2>Settle in — make it feel like home.</h2>
     <p class="lede">A senior move is not over when the truck pulls away. The first 48 hours decide whether your parent ends up loving the new place or resenting it. The work is small, specific, and almost all visual. Hang the pictures. Make the bed. Queue up the TV shows. Stay an extra hour.</p>
-
     <p class="subhead">What to actually do</p>
     <ul class="checklist">
       <li><span class="box"></span>Make the bed before you leave. Always. Fresh sheets, their pillow.</li>
@@ -776,108 +641,32 @@
       <li><span class="box"></span>Stock the refrigerator with five things they already love. Comfort food, not "starter food."</li>
       <li><span class="box"></span>Stay an extra hour after the movers leave. The quiet is the hardest part.</li>
     </ul>
-
     <div class="brian-note">
       <div class="avatar"><img src="assets/founder-photo.jpg" alt=""/></div>
       <div class="body"><b>From Brian</b>We don't consider a job done until your parent looks around and says some version of "I think I'm okay here." That's the metric. Everything else is just boxes.</div>
     </div>
-
     <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">14 / 14</span></div>
+  </div>
+
+  <!-- =========== CLOSING =========== -->
+  <div class="page closing-page">
+    <div class="free-tag"><span>✦</span>You don't have to do this alone</div>
+    <h2>Prefer to have someone <em>walk it with you?</em></h2>
+    <p>Reading a checklist and living it are two different things. If you'd rather hand the whole list to someone who does this every week — at your parent's pace, with no pressure — that's exactly what Summit does.</p>
+    <div class="closing-cta">
+      <div class="big">The first conversation is free.</div>
+      <div class="phone">(216) 236-3966</div>
+      <div class="small">Brian Schoeffler · info@SummitSeniorServicesOhio.com · Cleveland, Ohio</div>
+    </div>
+    <div class="pf"><span>The Cleveland Senior Move Checklist</span><span class="num">— / 14</span></div>
   </div>
 
 </div>
 
 <script>
-  /**
-   * Generate a real PDF file from the checklist content.
-   * Bypasses the browser print dialog entirely — no "Background graphics"
-   * checkbox to remember, no font fallbacks, no margin guessing.
-   *
-   * Strategy: load html2canvas + jsPDF as separate scripts (their UMD
-   * builds expose globals reliably), render each `.page` element to a
-   * canvas, drop each onto its own letter-sized PDF page.
-   */
-  function loadScript(src) {
-    return new Promise((resolve, reject) => {
-      const s = document.createElement('script');
-      s.src = src;
-      s.onload = resolve;
-      s.onerror = () => reject(new Error('Failed to load: ' + src));
-      document.head.appendChild(s);
-    });
-  }
-
-  async function loadPdfLibs() {
-    if (!window.html2canvas) {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
-    }
-    if (!window.jspdf || !window.jspdf.jsPDF) {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-    }
-  }
-
-  async function generatePDF() {
-    const btn = document.getElementById('pdf-btn');
-    const label = btn.querySelector('.btn-label');
-    const originalLabel = label.textContent;
-    const toolbar = document.querySelector('.toolbar');
-
-    btn.disabled = true;
-    btn.style.opacity = '0.8';
-    btn.style.cursor = 'wait';
-    label.textContent = 'Loading…';
-    // Yield once so the initial label change paints before lib download.
-    await new Promise(r => setTimeout(r, 30));
-
-    try {
-      await loadPdfLibs();
-      try { await document.fonts.ready; } catch (e) {}
-
-      const { jsPDF } = window.jspdf;
-      const pages = document.querySelectorAll('.page');
-      const total = pages.length;
-
-      const pdf = new jsPDF({ unit: 'in', format: 'letter', orientation: 'portrait', compress: true });
-
-      // Hide the toolbar during capture so it doesn't end up in the PDF.
-      // We use html2canvas's `ignoreElements` instead of display:none so
-      // the toolbar stays visible to the user during rendering — that's
-      // where the progress label lives.
-      const toolbarEl = toolbar;
-
-      for (let i = 0; i < total; i++) {
-        label.textContent = `Rendering page ${i + 1} of ${total}…`;
-        // eslint-disable-next-line no-await-in-loop
-        await new Promise(r => setTimeout(r, 30));
-        // eslint-disable-next-line no-await-in-loop
-        const canvas = await html2canvas(pages[i], {
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#f8f5ef',
-          logging: false,
-          ignoreElements: (el) => el === toolbarEl || toolbarEl.contains(el),
-        });
-        const img = canvas.toDataURL('image/jpeg', 0.94);
-        if (i > 0) pdf.addPage();
-        pdf.addImage(img, 'JPEG', 0, 0, 8.5, 11, undefined, 'FAST');
-      }
-
-      label.textContent = 'Saving…';
-      pdf.save('cleveland-senior-move-checklist.pdf');
-
-      label.textContent = 'Done. ✓';
-      setTimeout(() => { label.textContent = originalLabel; }, 2200);
-    } catch (err) {
-      console.error('PDF generation failed:', err);
-      label.textContent = 'Try again';
-      alert("Couldn't generate the PDF: " + (err && err.message ? err.message : 'unknown error') + "\n\nAs a fallback you can press Ctrl+P (or Cmd+P) and choose 'Save as PDF'.");
-    } finally {
-      btn.disabled = false;
-      btn.style.opacity = '';
-      btn.style.cursor = '';
-    }
-  }
+  // Native browser print → "Save as PDF". Instant, crisp vector text; the
+  // @media print rules above map each .page to one Letter page.
+  // (Button uses inline onclick="window.print()".)
 </script>
 </body>
 </html>

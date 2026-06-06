@@ -1,534 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-headline="serif" data-corners="soft">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Service Area | Summit Senior Services — Greater Cleveland, OH</title>
-<meta name="description" content="Summit Senior Services provides senior moving and downsizing across six Northeast Ohio counties: Cuyahoga, Summit, Geauga, Lake, Medina, and Portage."/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css"/>
-
-<style>
-  /* Counties grid */
-  .counties {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .county {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: var(--radius-md);
-    padding: 1.75rem 1.5rem 1.5rem;
-  }
-  .band-cream .county { background: var(--light); border-color: var(--border); }
-  .county-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.5rem;
-  }
-  .county-name {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    color: var(--gold);
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    line-height: 1;
-  }
-  .county-count {
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.35);
-    font-weight: 300;
-    letter-spacing: 0.04em;
-  }
-  .band-cream .county-count { color: var(--warm-gray); }
-  .county-tag {
-    font-size: 0.66rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin: 0.35rem 0 1rem;
-    font-weight: 500;
-    padding-bottom: 0.85rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .band-cream .county-tag { color: var(--warm-gray); border-bottom-color: var(--border); }
-  .county-blurb {
-    font-size: 0.86rem;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.55;
-    margin-bottom: 1rem;
-    font-weight: 300;
-  }
-  .band-cream .county-blurb { color: var(--warm-gray); }
-  .county ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.55rem 1rem;
-  }
-  .county ul li {
-    font-size: 0.86rem;
-    color: rgba(255,255,255,0.78);
-    font-weight: 300;
-    line-height: 1.3;
-    padding-left: 0.7rem;
-    position: relative;
-  }
-  .band-cream .county ul li { color: var(--navy); }
-  .county ul li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0.55rem;
-    width: 4px; height: 1px;
-    background: rgba(201, 168, 76, 0.55);
-  }
-  @media (max-width: 940px) {
-    .counties { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 600px) {
-    .counties { grid-template-columns: 1fr; }
-  }
-
-  /* Map illustration row */
-  .area-map {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    margin-bottom: 4rem;
-  }
-  .area-map-text .eyebrow { display: inline-block; margin-bottom: 0.85rem; }
-  .area-map-text .section-title { margin-bottom: 1.25rem; }
-  .area-map-text p {
-    font-size: 1rem;
-    color: var(--warm-gray);
-    line-height: 1.75;
-    margin-bottom: 1rem;
-  }
-  .area-map-text p strong { color: var(--navy); font-weight: 500; }
-
-  .map-wrap {
-    position: relative;
-    aspect-ratio: 1.1 / 1;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: #e8edf2;
-  }
-  .map-wrap svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .map-label {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    background: var(--navy);
-    color: var(--light);
-    padding: 0.55rem 0.85rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 500;
-    border-radius: var(--radius-xs);
-    pointer-events: none;
-    white-space: nowrap;
-  }
-  .map-label .accent { color: var(--gold); margin-right: 0.4rem; }
-  @media (max-width: 800px) {
-    .area-map { grid-template-columns: 1fr; gap: 2.5rem; }
-  }
-
-  /* Stat row */
-  .area-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-    padding: 2rem 0;
-    border-top: 1px solid rgba(255,255,255,0.12);
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-  }
-  .area-stat-num {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 2.2rem;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-  .area-stat-lbl {
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    font-weight: 500;
-  }
-  @media (max-width: 700px) {
-    .area-stats { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  /* City link cards */
-  .city-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .city-link {
-    display: block;
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 1.85rem 1.75rem;
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.15s, background 0.15s;
-  }
-  .city-link:hover {
-    border-color: var(--gold);
-    background: var(--light);
-  }
-  .city-link-eyebrow {
-    font-size: 0.66rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  .city-link h3 {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    color: var(--navy);
-    font-weight: 600;
-    margin-bottom: 0.6rem;
-    letter-spacing: -0.005em;
-  }
-  .city-link p {
-    font-size: 0.9rem;
-    color: var(--warm-gray);
-    line-height: 1.6;
-  }
-  @media (max-width: 760px) {
-    .city-links { grid-template-columns: 1fr; }
-  }
-</style>
+<title>Senior Moving Service Area | Greater Cleveland &amp; Northeast Ohio | Summit Senior Services</title>
+<meta name="description" content="Summit Senior Services provides senior moving and downsizing across six Northeast Ohio counties: Cuyahoga, Summit, Lake, Portage, Geauga, and Medina — 37+ cities around Greater Cleveland."/>
+<link rel="canonical" href="https://www.summitseniorservicesohio.com/service-area.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.summitseniorservicesohio.com/service-area.html"/>
+<meta property="og:title" content="Senior Moving Service Area | Greater Cleveland &amp; Northeast Ohio | Summit Senior Services"/>
+<meta property="og:description" content="Summit Senior Services provides senior moving and downsizing across six Northeast Ohio counties: Cuyahoga, Summit, Lake, Portage, Geauga, and Medina — 37+ cities around Greater Cleveland."/>
+<meta property="og:image" content="https://www.summitseniorservicesohio.com/assets/og-image.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+<link rel="stylesheet" href="summit-redesign.css"/>
+<link rel="stylesheet" href="summit-pages.css"/>
 </head>
 <body>
 
-<nav class="site-nav">
-  <a href="index.html" class="logo"><img src="assets/summit-logo-white.png" alt="Summit Senior Services"/></a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="service-area.html" class="active">Service Area</a>
-    <a href="contact.html">FAQ &amp; Contact</a>
-  </div>
-  <div class="nav-right">
-    <a href="contact.html" class="nav-cta">Free Consultation</a>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+<!-- ─────────── NAV ─────────── -->
+<nav class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Summit Senior Services — home">
+      <img class="logo-white" src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
+      <img class="logo-navy" src="assets/summit-logo-transparent.png" alt="Summit Senior Services"/>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="service-area.html" class="active">Service Area</a>
+      <a href="contact.html">FAQ &amp; Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:2162363966" class="nav-phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>(216) 236-3966</a>
+      <a href="contact.html" class="btn btn--gold nav-cta">Free Consultation</a>
+      <button class="hamburger" onclick="summitMenu(true)" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="service-area.html" class="active">Service Area</a>
-  <a href="contact.html">FAQ &amp; Contact</a>
-  <a href="contact.html" class="mobile-cta">Free Consultation</a>
+  <button class="close" onclick="summitMenu(false)" aria-label="Close menu">&times;</button>
+  <a href="index.html" onclick="summitMenu(false)">Home</a>
+  <a href="about.html" onclick="summitMenu(false)">About</a>
+  <a href="services.html" onclick="summitMenu(false)">Services</a>
+  <a href="service-area.html" onclick="summitMenu(false)">Service Area</a>
+  <a href="contact.html" onclick="summitMenu(false)">FAQ &amp; Contact</a>
+  <a href="contact.html" class="m-cta btn" onclick="summitMenu(false)">Free Consultation</a>
 </div>
 
-<header class="page-hero">
-  <p class="eyebrow">Where We Work</p>
-  <h1>Six counties across <em>Northeast Ohio.</em></h1>
-  <p>We live and work in Greater Cleveland — we know the communities, the senior-living facilities, and the neighborhoods because this is our home too.</p>
+<!-- ─────────── PAGE HERO ─────────── -->
+<header class="page-hero page-hero--photo" data-screen-label="01 Area hero">
+  <div class="hero-bg"><image-slot id="service-area-hero-bg" shape="rect" fit="cover" src="assets/hero-service-area.jpg" placeholder="Drop a hero photo"></image-slot><div class="hero-shade"></div></div><div class="container">
+    <div class="page-hero-inner">
+      <p class="eyebrow" data-sl="up">Where We Work</p>
+      <h1 data-sl="up" style="--sl-d:90ms">Greater Cleveland, <em>and the towns around it.</em></h1>
+      <p class="page-hero-sub" data-sl="up" style="--sl-d:180ms">We serve six Northeast Ohio counties and more than 37 cities — from the eastern suburbs to the lakefront to the I-71 corridor. If you're near Cleveland, we can almost certainly help.</p>
+      <div class="page-hero-actions" data-sl="up" style="--sl-d:260ms">
+        <a href="contact.html" class="btn btn--primary">Check Your City</a>
+        <a href="tel:2162363966" class="btn btn--ghost">Call (216) 236-3966</a>
+      </div>
+    </div>
+  </div>
 </header>
 
-<!-- INTRO + MAP -->
-<section class="band-light">
-  <div class="band-inner">
-    <div class="area-map">
-      <div class="area-map-text">
-        <span class="eyebrow">Local, Not Regional</span>
-        <h2 class="section-title">A real local business, <em>not a national franchise.</em></h2>
-        <p>Most senior-moving companies in Cleveland are franchises of a national brand. We're not. <strong>Summit is owner-operated and based right here in Greater Cleveland</strong> — which means the person who shows up to your consultation is the same person who'll be in your parent's house on move day.</p>
-        <p>Our service area covers the six Northeast Ohio counties below. If you don't see your city in the lists, please reach out anyway — chances are we can help, especially for communities just outside these lines.</p>
-      </div>
-      <div class="map-wrap" aria-label="Map showing Summit Senior Services service area centered on Cleveland, Ohio">
-        <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" role="img">
-          <defs>
-            <pattern id="waves" x="0" y="0" width="24" height="6" patternUnits="userSpaceOnUse">
-              <path d="M0 3 Q6 0 12 3 T24 3" stroke="#9eb6cc" stroke-width="0.5" fill="none" opacity="0.5"/>
-            </pattern>
-            <radialGradient id="ring" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.20"/>
-              <stop offset="75%" stop-color="#c9a84c" stop-opacity="0.08"/>
-              <stop offset="100%" stop-color="#c9a84c" stop-opacity="0.02"/>
-            </radialGradient>
-          </defs>
-
-          <!-- Background land color -->
-          <rect x="0" y="0" width="400" height="360" fill="#f1ede4"/>
-
-          <!-- Lake Erie (top) -->
-          <path d="M 0 0 L 400 0 L 400 70 Q 320 88 240 75 T 80 80 Q 30 78 0 65 Z" fill="#d8e3ec"/>
-          <rect x="0" y="0" width="400" height="82" fill="url(#waves)"/>
-          <text x="200" y="32" text-anchor="middle" font-family="Playfair Display, serif" font-style="italic" font-size="15" fill="#5b7591" letter-spacing="3">Lake Erie</text>
-
-          <!-- Faint county boundary lines (decorative, evocative) -->
-          <g stroke="#c4bba8" stroke-width="0.6" fill="none" stroke-dasharray="2 3" opacity="0.7">
-            <path d="M 130 78 L 130 230"/>
-            <path d="M 250 78 L 250 230"/>
-            <path d="M 60 175 L 360 175"/>
-            <path d="M 60 260 L 360 260"/>
-            <path d="M 200 260 L 200 360"/>
-          </g>
-
-          <!-- County names (subtle) -->
-          <g font-family="DM Sans, sans-serif" font-size="8" fill="#9d937e" letter-spacing="2" text-transform="uppercase">
-            <text x="95" y="110" text-anchor="middle">MEDINA</text>
-            <text x="190" y="100" text-anchor="middle">CUYAHOGA</text>
-            <text x="305" y="110" text-anchor="middle">LAKE</text>
-            <text x="105" y="260" text-anchor="middle">SUMMIT</text>
-            <text x="305" y="215" text-anchor="middle">GEAUGA</text>
-            <text x="280" y="295" text-anchor="middle">PORTAGE</text>
-          </g>
-
-          <!-- Service area circle -->
-          <circle cx="190" cy="180" r="125" fill="url(#ring)"/>
-          <circle cx="190" cy="180" r="125" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.85"/>
-
-          <!-- City dots + labels -->
-          <g font-family="DM Sans, sans-serif" font-size="10" fill="#1a2e44" font-weight="500">
-            <!-- Cleveland (center, larger) -->
-            <circle cx="190" cy="118" r="6" fill="#c9a84c" stroke="#1a2e44" stroke-width="1.5"/>
-            <text x="202" y="122" font-family="Playfair Display, serif" font-size="13" font-weight="600" fill="#1a2e44">Cleveland</text>
-
-            <!-- Other cities -->
-            <circle cx="112" cy="160" r="3" fill="#1a2e44"/>
-            <text x="118" y="163">Strongsville</text>
-
-            <circle cx="242" cy="144" r="3" fill="#1a2e44"/>
-            <text x="248" y="147">Beachwood</text>
-
-            <circle cx="275" cy="178" r="3" fill="#1a2e44"/>
-            <text x="281" y="181">Chagrin Falls</text>
-
-            <circle cx="305" cy="130" r="3" fill="#1a2e44"/>
-            <text x="311" y="133">Mentor</text>
-
-            <circle cx="75" cy="212" r="3" fill="#1a2e44"/>
-            <text x="23" y="215">Medina</text>
-
-            <circle cx="150" cy="265" r="4" fill="#1a2e44"/>
-            <text x="156" y="268" font-weight="500">Akron</text>
-
-            <circle cx="262" cy="242" r="3" fill="#1a2e44"/>
-            <text x="268" y="245">Hudson</text>
-
-            <circle cx="218" cy="285" r="3" fill="#1a2e44"/>
-            <text x="224" y="288">Kent</text>
-          </g>
-
-          <!-- Compass rose (bottom right) -->
-          <g transform="translate(355, 320)">
-            <circle r="14" fill="#f8f5ef" stroke="#c4bba8" stroke-width="0.6"/>
-            <path d="M 0 -10 L 3 0 L 0 10 L -3 0 Z" fill="#1a2e44"/>
-            <text x="0" y="-15" text-anchor="middle" font-family="DM Sans" font-size="7" fill="#6b6560" letter-spacing="1">N</text>
-          </g>
-
-          <!-- Scale bar (bottom left) -->
-          <g transform="translate(20, 332)" font-family="DM Sans, sans-serif" font-size="8" fill="#6b6560">
-            <line x1="0" y1="0" x2="60" y2="0" stroke="#6b6560" stroke-width="1"/>
-            <line x1="0" y1="-3" x2="0" y2="3" stroke="#6b6560" stroke-width="1"/>
-            <line x1="30" y1="-2" x2="30" y2="2" stroke="#6b6560" stroke-width="1"/>
-            <line x1="60" y1="-3" x2="60" y2="3" stroke="#6b6560" stroke-width="1"/>
-            <text x="0" y="15" letter-spacing="1">0</text>
-            <text x="30" y="15" text-anchor="middle" letter-spacing="1">30 mi</text>
-            <text x="60" y="15" text-anchor="end" letter-spacing="1">60</text>
-          </g>
-        </svg>
-        <div class="map-label"><span class="accent">✦</span> ~60 mile service radius</div>
-      </div>
-
+<!-- ─────────── COUNTIES ─────────── -->
+<section class="section band-cream" data-screen-label="02 Counties">
+  <div class="container">
+    <div class="section-head" data-sl="up">
+      <p class="eyebrow">Six Counties</p>
+      <h2 class="h-section">Full coverage across Northeast Ohio.</h2>
+      <p class="lead">Cuyahoga is our center of gravity, but we routinely work across five neighboring counties — and we travel for the right project.</p>
     </div>
-  </div>
-</section>
-
-<!-- COUNTIES -->
-<section class="band-navy">
-  <div class="band-inner">
-    <div class="band-header">
-      <span class="eyebrow">Cities &amp; Communities</span>
-      <h2 class="section-title">Every place we work, <em>by county.</em></h2>
-      <p class="section-body">Listed here are the cities we work in most often. The bigger story: anywhere in these six counties is fair game — we route to wherever the family is.</p>
-    </div>
-
-    <div class="counties">
-      <div class="county">
+    <div class="counties" data-sl-stagger="80">
+      <div class="county" data-sl="up">
         <div class="county-head"><span class="county-name">Cuyahoga</span><span class="county-count">13 cities</span></div>
-        <div class="county-tag">Primary Coverage</div>
+        <span class="county-tag">Primary Coverage</span>
         <p class="county-blurb">The center of gravity. Most of our work is here, including all major Cleveland-area senior-living communities.</p>
-        <ul>
-          <li>Cleveland</li>
-          <li>Beachwood</li>
-          <li>Shaker Heights</li>
-          <li>Cleveland Hts.</li>
-          <li>Lyndhurst</li>
-          <li>Pepper Pike</li>
-          <li>Solon</li>
-          <li>Strongsville</li>
-          <li>Westlake</li>
-          <li>Rocky River</li>
-          <li>Bay Village</li>
-          <li>Lakewood</li>
-          <li>Parma</li>
-        </ul>
+        <ul><li>Cleveland</li><li>Beachwood</li><li>Shaker Heights</li><li>Cleveland Hts.</li><li>Lyndhurst</li><li>Pepper Pike</li><li>Solon</li><li>Strongsville</li><li>Westlake</li><li>Rocky River</li><li>Bay Village</li><li>Lakewood</li><li>Parma</li></ul>
       </div>
-      <div class="county">
+      <div class="county" data-sl="up">
         <div class="county-head"><span class="county-name">Summit</span><span class="county-count">9 cities</span></div>
-        <div class="county-tag">County</div>
+        <span class="county-tag">County</span>
         <p class="county-blurb">Akron and the southern suburbs. Active in Hudson, Stow, and the Cuyahoga Falls communities.</p>
-        <ul>
-          <li>Hudson</li>
-          <li>Twinsburg</li>
-          <li>Stow</li>
-          <li>Cuyahoga Falls</li>
-          <li>Akron</li>
-          <li>Fairlawn</li>
-          <li>Tallmadge</li>
-          <li>Barberton</li>
-          <li>Macedonia</li>
-        </ul>
+        <ul><li>Hudson</li><li>Twinsburg</li><li>Stow</li><li>Cuyahoga Falls</li><li>Akron</li><li>Fairlawn</li><li>Tallmadge</li><li>Barberton</li><li>Macedonia</li></ul>
       </div>
-      <div class="county">
+      <div class="county" data-sl="up">
         <div class="county-head"><span class="county-name">Lake</span><span class="county-count">5 cities</span></div>
-        <div class="county-tag">County</div>
+        <span class="county-tag">County</span>
         <p class="county-blurb">The eastern shoreline communities — Mentor, Willoughby, and the lakefront neighborhoods east of Cleveland.</p>
-        <ul>
-          <li>Mentor</li>
-          <li>Willoughby</li>
-          <li>Willoughby Hills</li>
-          <li>Kirtland</li>
-          <li>Painesville</li>
-        </ul>
+        <ul><li>Mentor</li><li>Willoughby</li><li>Willoughby Hills</li><li>Kirtland</li><li>Painesville</li></ul>
       </div>
-      <div class="county">
+      <div class="county" data-sl="up">
         <div class="county-head"><span class="county-name">Portage</span><span class="county-count">4 cities</span></div>
-        <div class="county-tag">County</div>
+        <span class="county-tag">County</span>
         <p class="county-blurb">Aurora, Kent, and Streetsboro — the eastern suburbs and university-town communities.</p>
-        <ul>
-          <li>Aurora</li>
-          <li>Streetsboro</li>
-          <li>Kent</li>
-          <li>Ravenna</li>
-        </ul>
+        <ul><li>Aurora</li><li>Streetsboro</li><li>Kent</li><li>Ravenna</li></ul>
       </div>
-      <div class="county">
+      <div class="county" data-sl="up">
         <div class="county-head"><span class="county-name">Geauga</span><span class="county-count">3 cities</span></div>
-        <div class="county-tag">County</div>
+        <span class="county-tag">County</span>
         <p class="county-blurb">Chagrin Falls and the rural-edge communities to the east. Known for downsizes out of larger family homes.</p>
-        <ul>
-          <li>Chagrin Falls</li>
-          <li>Bainbridge</li>
-          <li>Chardon</li>
-        </ul>
+        <ul><li>Chagrin Falls</li><li>Bainbridge</li><li>Chardon</li></ul>
       </div>
-      <div class="county">
+      <div class="county" data-sl="up">
         <div class="county-head"><span class="county-name">Medina</span><span class="county-count">3 cities</span></div>
-        <div class="county-tag">County</div>
+        <span class="county-tag">County</span>
         <p class="county-blurb">The southwestern corner of our coverage — Medina, Brunswick, and the rural communities along I-71.</p>
-        <ul>
-          <li>Medina</li>
-          <li>Brunswick</li>
-          <li>Hinckley</li>
-        </ul>
+        <ul><li>Medina</li><li>Brunswick</li><li>Hinckley</li></ul>
       </div>
     </div>
 
-    <div class="area-stats">
-      <div>
-        <div class="area-stat-num">6</div>
-        <div class="area-stat-lbl">Counties</div>
-      </div>
-      <div>
-        <div class="area-stat-num">37+</div>
-        <div class="area-stat-lbl">Cities Served</div>
-      </div>
-      <div>
-        <div class="area-stat-num">~60mi</div>
-        <div class="area-stat-lbl">Service Radius</div>
-      </div>
-      <div>
-        <div class="area-stat-num">1</div>
-        <div class="area-stat-lbl">Phone Call to Start</div>
-      </div>
+    <div class="statline" data-sl="up" style="margin-top:clamp(2.5rem,5vw,3.5rem)">
+      <div class="statline-item"><div class="statline-num"><span data-to="6">6</span></div><div class="statline-lbl">Counties</div></div>
+      <div class="statline-item"><div class="statline-num"><span data-to="37">37</span><span class="suf">+</span></div><div class="statline-lbl">Cities Served</div></div>
+      <div class="statline-item"><div class="statline-num"><span class="pre">~</span><span data-to="60">60</span><span class="suf">mi</span></div><div class="statline-lbl">Service Radius</div></div>
+      <div class="statline-item"><div class="statline-num"><span data-to="1">1</span></div><div class="statline-lbl">Call to Start</div></div>
     </div>
   </div>
 </section>
 
-<!-- CITY LANDING PAGES -->
-<section class="band-light">
-  <div class="band-inner">
-    <div class="band-header" style="text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
-      <span class="eyebrow">City-Specific Detail</span>
-      <h2 class="section-title" style="margin: 0.85rem auto 1rem;">Detailed pages for <em>specific cities.</em></h2>
-      <p class="section-body" style="margin: 0 auto;">For the cities where we work most often, we've put together pages with local context — the senior-living communities, the typical home types, and what families in that area usually need.</p>
+<!-- ─────────── CITY PAGES ─────────── -->
+<section class="section band-light" data-screen-label="03 City pages">
+  <div class="container">
+    <div class="section-head section-head--center" data-sl="up">
+      <p class="eyebrow">City-Specific Detail</p>
+      <h2 class="h-section">Detailed pages for specific cities.</h2>
+      <p class="lead">For the cities where we work most often, we've put together pages with local context — the senior-living communities, the typical home types, and what families in that area usually need.</p>
     </div>
-    <div class="city-links">
-      <a href="senior-moving-beachwood.html" class="city-link">
-        <div class="city-link-eyebrow">Cuyahoga County</div>
-        <h3>Beachwood &rarr;</h3>
+    <div class="city-links" data-sl-stagger="90">
+      <a href="senior-moving-beachwood.html" class="city-link" data-sl="up">
+        <div class="city-eyebrow">Cuyahoga County</div>
+        <h3>Beachwood →</h3>
         <p>Menorah Park, Stone Gardens, Wiggins Place. Downsizing from larger eastern-suburb colonials.</p>
       </a>
-      <a href="senior-moving-shaker-heights.html" class="city-link">
-        <div class="city-link-eyebrow">Cuyahoga County</div>
-        <h3>Shaker Heights &rarr;</h3>
-        <p>Judson Park, historic Tudor homes, Fairmount Boulevard transitions to senior living.</p>
+      <a href="senior-moving-shaker-heights.html" class="city-link" data-sl="up">
+        <div class="city-eyebrow">Cuyahoga County</div>
+        <h3>Shaker Heights →</h3>
+        <p>Judson Park, historic Tudor homes, and Fairmount Boulevard transitions to senior living.</p>
       </a>
-      <a href="senior-moving-solon.html" class="city-link">
-        <div class="city-link-eyebrow">Cuyahoga County</div>
-        <h3>Solon &rarr;</h3>
+      <a href="senior-moving-solon.html" class="city-link" data-sl="up">
+        <div class="city-eyebrow">Cuyahoga County</div>
+        <h3>Solon →</h3>
         <p>The Weils, Vitalia of Solon. Moves from spacious eastern-suburb homes to right-sized apartments.</p>
       </a>
     </div>
   </div>
 </section>
 
-<!-- "DON'T SEE YOUR CITY" -->
-<section class="band-cream">
-  <div class="band-inner narrow" style="text-align: center;">
-    <span class="eyebrow" style="margin-bottom: 1rem;">Don't See Your City?</span>
-    <h2 class="section-title" style="margin: 0 auto 1rem;">Ask anyway — we route widely.</h2>
-    <p class="section-body" style="margin: 0 auto 2rem;">We regularly take on projects just outside our standard footprint, especially for families coordinating a move from out of state. The worst that happens is we point you to someone we trust.</p>
-    <div style="display:flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center;">
-      <a href="contact.html" class="btn-primary">Ask About Your City</a>
-      <a href="tel:2162363966" class="btn-outline-dark">Or call (216) 236-3966</a>
+<!-- ─────────── DON'T SEE YOUR CITY ─────────── -->
+<section class="section band-navy" data-screen-label="04 Ask anyway">
+  <div class="container">
+    <div class="section-head section-head--center" data-sl="up" style="margin-bottom:2rem">
+      <p class="eyebrow">Don't See Your City?</p>
+      <h2 class="h-section">Ask anyway — we route widely.</h2>
+      <p class="lead">We regularly take on projects just outside our standard footprint, especially for families coordinating a move from out of state. The worst that happens is we point you to someone we trust.</p>
+    </div>
+    <div class="page-hero-actions" data-sl="up" style="justify-content:center">
+      <a href="contact.html" class="btn btn--gold">Ask About Your City</a>
+      <a href="tel:2162363966" class="btn btn--ghost">Or call (216) 236-3966</a>
     </div>
   </div>
 </section>
 
-<!-- CLOSING -->
-<section class="closing">
-  <div class="closing-inner">
-    <div class="closing-photo"><img src="assets/founder-photo.jpg" alt="Brian Schoeffler"/></div>
-    <div class="closing-text">
-      <h2>When you're ready, I'll come see you.</h2>
-      <p>The free in-home consultation is the easiest way to start. No pressure, no obligation — just a conversation about what's needed and what's possible.</p>
-      <div class="closing-sign">Brian<small>Founder, Summit Senior Services</small></div>
-    </div>
-    <div class="closing-actions">
-      <a href="contact.html" class="btn-dark">Request a Free Consultation</a>
-      <div class="ph">or call <a href="tel:2162363966">(216) 236-3966</a></div>
+<!-- ─────────── CLOSING ─────────── -->
+<section class="section closing" data-screen-label="05 Closing">
+  <div class="container">
+    <div class="closing-grid">
+      <div class="closing-media" data-sl="left">
+        <img src="assets/founder-photo.jpg" alt="Brian Schoeffler, founder of Summit Senior Services, available for a free in-home consultation"/>
+      </div>
+      <div class="closing-text" data-sl="right">
+        <h2>When you're ready, I'll come see you.</h2>
+        <p>The free in-home consultation is the easiest way to start. No pressure, no obligation — just a conversation about what's needed and what's possible.</p>
+        <div class="closing-sign">
+          <span class="name">Brian</span>
+          <span class="role">Founder, Summit Senior Services</span>
+        </div>
+        <div class="closing-actions">
+          <a href="contact.html" class="btn btn--primary">Request a Free Consultation</a>
+          <span class="call">or call <a href="tel:2162363966">(216) 236-3966</a></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
+<!-- ─────────── FOOTER ─────────── -->
+<footer class="footer" data-screen-label="06 Footer">
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
@@ -537,15 +197,19 @@
     <div class="footer-col">
       <h5>Services</h5>
       <a href="services.html">All Services</a>
-      <a href="services.html#downsizing">Downsizing</a>
-      <a href="services.html#move">Move Coordination</a>
-      <a href="services.html#sales">Online Item Sales</a>
+      <a href="senior-downsizing-services-cleveland.html">Downsizing &amp; Sorting</a>
+      <a href="senior-move-management-cleveland.html">Move Coordination</a>
+      <a href="senior-packing-unpacking-cleveland.html">Packing &amp; Unpacking</a>
+      <a href="estate-cleanout-cleveland.html">Estate Cleanout</a>
+      <a href="settling-in-services-cleveland.html">Settling-In Support</a>
+      <a href="floor-plan-space-planning-cleveland.html">Floor Plan &amp; Space Planning</a>
+      <a href="online-estate-sales-cleveland.html">Online Item Sales</a>
     </div>
     <div class="footer-col">
       <h5>Resources</h5>
-      <a href="cleveland-senior-move-checklist.html">Free Move Checklist</a>
+      <a href="checklist.html">Free Move Checklist</a>
       <a href="service-area.html">Service Area</a>
-      <a href="contact.html#faq">FAQ</a>
+      <a href="contact.html">FAQ</a>
       <a href="about.html">About Brian</a>
     </div>
     <div class="footer-col">
@@ -557,18 +221,16 @@
   </div>
   <div class="footer-bottom">
     <div>© 2026 Summit Senior Services. All rights reserved.</div>
-    <div><a href="privacy.html" style="color:rgba(255,255,255,0.5); text-decoration:none;">Privacy Policy</a> · Fully Insured · Locally Owned</div>
+    <div><a href="privacy-policy.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Privacy Policy</a> · Fully Insured · Locally Owned</div>
   </div>
 </footer>
 
-<div class="mobile-cta-bar">
-  <a href="tel:2162363966" class="mcta-call"><span class="mcta-icon">☎</span>Call Now</a>
-  <a href="contact.html" class="mcta-quote"><span class="mcta-icon">✉</span>Free Consult</a>
-  <a href="sms:2162363966" class="mcta-text"><span class="mcta-icon">✦</span>Text Us</a>
+<div class="mcta">
+  <a href="tel:2162363966" class="call">☎ Call / Text</a>
+  <a href="contact.html" class="quote">Free Consult</a>
 </div>
 
-<script>
-  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-</script>
+<script src="image-slot.js"></script>
+<script src="summit-site.js"></script>
 </body>
 </html>

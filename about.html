@@ -1,379 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-headline="serif" data-corners="soft">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>About Brian Schoeffler | Summit Senior Services — Greater Cleveland, OH</title>
-<meta name="description" content="Meet Brian Schoeffler, founder of Summit Senior Services. Locally owned senior moving and downsizing in Greater Cleveland — one trusted person from the first call to the last box."/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css"/>
-
-<style>
-  /* ─────────── BIO BLOCK ─────────── */
-  .bio-inner {
-    display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .bio-photo {
-    position: relative;
-    aspect-ratio: 3/4;
-    max-width: 380px;
-  }
-  .bio-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: var(--radius-md);
-    filter: saturate(0.95);
-  }
-  .bio-photo::before {
-    content: '';
-    position: absolute;
-    top: -14px; left: -14px;
-    width: 70px; height: 70px;
-    border-top: 1px solid var(--gold);
-    border-left: 1px solid var(--gold);
-  }
-  .bio-photo::after {
-    content: '';
-    position: absolute;
-    bottom: -14px; right: -14px;
-    width: 70px; height: 70px;
-    border-bottom: 1px solid var(--gold);
-    border-right: 1px solid var(--gold);
-  }
-  .bio-stats {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem 1rem;
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .bio-stat-num {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.6rem;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-  .bio-stat-lbl {
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--warm-gray);
-    font-weight: 500;
-  }
-
-  .bio-text .eyebrow { display: inline-block; margin-bottom: 0.85rem; }
-  .bio-text h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.7rem, 3vw, 2.2rem);
-    color: var(--navy);
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    text-wrap: balance;
-  }
-  .bio-text h2 em { color: var(--gold); font-style: italic; font-weight: 500; }
-  .bio-text p {
-    font-size: 1.02rem;
-    color: var(--warm-gray);
-    line-height: 1.8;
-    margin-bottom: 1.1rem;
-  }
-  .bio-text p strong { color: var(--navy); font-weight: 500; }
-  .bio-sig {
-    margin-top: 1.75rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .bio-sig .name {
-    font-family: var(--hand);
-    font-size: 2rem;
-    color: var(--gold-700);
-    line-height: 1;
-  }
-  .bio-sig .role {
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--warm-gray);
-    font-weight: 500;
-  }
-  .bio-sig .role strong { color: var(--navy); font-weight: 500; }
-  @media (max-width: 860px) {
-    .bio-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .bio-photo { max-width: 320px; margin: 0 auto; }
-  }
-
-  /* ─────────── VALUES ─────────── */
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
-  .value-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 1.85rem 1.5rem;
-  }
-  .band-cream .value-card { background: var(--light); }
-  .value-icon {
-    width: 34px; height: 34px;
-    color: var(--gold);
-    margin-bottom: 1rem;
-    display: grid; place-items: center;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-  }
-  .value-icon svg { width: 16px; height: 16px; stroke: var(--gold); stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .value-card h3 {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: var(--navy);
-    margin-bottom: 0.5rem;
-  }
-  .value-card p {
-    font-size: 0.88rem;
-    color: var(--warm-gray);
-    line-height: 1.65;
-  }
-  @media (max-width: 900px) {
-    .values-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 500px) {
-    .values-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ─────────── APPROACH (alternating text/marker) ─────────── */
-  .approach-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    max-width: var(--container-narrow);
-    margin: 0 auto;
-  }
-  .approach-item {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 1.5rem;
-    align-items: start;
-  }
-  .approach-num {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 2.5rem;
-    color: var(--gold);
-    line-height: 1;
-    text-align: right;
-    border-right: 1px solid var(--border);
-    padding-right: 1.5rem;
-  }
-  .approach-item h3 {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    color: var(--navy);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-  .approach-item p {
-    font-size: 1rem;
-    color: var(--warm-gray);
-    line-height: 1.75;
-  }
-  @media (max-width: 600px) {
-    .approach-item { grid-template-columns: 1fr; gap: 0.75rem; }
-    .approach-num { text-align: left; border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-  }
-</style>
+<meta name="description" content="Meet Brian Schoeffler, founder of Summit Senior Services. Locally owned, owner-led senior moving and downsizing in Greater Cleveland — one trusted person from the first call to the last box."/>
+<link rel="canonical" href="https://www.summitseniorservicesohio.com/about.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.summitseniorservicesohio.com/about.html"/>
+<meta property="og:title" content="About Brian Schoeffler | Summit Senior Services — Greater Cleveland, OH"/>
+<meta property="og:description" content="Meet Brian Schoeffler, founder of Summit Senior Services. Locally owned, owner-led senior moving and downsizing in Greater Cleveland — one trusted person from the first call to the last box."/>
+<meta property="og:image" content="https://www.summitseniorservicesohio.com/assets/og-image.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+<link rel="stylesheet" href="summit-redesign.css"/>
+<link rel="stylesheet" href="summit-pages.css"/>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="site-nav">
-  <a href="index.html" class="logo"><img src="assets/summit-logo-white.png" alt="Summit Senior Services"/></a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html" class="active">About</a>
-    <a href="services.html">Services</a>
-    <a href="service-area.html">Service Area</a>
-    <a href="contact.html">FAQ &amp; Contact</a>
-  </div>
-  <div class="nav-right">
-    <a href="contact.html" class="nav-cta">Free Consultation</a>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+<!-- ─────────── NAV ─────────── -->
+<nav class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Summit Senior Services — home">
+      <img class="logo-white" src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
+      <img class="logo-navy" src="assets/summit-logo-transparent.png" alt="Summit Senior Services"/>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="services.html">Services</a>
+      <a href="service-area.html">Service Area</a>
+      <a href="contact.html">FAQ &amp; Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:2162363966" class="nav-phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>(216) 236-3966</a>
+      <a href="contact.html" class="btn btn--gold nav-cta">Free Consultation</a>
+      <button class="hamburger" onclick="summitMenu(true)" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="about.html" class="active">About</a>
-  <a href="services.html">Services</a>
-  <a href="service-area.html">Service Area</a>
-  <a href="contact.html">FAQ &amp; Contact</a>
-  <a href="contact.html" class="mobile-cta">Free Consultation</a>
+  <button class="close" onclick="summitMenu(false)" aria-label="Close menu">&times;</button>
+  <a href="index.html" onclick="summitMenu(false)">Home</a>
+  <a href="about.html" onclick="summitMenu(false)">About</a>
+  <a href="services.html" onclick="summitMenu(false)">Services</a>
+  <a href="service-area.html" onclick="summitMenu(false)">Service Area</a>
+  <a href="contact.html" onclick="summitMenu(false)">FAQ &amp; Contact</a>
+  <a href="contact.html" class="m-cta btn" onclick="summitMenu(false)">Free Consultation</a>
 </div>
 
-<!-- PAGE HERO -->
-<header class="page-hero" data-screen-label="01 About hero">
-  <p class="eyebrow">Our Story</p>
-  <h1>Built on compassion, <em>driven by purpose.</em></h1>
-  <p>A locally-owned, owner-led senior moving company — because the people you love deserve a transition handled by someone who knows their name.</p>
+<!-- ─────────── PAGE HERO ─────────── -->
+<header class="page-hero page-hero--photo" data-screen-label="01 About hero">
+  <div class="hero-bg">
+    <img src="assets/hero-about.jpg" alt="Brian reviewing the moving plan on a clipboard with a senior couple beside the loaded truck at their home">
+  <div class="hero-shade"></div></div>
+  <div class="container">
+    <div class="page-hero-inner">
+      <p class="eyebrow" data-sl="up">Our Story</p>
+      <h1 data-sl="up" style="--sl-d:90ms">Built on compassion, <em>handled in person.</em></h1>
+      <p class="page-hero-sub" data-sl="up" style="--sl-d:180ms">A locally owned, owner-led senior moving company — because the people you love deserve a transition handled by someone who knows their name.</p>
+      <div class="page-hero-actions" data-sl="up" style="--sl-d:260ms">
+        <a href="contact.html" class="btn btn--primary">Request a Free Consultation</a>
+        <a href="services.html" class="btn btn--ghost">See what we do</a>
+      </div>
+    </div>
+  </div>
 </header>
 
-<!-- BIO -->
-<section class="band-light" data-screen-label="02 Bio">
-  <div class="band-inner">
-    <div class="bio-inner">
-      <div>
-        <div class="bio-photo">
-          <img src="assets/founder-photo.jpg" alt="Brian Schoeffler, founder of Summit Senior Services"/>
-        </div>
-        <div class="bio-stats">
-          <div>
-            <div class="bio-stat-num">100%</div>
-            <div class="bio-stat-lbl">Owner-Operated</div>
-          </div>
-          <div>
-            <div class="bio-stat-num">6</div>
-            <div class="bio-stat-lbl">Ohio Counties</div>
-          </div>
-          <div>
-            <div class="bio-stat-num">24h</div>
-            <div class="bio-stat-lbl">Reply Time</div>
-          </div>
-          <div>
-            <div class="bio-stat-num">$0</div>
-            <div class="bio-stat-lbl">First Consult</div>
-          </div>
-        </div>
+<!-- ─────────── BIO ─────────── -->
+<section class="section band-light" data-screen-label="02 Bio">
+  <div class="container">
+    <div class="bio">
+      <div class="bio-media" data-sl="left">
+        <img src="assets/founder-photo.jpg" alt="Brian Schoeffler, founder of Summit Senior Services"/>
       </div>
-
-      <div class="bio-text">
-        <span class="eyebrow">Meet the Founder</span>
+      <div class="bio-text" data-sl="right">
+        <p class="eyebrow">Meet the Founder</p>
         <h2>Hi, I'm Brian Schoeffler.</h2>
-        <p>I started Summit Senior Services because I know firsthand how overwhelming this process can be. Whether a family is helping a parent downsize after decades in the same home, or navigating a move to assisted living, the emotional weight alone can feel like too much — before you've even thought about the logistics.</p>
-        <p>My passion is simple: I want to be the person families in Greater Cleveland can call and <strong>genuinely feel relieved afterward.</strong> Not more stressed. Not more confused. Relieved. That's the standard I hold myself to on every single job.</p>
-        <p>I believe the transition to a new chapter of life deserves patience, dignity, and a personal touch. You shouldn't have to coordinate five different vendors, chase down movers, or figure out what to do with a houseful of belongings on your own. That's exactly what I'm here for.</p>
-        <p>When you work with Summit Senior Services, you're not hiring a faceless company. <strong>You're working directly with me</strong> — someone who genuinely cares about your family's outcome and won't consider the job done until you're truly settled and at ease.</p>
-
-        <div class="bio-sig">
-          <div class="name">Brian</div>
-          <div class="role"><strong>Brian Schoeffler</strong><br/>Founder, Summit Senior Services</div>
+        <p>I started Summit Senior Services because I know firsthand how overwhelming this process can be. Helping a parent downsize after decades in the same home — or navigating a move to assisted living — carries an emotional weight that lands long before anyone thinks about the logistics.</p>
+        <p>My goal is simple: to be the person Greater Cleveland families can call and <strong>genuinely feel relieved afterward.</strong> Not more stressed. Not more confused. Relieved. That's the standard I hold myself to on every single job.</p>
+        <p>This transition deserves patience, dignity, and a personal touch. You shouldn't have to coordinate five vendors, chase down movers, and figure out what to do with a houseful of belongings on your own. That's exactly what I'm here for.</p>
+        <p>When you work with Summit, you're not hiring a faceless company. <strong>You're working directly with me</strong> — and I won't consider the job done until you're truly settled and at ease.</p>
+        <div class="bio-sign">
+          <span class="mark">Brian</span>
+          <span class="who"><strong>Brian Schoeffler</strong>Founder &amp; Owner, Summit Senior Services</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW I WORK (approach) -->
-<section class="band-cream" data-screen-label="03 Approach">
-  <div class="band-inner">
-    <div class="band-header" style="margin: 0 auto 3rem; text-align: center;">
-      <span class="eyebrow">How I Work</span>
-      <h2 class="section-title" style="margin: 0.85rem auto 1rem;">A few rules I've set for <em>every job.</em></h2>
-      <p class="section-body" style="margin: 0 auto;">The same principles, whether it's a 5-bedroom downsizing or a single closet sort.</p>
+<!-- ─────────── STAT LINE ─────────── -->
+<section class="section section--tight band-cream" data-screen-label="03 Stats">
+  <div class="container">
+    <div class="statline" data-sl="up">
+      <div class="statline-item">
+        <div class="statline-num"><span data-to="1">1</span></div>
+        <div class="statline-lbl">Dedicated Point of Contact</div>
+      </div>
+      <div class="statline-item">
+        <div class="statline-num"><span data-to="6">6</span></div>
+        <div class="statline-lbl">Ohio Counties Served</div>
+      </div>
+      <div class="statline-item">
+        <div class="statline-num"><span data-to="100">100</span><span class="suf">%</span></div>
+        <div class="statline-lbl">Customizable Solution</div>
+      </div>
+      <div class="statline-item">
+        <div class="statline-num"><span class="pre">&lt;</span><span data-to="3">3</span><span class="suf">h</span></div>
+        <div class="statline-lbl">Avg Reply Time</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="approach-list">
-      <div class="approach-item">
+<!-- ─────────── HOW I WORK ─────────── -->
+<section class="section band-light" data-screen-label="04 Approach">
+  <div class="container">
+    <div class="section-head section-head--center" data-sl="up">
+      <p class="eyebrow">How I Work</p>
+      <h2 class="h-section">A few rules I've set for every job.</h2>
+      <p class="lead">The same principles, whether it's a five-bedroom downsizing or a single closet sort.</p>
+    </div>
+    <div class="approach-list" data-sl-stagger="110">
+      <div class="approach-item" data-sl="left">
         <div class="approach-num">01</div>
         <div>
-          <h3>The first conversation is free, and it's not a pitch.</h3>
-          <p>The in-home consult is a real conversation about your situation — what you need, what your parent needs, what the timeline looks like. If we're not the right fit, I'll tell you. If you want to think about it for six months, that's fine too. You'll never get a follow-up sales call from me.</p>
+          <h3>The first conversation is free — and it's not a pitch.</h3>
+          <p>The in-home consult is a real conversation about your situation: what you need, what your parent needs, what the timeline looks like. If we're not the right fit, I'll tell you. If you want to think about it for six months, that's fine too. You'll never get a follow-up sales call from me.</p>
         </div>
       </div>
-      <div class="approach-item">
+      <div class="approach-item" data-sl="left">
         <div class="approach-num">02</div>
         <div>
           <h3>You see the plan and the price before anything starts.</h3>
           <p>Every job gets a written plan: what we're doing, when, and what it costs. No hidden fees, no surprise line items, no "we hit an obstacle, here's another invoice." If the scope changes, we talk about it first.</p>
         </div>
       </div>
-      <div class="approach-item">
+      <div class="approach-item" data-sl="left">
         <div class="approach-num">03</div>
         <div>
           <h3>Your pace, always.</h3>
-          <p>The biggest mistake in senior moves is rushing them. Decades of belongings don't get sorted in a weekend, and parents shouldn't feel hurried out of their own decisions. I'll work with whatever timeline you have — even if that means three months of one slow afternoon a week.</p>
+          <p>The biggest mistake in senior moves is rushing them. Decades of belongings don't get sorted in a weekend, and no one should feel hurried out of their own decisions. I'll work with whatever timeline you have — even if that's three months of one slow afternoon a week.</p>
         </div>
       </div>
-      <div class="approach-item">
+      <div class="approach-item" data-sl="left">
         <div class="approach-num">04</div>
         <div>
           <h3>One point of contact, start to finish.</h3>
           <p>You don't get handed off to a foreman, an estimator, or a billing department. You call me, you text me, you email me — and I'm the one who shows up. That's the whole point of working with a small, owner-led business instead of a national franchise.</p>
         </div>
       </div>
-      <div class="approach-item">
+      <div class="approach-item" data-sl="left">
         <div class="approach-num">05</div>
         <div>
           <h3>I don't disappear after move-in.</h3>
-          <p>Settling-in is the part most movers skip — and it's the part that makes the new place feel like home. I stay until pictures are on the walls, electronics work, closets are organized, and your parent can find their coffee in the morning.</p>
+          <p>Settling-in is the part most movers skip — and it's the part that makes the new place feel like home. I stay until the pictures are on the walls, the electronics work, the closets are organized, and your parent can find their coffee in the morning.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VALUES -->
-<section class="band-light" data-screen-label="04 Values">
-  <div class="band-inner">
-    <div class="band-header">
-      <span class="eyebrow">What We Stand For</span>
-      <h2 class="section-title">Four things <em>we don't compromise on.</em></h2>
-    </div>
-    <div class="values-grid">
-      <div class="value-card">
-        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-        <h3>Genuine Care</h3>
-        <p>We treat every family like our own. This work is personal, and we never lose sight of that.</p>
+<!-- ─────────── VALUES (feature + hand-drawn star) ─────────── -->
+<section class="section band-cream values-feature" data-screen-label="05 Values">
+  <div class="container">
+    <div class="vfeature-grid">
+      <div class="vfeature-text" data-sl="left">
+        <p class="eyebrow">What We Stand For</p>
+        <h2 class="h-section">Four things we don't compromise on.</h2>
+        <p class="lead">Every Summit job is owner-led and built around the family — not a franchise checklist. These are the standards I hold myself to, on the first call and the last box alike.</p>
+        <p class="vfeature-lead-2">What that looks like</p>
+        <ul class="offer-list" data-sl-stagger="100">
+          <li class="offer-item" data-sl="up">
+            <span class="offer-ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></span>
+            <div>
+              <h3>Genuine Care</h3>
+              <p>We treat every family like our own. This work is personal, and we never lose sight of that.</p>
+            </div>
+          </li>
+          <li class="offer-item" data-sl="up">
+            <span class="offer-ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+            <div>
+              <h3>Clear Communication</h3>
+              <p>No surprises, no runaround. You always know what's happening, what's next, and what it costs.</p>
+            </div>
+          </li>
+          <li class="offer-item" data-sl="up">
+            <span class="offer-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <div>
+              <h3>Your Pace, Not Ours</h3>
+              <p>We never rush a family through one of life's most significant transitions. We move when you're ready.</p>
+            </div>
+          </li>
+          <li class="offer-item" data-sl="up">
+            <span class="offer-ico"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+            <div>
+              <h3>End-to-End Accountability</h3>
+              <p>One point of contact from the first call to the last box. You'll never have to repeat yourself.</p>
+            </div>
+          </li>
+        </ul>
+        <a href="contact.html" class="btn btn--primary">Request a Free Consultation</a>
       </div>
-      <div class="value-card">
-        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <h3>Clear Communication</h3>
-        <p>No surprises, no runaround. You always know what's happening, what's next, and what it costs.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3>Your Pace, Not Ours</h3>
-        <p>We never rush a family through one of life's most significant transitions. We move when you're ready.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-        <h3>End-to-End Accountability</h3>
-        <p>One point of contact from the first call to the last box. You'll never have to repeat yourself.</p>
+      <div class="vfeature-media" data-sl="right">
+        <img src="assets/values-consultation.jpg" alt="A Summit team member reviewing the moving plan with a senior couple beside the loaded truck at their home"/>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CLOSING CTA -->
-<section class="closing" data-screen-label="05 Closing CTA">
-  <div class="closing-inner">
-    <div class="closing-photo"><img src="assets/founder-photo.jpg" alt="Brian Schoeffler"/></div>
-    <div class="closing-text">
-      <h2>When you're ready, I'll come see you.</h2>
-      <p>The free in-home consultation is the easiest way to start. No pressure, no obligation — just a conversation about what's needed and what's possible.</p>
-      <div class="closing-sign">Brian<small>Founder, Summit Senior Services</small></div>
-    </div>
-    <div class="closing-actions">
-      <a href="contact.html" class="btn-dark">Request a Free Consultation</a>
-      <div class="ph">or call <a href="tel:2162363966">(216) 236-3966</a></div>
+<!-- ─────────── CLOSING CTA ─────────── -->
+<section class="section closing" data-screen-label="06 Closing">
+  <div class="container">
+    <div class="closing-grid">
+      <div class="closing-media" data-sl="left">
+        <img src="assets/founder-photo.jpg" alt="Brian Schoeffler, founder of Summit Senior Services, available for a free in-home consultation"/>
+      </div>
+      <div class="closing-text" data-sl="right">
+        <h2>When you're ready, I'll come see you.</h2>
+        <p>The free in-home consultation is the easiest way to start. No pressure, no obligation — just a conversation about what's needed and what's possible.</p>
+        <div class="closing-sign">
+          <span class="name">Brian</span>
+          <span class="role">Founder, Summit Senior Services</span>
+        </div>
+        <div class="closing-actions">
+          <a href="contact.html" class="btn btn--primary">Request a Free Consultation</a>
+          <span class="call">or call <a href="tel:2162363966">(216) 236-3966</a></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="site-footer">
+<!-- ─────────── FOOTER ─────────── -->
+<footer class="footer" data-screen-label="07 Footer">
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
@@ -382,15 +244,19 @@
     <div class="footer-col">
       <h5>Services</h5>
       <a href="services.html">All Services</a>
-      <a href="services.html#downsizing">Downsizing</a>
-      <a href="services.html#move">Move Coordination</a>
-      <a href="services.html#sales">Online Item Sales</a>
+      <a href="senior-downsizing-services-cleveland.html">Downsizing &amp; Sorting</a>
+      <a href="senior-move-management-cleveland.html">Move Coordination</a>
+      <a href="senior-packing-unpacking-cleveland.html">Packing &amp; Unpacking</a>
+      <a href="estate-cleanout-cleveland.html">Estate Cleanout</a>
+      <a href="settling-in-services-cleveland.html">Settling-In Support</a>
+      <a href="floor-plan-space-planning-cleveland.html">Floor Plan &amp; Space Planning</a>
+      <a href="online-estate-sales-cleveland.html">Online Item Sales</a>
     </div>
     <div class="footer-col">
       <h5>Resources</h5>
-      <a href="cleveland-senior-move-checklist.html">Free Move Checklist</a>
+      <a href="checklist.html">Free Move Checklist</a>
       <a href="service-area.html">Service Area</a>
-      <a href="contact.html#faq">FAQ</a>
+      <a href="contact.html">FAQ</a>
       <a href="about.html">About Brian</a>
     </div>
     <div class="footer-col">
@@ -402,18 +268,16 @@
   </div>
   <div class="footer-bottom">
     <div>© 2026 Summit Senior Services. All rights reserved.</div>
-    <div><a href="privacy.html" style="color:rgba(255,255,255,0.5); text-decoration:none;">Privacy Policy</a> · Fully Insured · Locally Owned</div>
+    <div><a href="privacy-policy.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Privacy Policy</a> · Fully Insured · Locally Owned</div>
   </div>
 </footer>
 
-<div class="mobile-cta-bar">
-  <a href="tel:2162363966" class="mcta-call"><span class="mcta-icon">☎</span>Call Now</a>
-  <a href="contact.html" class="mcta-quote"><span class="mcta-icon">✉</span>Free Consult</a>
-  <a href="sms:2162363966" class="mcta-text"><span class="mcta-icon">✦</span>Text Us</a>
+<!-- ─────────── MOBILE STICKY CTA ─────────── -->
+<div class="mcta">
+  <a href="tel:2162363966" class="call">☎ Call / Text</a>
+  <a href="contact.html" class="quote">Free Consult</a>
 </div>
 
-<script>
-  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-</script>
+<script src="summit-site.js"></script>
 </body>
 </html>

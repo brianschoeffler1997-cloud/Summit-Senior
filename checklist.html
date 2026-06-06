@@ -1,664 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-headline="serif" data-corners="soft">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Free: The Cleveland Senior Move Checklist | Summit Senior Services</title>
-<meta name="description" content="A free 14-page guide for Cleveland families navigating a senior move. 12 steps from the first kitchen-table conversation to the night your parent sleeps in their new home. Read it now — no email required."/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://www.summitseniorservicesohio.com/checklist.html"/>
-
+<title>The Cleveland Senior Move Checklist | Summit Senior Services</title>
+<meta name="description" content="A free 12-step checklist for families navigating a senior move in Greater Cleveland — from the first kitchen-table conversation to the night your parent sleeps in their new home."/>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"/>
-
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="Free: The Cleveland Senior Move Checklist"/>
-<meta property="og:description" content="12 steps for a calm, dignified senior move. Free, no email required."/>
-<meta property="og:url" content="https://www.summitseniorservicesohio.com/checklist.html"/>
-<meta property="og:image" content="https://www.summitseniorservicesohio.com/og-image.jpg"/>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
-
-<style>
-  :root {
-    --navy: #1a2e44;
-    --gold: #c9a84c;
-    --gold-700: #a98c35;
-    --cream: #f8f5ef;
-    --warm-gray: #6b6560;
-    --light: #ffffff;
-    --border: #e2ddd6;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--navy);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* SLIM NAV — landing pages stay focused */
-  .nav-slim {
-    background: var(--navy);
-    padding: 0.85rem 1.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .nav-slim a.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-slim a.logo img { height: 38px; display: block; }
-  .nav-slim a.logo .ln {
-    color: rgba(255,255,255,0.45);
-    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-  }
-  .nav-slim .right {
-    display: flex; align-items: center; gap: 1rem;
-    font-size: 0.82rem;
-  }
-  .nav-slim .right a { color: rgba(255,255,255,0.65); text-decoration: none; }
-  .nav-slim .right a:hover { color: #fff; }
-  .nav-slim .right .phone { color: var(--gold); font-weight: 500; }
-  @media (max-width: 640px) {
-    .nav-slim .right a.back { display: none; }
-  }
-
-  /* HERO */
-  .hero {
-    background: var(--navy);
-    padding: 4rem 2rem 4.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 65% 45%, rgba(201,168,76,0.15) 0%, transparent 65%);
-  }
-  .hero-inner {
-    position: relative; z-index: 2;
-    max-width: 1180px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.15fr 1fr; gap: 4rem; align-items: center;
-  }
-  @media (max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-  }
-
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 7px;
-    color: var(--gold);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    margin-bottom: 1.25rem;
-    padding: 5px 12px 5px 9px;
-    background: rgba(201, 168, 76, 0.10);
-    border: 1px solid rgba(201, 168, 76, 0.30);
-    border-radius: 999px;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.07;
-    color: #fff;
-    letter-spacing: -0.015em;
-    margin: 0 0 1.25rem;
-  }
-  .hero h1 em { color: var(--gold); font-style: normal; }
-
-  .hero-lead {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.75);
-    font-weight: 300;
-    line-height: 1.65;
-    max-width: 540px;
-    margin: 0 0 2rem;
-  }
-
-  /* CTA cluster */
-  .cta-cluster { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 14px; margin-bottom: 1.5rem; }
-  .btn-primary {
-    background: var(--gold); color: var(--navy);
-    padding: 0.95rem 1.75rem;
-    font-family: inherit; font-size: 0.95rem; font-weight: 600;
-    letter-spacing: 0.02em;
-    border: 1px solid var(--gold); border-radius: 2px;
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.15s;
-  }
-  .btn-primary:hover { background: var(--gold-700); border-color: var(--gold-700); }
-  .btn-primary .arrow { font-size: 1.1rem; line-height: 1; transition: transform 0.15s; }
-  .btn-primary:hover .arrow { transform: translateX(2px); }
-  .btn-ghost {
-    background: transparent; color: rgba(255,255,255,0.85);
-    padding: 0.95rem 1.5rem;
-    font-family: inherit; font-size: 0.95rem; font-weight: 500;
-    border: 1px solid rgba(255,255,255,0.30); border-radius: 2px;
-    text-decoration: none; cursor: pointer;
-  }
-  .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.55); }
-
-  /* Trust micro-line under CTAs */
-  .trust-line {
-    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.55);
-    font-weight: 300;
-  }
-  .trust-line .stars { color: var(--gold); letter-spacing: 0.1em; }
-  .trust-line .sep { width: 3px; height: 3px; background: rgba(255,255,255,0.30); border-radius: 50%; }
-
-  /* HERO RIGHT — Mock PDF preview */
-  .pdf-preview {
-    position: relative;
-    perspective: 1200px;
-  }
-  .pdf-card {
-    background: var(--cream);
-    border-radius: 3px;
-    box-shadow:
-      0 1px 0 rgba(255,255,255,0.05) inset,
-      0 30px 60px -20px rgba(0, 0, 0, 0.45),
-      0 12px 30px -10px rgba(0, 0, 0, 0.35);
-    transform: rotate(-2.5deg) rotateY(-4deg);
-    padding: 30px 32px 36px;
-    position: relative;
-    overflow: hidden;
-  }
-  .pdf-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px;
-    background: var(--gold);
-  }
-  .pdf-card .pc-meta {
-    display: flex; align-items: center; gap: 7px;
-    color: var(--warm-gray);
-    font-size: 9.5px; font-weight: 600;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    margin-top: 6px;
-  }
-  .pdf-card .pc-meta .star { color: var(--gold); font-size: 11px; }
-  .pdf-card img.logo {
-    display: block; height: 64px; margin: 22px auto 18px;
-  }
-  .pdf-card .free-tag {
-    display: inline-block;
-    background: var(--navy); color: var(--gold);
-    padding: 5px 11px;
-    font-size: 9.5px; font-weight: 700;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    border-radius: 999px;
-    margin-bottom: 18px;
-  }
-  .pdf-card .pc-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600; font-size: 36px;
-    line-height: 1.03; color: var(--navy);
-    letter-spacing: -0.02em;
-    text-align: center;
-  }
-  .pdf-card .pc-title em { color: var(--gold); font-style: normal; }
-  .pdf-card .pc-sub {
-    margin-top: 12px;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    color: var(--warm-gray);
-    font-size: 14px;
-    line-height: 1.45;
-  }
-  .pdf-card .pc-foot {
-    margin-top: 28px;
-    border-top: 1px solid var(--border);
-    padding-top: 12px;
-    text-align: center;
-    font-size: 10.5px;
-    color: var(--warm-gray);
-    letter-spacing: 0.05em;
-  }
-  .pdf-card .pc-foot b { color: var(--navy); font-weight: 600; }
-  /* Stack-of-pages effect under main card */
-  .pdf-preview::before,
-  .pdf-preview::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: #ede5d3;
-    border-radius: 3px;
-    box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.25);
-  }
-  .pdf-preview::before {
-    transform: rotate(2deg) translate(8px, 6px);
-    z-index: 1;
-  }
-  .pdf-preview::after {
-    transform: rotate(-5deg) translate(-12px, 12px);
-    z-index: 0;
-    background: #e2d8be;
-  }
-  .pdf-card { position: relative; z-index: 2; }
-  .pdf-stamp {
-    position: absolute;
-    z-index: 3;
-    bottom: -16px; right: -14px;
-    width: 100px; height: 100px;
-    border-radius: 50%;
-    border: 2px dashed var(--gold);
-    background: rgba(248, 245, 239, 0.96);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    transform: rotate(12deg);
-    font-family: 'Playfair Display', serif;
-    color: var(--navy);
-    text-align: center;
-    line-height: 1;
-    box-shadow: 0 8px 20px -8px rgba(0,0,0,0.20);
-  }
-  .pdf-stamp .big { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
-  .pdf-stamp .sm { font-size: 9px; font-family: 'DM Sans', sans-serif; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 4px; }
-
-  /* WHAT'S INSIDE */
-  .section { padding: 5rem 2rem; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  .container-narrow { max-width: 800px; margin: 0 auto; }
-
-  .eyebrow {
-    font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: clamp(1.65rem, 3vw, 2.15rem);
-    line-height: 1.18;
-    color: var(--navy);
-    letter-spacing: -0.01em;
-    margin: 0 0 1.25rem;
-  }
-  .section-title em { color: var(--gold); font-style: normal; }
-  .section-body {
-    font-size: 1rem;
-    color: var(--warm-gray);
-    line-height: 1.75;
-    font-weight: 300;
-    max-width: 620px;
-  }
-  .section-body strong { color: var(--navy); font-weight: 500; }
-
-  .inside-section { background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-  .steps-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 2.5rem;
-  }
-  @media (max-width: 800px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .steps-grid { grid-template-columns: 1fr; } }
-  .step-pill {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 14px 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .step-pill .num {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600; font-size: 22px;
-    color: var(--gold);
-    line-height: 1;
-    width: 22px; flex-shrink: 0;
-  }
-  .step-pill .txt {
-    font-size: 0.85rem;
-    color: var(--navy);
-    font-weight: 500;
-    line-height: 1.3;
-  }
-
-  /* AUTHOR / WHY */
-  .author-section { background: var(--cream); }
-  .author-inner {
-    display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: center;
-    max-width: 900px; margin: 0 auto;
-  }
-  @media (max-width: 700px) { .author-inner { grid-template-columns: 1fr; gap: 1.75rem; text-align: left; } }
-  .author-photo {
-    width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top;
-    border-radius: 4px;
-    box-shadow: 0 0 0 1px var(--border);
-  }
-  .author-body p {
-    font-size: 1.02rem;
-    line-height: 1.7;
-    color: var(--warm-gray);
-    font-weight: 300;
-    margin: 0 0 1rem;
-  }
-  .author-body p strong { color: var(--navy); font-weight: 500; }
-  .author-body .sig {
-    margin-top: 1.25rem;
-    font-family: 'Caveat', cursive;
-    font-weight: 600;
-    font-size: 32px;
-    color: var(--navy);
-    line-height: 1;
-  }
-  .author-body .sig-line {
-    font-size: 0.8rem;
-    color: var(--warm-gray);
-    letter-spacing: 0.06em;
-    margin-top: 0.4rem;
-  }
-
-  /* FAQ */
-  .faq-section { background: var(--light); border-top: 1px solid var(--border); }
-  .faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
-  .faq-item:first-child { border-top: 1px solid var(--border); }
-  .faq-q {
-    font-size: 1rem; font-weight: 500;
-    color: var(--navy);
-    margin-bottom: 0.6rem;
-    display: flex; align-items: baseline; gap: 12px;
-  }
-  .faq-q .star { color: var(--gold); font-size: 0.85rem; flex-shrink: 0; }
-  .faq-a {
-    font-size: 0.94rem;
-    color: var(--warm-gray);
-    line-height: 1.75;
-    font-weight: 300;
-    padding-left: 22px;
-  }
-  .faq-a strong { color: var(--navy); font-weight: 500; }
-
-  /* SECONDARY CTA */
-  .cta-section {
-    background: var(--gold);
-    padding: 4.5rem 2rem;
-    text-align: center;
-  }
-  .cta-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: clamp(1.7rem, 3vw, 2.2rem);
-    color: var(--navy);
-    margin: 0 0 1rem;
-    letter-spacing: -0.01em;
-  }
-  .cta-section p {
-    color: rgba(26, 46, 68, 0.75);
-    font-size: 1rem;
-    font-weight: 300;
-    margin: 0 0 2rem;
-  }
-  .cta-section .form-wrap {
-    max-width: 480px; margin: 0 auto;
-  }
-  .cta-section .form-row { display: flex; gap: 8px; }
-  .cta-section input[type="email"] {
-    flex: 1;
-    background: #fff;
-    border: 1px solid rgba(26, 46, 68, 0.20);
-    border-radius: 2px;
-    padding: 0.85rem 1rem;
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--navy);
-    outline: none;
-  }
-  .cta-section input[type="email"]:focus {
-    border-color: var(--navy);
-    box-shadow: 0 0 0 3px rgba(26, 46, 68, 0.15);
-  }
-  .cta-section .form-row button {
-    background: var(--navy); color: #fff;
-    border: 1px solid var(--navy);
-    padding: 0.85rem 1.5rem;
-    font-family: inherit;
-    font-size: 0.92rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    border-radius: 2px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .cta-section .form-row button:hover { background: #0f1d2b; }
-  .cta-section .form-note {
-    margin-top: 0.85rem;
-    font-size: 0.78rem;
-    color: rgba(26, 46, 68, 0.55);
-    font-weight: 400;
-  }
-  .cta-section .form-note a { color: var(--navy); font-weight: 600; text-decoration: underline; }
-  @media (max-width: 500px) {
-    .cta-section .form-row { flex-direction: column; }
-  }
-
-  /* HERO email form */
-  .hero-form {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    border-radius: 4px;
-    padding: 14px 14px 12px;
-    max-width: 460px;
-    margin-top: 1.5rem;
-  }
-  .hero-form .h-row { display: flex; gap: 8px; }
-  .hero-form .h-row input {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid transparent;
-    border-radius: 2px;
-    padding: 0.7rem 0.85rem;
-    font-family: inherit; font-size: 0.88rem; color: var(--navy);
-    outline: none;
-  }
-  .hero-form .h-row input:focus { box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.30); }
-  .hero-form .h-row button {
-    background: var(--navy); color: var(--gold);
-    border: 1px solid var(--gold);
-    padding: 0.7rem 1rem;
-    font-family: inherit; font-size: 0.82rem; font-weight: 600;
-    letter-spacing: 0.02em;
-    border-radius: 2px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .hero-form .h-row button:hover { background: #0f1d2b; }
-  .hero-form .h-note {
-    margin-top: 8px;
-    font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.45);
-  }
-  @media (max-width: 500px) {
-    .hero-form .h-row { flex-direction: column; }
-  }
-
-  /* Success state for both forms */
-  .form-success {
-    display: none;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(201, 168, 76, 0.35);
-    border-radius: 4px;
-    padding: 14px 18px;
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-  .form-success.dark {
-    background: rgba(26, 46, 68, 0.08);
-    border-color: rgba(26, 46, 68, 0.25);
-    color: var(--navy);
-  }
-  .form-success.show { display: block; }
-  .form-success b { color: var(--gold); }
-  .form-success.dark b { color: var(--navy); }
-
-  /* FOOTER */
-  footer {
-    background: var(--navy);
-    color: rgba(255,255,255,0.40);
-    padding: 2.5rem 2rem;
-    text-align: center;
-    font-size: 0.82rem;
-    font-weight: 300;
-  }
-  footer strong { color: rgba(255,255,255,0.65); font-weight: 500; }
-  footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
-  footer .row { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0; }
-</style>
+<link rel="stylesheet" href="summit-redesign.css"/>
+<link rel="stylesheet" href="summit-pages.css"/>
 </head>
 <body>
 
-<!-- SLIM NAV -->
-<nav class="nav-slim">
-  <a href="index.html" class="logo">
-    <img src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
-    <span class="ln">Summit Senior Services</span>
-  </a>
-  <div class="right">
-    <a href="index.html" class="back">← Back to site</a>
-    <a href="tel:2162363966" class="phone">📞 216-236-3966</a>
+<!-- ─────────── NAV ─────────── -->
+<nav class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="Summit%20Senior%20Services%20-%20Redesign.html" class="nav-logo" aria-label="Summit Senior Services — home">
+      <img class="logo-white" src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
+      <img class="logo-navy" src="assets/summit-logo-transparent.png" alt="Summit Senior Services"/>
+    </a>
+    <div class="nav-links">
+      <a href="Summit%20Senior%20Services%20-%20Redesign.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="service-area.html">Service Area</a>
+      <a href="contact.html">FAQ &amp; Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:2162363966" class="nav-phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>(216) 236-3966</a>
+      <a href="contact.html" class="btn btn--gold nav-cta">Free Consultation</a>
+      <button class="hamburger" onclick="summitMenu(true)" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" onclick="summitMenu(false)" aria-label="Close menu">&times;</button>
+  <a href="Summit%20Senior%20Services%20-%20Redesign.html" onclick="summitMenu(false)">Home</a>
+  <a href="about.html" onclick="summitMenu(false)">About</a>
+  <a href="services.html" onclick="summitMenu(false)">Services</a>
+  <a href="service-area.html" onclick="summitMenu(false)">Service Area</a>
+  <a href="contact.html" onclick="summitMenu(false)">FAQ &amp; Contact</a>
+  <a href="contact.html" class="m-cta btn" onclick="summitMenu(false)">Free Consultation</a>
+</div>
 
-    <div>
-      <div class="hero-eyebrow"><span>✦</span>Free for Cleveland Families</div>
-      <h1>The Cleveland Senior <em>Move Checklist.</em></h1>
-      <p class="hero-lead">
-        12 steps for a calm, dignified senior move — from the first kitchen-table conversation to the night your parent sleeps in their new home. Written from years of helping Greater Cleveland families navigate this exact transition.
-      </p>
-
-      <div class="cta-cluster">
-        <a href="cleveland-senior-move-checklist.html" class="btn-primary" target="_blank" rel="noopener">
-          Read it now <span class="arrow">→</span>
-        </a>
-      </div>
-
-      <div class="trust-line">
-        <span class="stars">★ ★ ★ ★ ★</span>
-        <span>14 pages · 12 steps</span>
-        <span class="sep"></span>
-        <span>Free, no email required</span>
-        <span class="sep"></span>
-        <span>Written by Brian, founder</span>
+<!-- ─────────── PAGE HERO ─────────── -->
+<header class="page-hero page-hero--photo" data-screen-label="01 Checklist hero">
+  <div class="hero-bg"><image-slot id="checklist-hero-bg" shape="rect" fit="cover" src="assets/hero-packing.jpg" placeholder="Drop a hero photo"></image-slot><div class="hero-shade"></div></div><div class="container">
+    <div class="page-hero-inner">
+      <nav class="hero-crumbs" aria-label="Breadcrumb"><a href="Summit%20Senior%20Services%20-%20Redesign.html">Home</a><span class="sep">/</span><strong>Move Checklist</strong></nav>
+      <p class="eyebrow" data-sl="up">Free Guide</p>
+      <h1 data-sl="up" style="--sl-d:90ms">The Cleveland Senior <em>Move Checklist.</em></h1>
+      <p class="page-hero-sub" data-sl="up" style="--sl-d:180ms">Twelve steps for a calm, dignified senior move — from the first kitchen-table conversation to the night your parent sleeps in their new home. Read it once, then come back to whichever step you're on.</p>
+      <div class="page-hero-actions" data-sl="up" style="--sl-d:260ms">
+        <a href="#steps" class="btn btn--primary">Start the Checklist</a>
+        <a href="checklist-print.html" class="btn btn--ghost">Read all 14 pages &amp; download PDF</a>
       </div>
     </div>
-
-    <div class="pdf-preview">
-      <div class="pdf-card">
-        <div class="pc-meta"><span class="star">✦</span>Summit Senior Services · Cleveland, Ohio</div>
-        <img class="logo" src="assets/summit-logo-transparent.png" alt=""/>
-        <div style="text-align:center;"><span class="free-tag">✦ Free Guide</span></div>
-        <div class="pc-title">The Cleveland Senior<br/><em>Move Checklist.</em></div>
-        <div class="pc-sub">12 steps for a calm, dignified senior move.</div>
-        <div class="pc-foot">By <b>Brian Schoeffler</b> · founder, Summit Senior Services</div>
-      </div>
-      <div class="pdf-stamp">
-        <span class="big">FREE</span>
-        <span class="sm">14 pages</span>
-      </div>
-    </div>
-
   </div>
-</section>
+</header>
 
-<!-- WHAT'S INSIDE -->
-<section class="section inside-section">
+<!-- ─────────── INTRO NOTE ─────────── -->
+<section class="section band-light" data-screen-label="02 Intro">
   <div class="container">
-    <p class="eyebrow">What You'll Find Inside</p>
-    <h2 class="section-title">12 specific steps. <em>No filler.</em></h2>
-    <p class="section-body">Every section is built around something we've seen go wrong — and the practical thing to do instead. The guide is structured to be read once in 25 minutes, then referenced at each milestone of your parent's move.</p>
-
-    <div class="steps-grid">
-      <div class="step-pill"><span class="num">1</span><span class="txt">Have the first conversation</span></div>
-      <div class="step-pill"><span class="num">2</span><span class="txt">Walk every room together</span></div>
-      <div class="step-pill"><span class="num">3</span><span class="txt">Get the new floor plan</span></div>
-      <div class="step-pill"><span class="num">4</span><span class="txt">Sort heirlooms with family first</span></div>
-      <div class="step-pill"><span class="num">5</span><span class="txt">Keep, donate, sell, or discard</span></div>
-      <div class="step-pill"><span class="num">6</span><span class="txt">Decide on an appraisal</span></div>
-      <div class="step-pill"><span class="num">7</span><span class="txt">Coordinate the move-in window</span></div>
-      <div class="step-pill"><span class="num">8</span><span class="txt">Schedule the movers</span></div>
-      <div class="step-pill"><span class="num">9</span><span class="txt">Set up donations &amp; sales</span></div>
-      <div class="step-pill"><span class="num">10</span><span class="txt">Pack a "first night" box</span></div>
-      <div class="step-pill"><span class="num">11</span><span class="txt">Move day: supervise, don't lift</span></div>
-      <div class="step-pill"><span class="num">12</span><span class="txt">Settle in — make it home</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- AUTHOR -->
-<section class="section author-section">
-  <div class="author-inner">
-    <img src="assets/founder-photo.jpg" alt="Brian Schoeffler" class="author-photo"/>
-    <div class="author-body">
-      <p class="eyebrow">Why This Exists</p>
-      <h2 class="section-title">I wrote this because <em>nobody hands you a map.</em></h2>
-      <p>Most families I work with arrive feeling overwhelmed — not because they're underqualified, but because a senior move sits at the intersection of <strong>logistics, emotion, and family dynamics</strong>, all running at once. There's no playbook for it. Nobody hands you a map.</p>
-      <p>This is the map I wish every Cleveland family had. Read it whether you hire Summit or not. The order matters, and the small details matter.</p>
-      <div class="sig">Brian</div>
-      <div class="sig-line">— Brian Schoeffler, founder, Summit Senior Services</div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section faq-section">
-  <div class="container-narrow">
-    <p class="eyebrow">Honest Questions</p>
-    <h2 class="section-title">Quick answers, before you read.</h2>
-    <div style="margin-top: 2.5rem;">
-      <div class="faq-item">
-        <div class="faq-q"><span class="star">✦</span><span>Is this really free? What's the catch?</span></div>
-        <div class="faq-a">There isn't one. We wrote the guide because we wanted the information to exist for Cleveland families whether they hire us or not. Read it, share it with siblings, forward it to a neighbor going through the same thing. No catch, no email gate, no follow-up calls.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="star">✦</span><span>I'm not in Cleveland. Is this still useful?</span></div>
-        <div class="faq-a">Yes — about 90% of the advice applies anywhere. The references to specific Cleveland senior communities (Menorah Park, Judson, South Franklin Circle) won't be relevant outside Northeast Ohio, but the framework, the order of operations, and the practical advice are universal.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="star">✦</span><span>Can I print it out and use it as a workbook?</span></div>
-        <div class="faq-a">Yes — that's exactly how we hoped it would get used. Open the PDF, click your browser's print button, save as PDF or print to paper. Every step page has a 5-item checklist with real checkboxes you can tick off as you go.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="star">✦</span><span>What if I want to talk to someone about my parent's move?</span></div>
-        <div class="faq-a"><strong>Call us directly at 216-236-3966.</strong> Brian answers the phone himself, and the first conversation is free and pressure-free. We're not going to chase you — you reach out when (and if) you're ready.</div>
+    <div class="promise promise-grid" data-sl="up">
+      <div class="promise-rule"></div>
+      <div>
+        <blockquote>If you're reading this, you're already doing the right thing. No one ever hands families a map for this — so here's ours. Twelve steps, in order, at whatever pace feels right.</blockquote>
+        <p class="attr"><strong>Brian Schoeffler</strong> &nbsp;·&nbsp; Founder, Summit Senior Services</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECONDARY CTA -->
-<section class="cta-section">
-  <h2>Ready to read it?</h2>
-  <p>Open the full 14-page guide — free, no email, no catch.</p>
+<!-- ─────────── THE 12 STEPS ─────────── -->
+<section class="section band-cream" id="steps" data-screen-label="03 Steps">
+  <div class="container">
+    <div class="section-head" data-sl="up">
+      <p class="eyebrow">The Twelve Steps</p>
+      <h2 class="h-section">From the first conversation to the first night.</h2>
+      <p class="lead">Grouped by how far out you are. Most families move through them over four to six weeks — but there's no wrong pace.</p>
+    </div>
 
-  <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-    <a href="cleveland-senior-move-checklist.html" class="btn-primary" style="background: var(--navy); color: #fff; border-color: var(--navy);" target="_blank" rel="noopener">
-      Read the guide now <span class="arrow">→</span>
-    </a>
-    <a href="tel:2162363966" class="btn-primary" style="background: transparent; color: var(--navy); border: 1px solid rgba(26,46,68,0.30);">
-      Or call 216-236-3966
-    </a>
+    <div class="approach-list" data-sl-stagger="80">
+      <div class="approach-item" data-sl="left">
+        <div class="approach-num">01</div>
+        <div><span class="chk-phase">Months Out</span><h3>Have the first conversation.</h3><p>The hardest part of a senior move isn't the boxes — it's the talking. The single best thing you can do is start this conversation while it's still optional, not in the middle of a crisis.</p></div>
+      </div>
+      <div class="approach-item" data-sl="right">
+        <div class="approach-num">02</div>
+        <div><span class="chk-phase">Months Out</span><h3>Walk every room together — first pass.</h3><p>Before deciding anything, do a sticky-note walkthrough. This pass is about <em>noticing</em>, not deciding. You'll be surprised how much gets resolved just by talking through each room.</p></div>
+      </div>
+      <div class="approach-item" data-sl="left">
+        <div class="approach-num">03</div>
+        <div><span class="chk-phase">Weeks Out</span><h3>Get the new place's floor plan — and measure twice.</h3><p>The single biggest mistake families make is shipping furniture that won't fit. A five-bedroom does not pack into a one-bedroom apartment. Decide what's coming based on what fits.</p></div>
+      </div>
+      <div class="approach-item" data-sl="right">
+        <div class="approach-num">04</div>
+        <div><span class="chk-phase">Weeks Out</span><h3>Sort heirlooms with the family — first.</h3><p>Before a single item is donated or sold, do a family heirloom round. This is where the most conflict happens in senior moves — and, handled well, where the most healing does too.</p></div>
+      </div>
+      <div class="approach-item" data-sl="left">
+        <div class="approach-num">05</div>
+        <div><span class="chk-phase">Weeks Out</span><h3>Decide: keep, donate, sell, or discard.</h3><p>With the heirloom round done and the floor plan in hand, every remaining item gets one of four labels. Write the decisions down — it prevents second-guessing and family friction later.</p></div>
+      </div>
+      <div class="approach-item" data-sl="right">
+        <div class="approach-num">06</div>
+        <div><span class="chk-phase">Weeks Out</span><h3>Decide whether you need an appraisal.</h3><p>Most homes don't need a professional appraisal. Some absolutely do — real silver, original art, antique furniture, fine jewelry, rare books. Know the value before anything is sold.</p></div>
+      </div>
+      <div class="approach-item" data-sl="left">
+        <div class="approach-num">07</div>
+        <div><span class="chk-phase">Weeks Out</span><h3>Coordinate the move-in window with the community.</h3><p>Every well-run Cleveland senior community has a strict move-in policy — elevator reservations, vendor check-in, time-of-day limits. Lock in your window early so move day isn't a scramble.</p></div>
+      </div>
+      <div class="approach-item" data-sl="right">
+        <div class="approach-num">08</div>
+        <div><span class="chk-phase">Weeks Out</span><h3>Schedule movers — and packers, if you're using them.</h3><p>Don't book the first company that calls back. Get three quotes from <em>local</em> Cleveland-area movers, ideally ones who specialize in senior moves. The right crew is worth the difference.</p></div>
+      </div>
+      <div class="approach-item" data-sl="left">
+        <div class="approach-num">09</div>
+        <div><span class="chk-phase">Days Out</span><h3>Set up donation pickups and online listings.</h3><p>The donate and sell piles need to leave the house <em>before</em> moving day, not after. Schedule donation pickups one to two weeks out, and photograph and list sale items early.</p></div>
+      </div>
+      <div class="approach-item" data-sl="right">
+        <div class="approach-num">10</div>
+        <div><span class="chk-phase">Days Out</span><h3>Pack a "first night" box — and keep it with you.</h3><p>One box matters more than the rest: everything your parent will need before the unpacking is done. Medications, glasses, chargers, a kettle. Pack it last, label it clearly, keep it close.</p></div>
+      </div>
+      <div class="approach-item" data-sl="left">
+        <div class="approach-num">11</div>
+        <div><span class="chk-phase">Move Day</span><h3>Supervise, don't lift.</h3><p>Your job on move day isn't to carry boxes — it's to be the calm one. Two people minimum: one at the old house with a written room-by-room list, one receiving at the new apartment.</p></div>
+      </div>
+      <div class="approach-item" data-sl="right">
+        <div class="approach-num">12</div>
+        <div><span class="chk-phase">First Night &amp; After</span><h3>Settle in — make it feel like home.</h3><p>A senior move isn't over when the truck pulls away. The first 48 hours decide whether your parent loves the new place or resents it. Make the bed, hang the photos, find the coffee.</p></div>
+      </div>
+    </div>
+
+    <div class="guide-download" data-sl="up">
+      <div class="guide-download-text">
+        <p class="eyebrow">The full guide</p>
+        <h3>Want the complete 14-page version?</h3>
+        <p>Every step above, expanded — with Brian's field notes and a printable checklist for each one. Read it in your browser or download the PDF to keep.</p>
+      </div>
+      <div class="guide-download-actions">
+        <a href="checklist-print.html" class="btn btn--primary">Read &amp; download PDF</a>
+        <span class="guide-note">No sign-up · 14 pages · free</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer>
-  <strong>Summit Senior Services</strong> · Greater Cleveland, Ohio · Senior Moving &amp; Downsizing
-  <div class="row">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="service-area.html">Service Area</a>
-    <a href="contact.html">Contact</a>
+<!-- ─────────── WHERE WE COME IN ─────────── -->
+<section class="section band-navy" data-screen-label="04 Where we help">
+  <div class="container">
+    <div class="midcta" data-sl="up" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12)">
+      <div>
+        <h3>Want someone to handle the whole list?</h3>
+        <p>That's what we do. Hand us as much of this as you'd like — from the first sort to the last picture hung — and we'll carry it for you, at your pace.</p>
+      </div>
+      <a href="contact.html" class="btn btn--gold">Book a Free Consult</a>
+    </div>
   </div>
-  © 2026 Summit Senior Services. All rights reserved.
+</section>
+
+<!-- ─────────── CLOSING ─────────── -->
+<section class="section closing" data-screen-label="05 Closing">
+  <div class="container">
+    <div class="closing-grid">
+      <div class="closing-media" data-sl="left">
+        <img src="assets/founder-photo.jpg" alt="Brian Schoeffler"/>
+      </div>
+      <div class="closing-text" data-sl="right">
+        <h2>Prefer to talk it through?</h2>
+        <p>Reading a checklist and living it are two different things. If you'd rather just have a conversation about where to start, I'm a phone call away.</p>
+        <div class="closing-sign">
+          <span class="name">Brian</span>
+          <span class="role">Founder, Summit Senior Services</span>
+        </div>
+        <div class="closing-actions">
+          <a href="contact.html" class="btn btn--primary">Request a Free Consultation</a>
+          <span class="call">or call <a href="tel:2162363966">(216) 236-3966</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+<footer class="footer" data-screen-label="06 Footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
+      <p>Senior moving &amp; downsizing for Greater Cleveland. Personal, hands-on care from the first call to the last box.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="services.html">All Services</a>
+      <a href="senior-downsizing-services-cleveland.html">Downsizing &amp; Sorting</a>
+      <a href="senior-move-management-cleveland.html">Move Coordination</a>
+      <a href="online-estate-sales-cleveland.html">Online Item Sales</a>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <a href="checklist.html">Free Move Checklist</a>
+      <a href="service-area.html">Service Area</a>
+      <a href="contact.html">FAQ</a>
+      <a href="about.html">About Brian</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="tel:2162363966">(216) 236-3966</a>
+      <a href="mailto:info@SummitSeniorServicesOhio.com">info@SummitSeniorServicesOhio.com</a>
+      <span>Cleveland, Ohio</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Summit Senior Services. All rights reserved.</div>
+    <div><a href="#top">Privacy Policy</a> · Fully Insured · Locally Owned</div>
+  </div>
 </footer>
 
+<div class="mcta">
+  <a href="tel:2162363966" class="call">☎ Call / Text</a>
+  <a href="contact.html" class="quote">Free Consult</a>
+</div>
+
+<script src="image-slot.js"></script>
+<script src="summit-site.js"></script>
 </body>
 </html>

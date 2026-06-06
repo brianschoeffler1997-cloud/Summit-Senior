@@ -1,350 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-headline="serif" data-corners="soft">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Contact &amp; FAQ | Summit Senior Services — Greater Cleveland, OH</title>
-<meta name="description" content="Get in touch with Summit Senior Services. Request a free, no-pressure consultation for senior moving and downsizing in Greater Cleveland. Phone, email, or form."/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css"/>
-
-<style>
-  /* Two-column form layout */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 2.5rem;
-    align-items: start;
-  }
-  @media (max-width: 860px) {
-    .contact-grid { grid-template-columns: 1fr; }
-  }
-
-  /* Form card */
-  .form-card {
-    background: var(--light);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 2.5rem 2.25rem;
-  }
-  .form-card h2 {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    color: var(--navy);
-    font-weight: 600;
-    margin-bottom: 0.4rem;
-  }
-  .form-card .form-sub {
-    font-size: 0.92rem;
-    color: var(--warm-gray);
-    line-height: 1.6;
-    margin-bottom: 1.75rem;
-  }
-  .submit-btn {
-    width: 100%;
-    background: var(--gold);
-    color: var(--navy);
-    padding: 1rem;
-    font-family: var(--sans);
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    border: none;
-    border-radius: var(--radius-xs);
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-  .submit-btn:hover { background: var(--gold-700); }
-  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-  .form-note {
-    margin-top: 1rem;
-    font-size: 0.8rem;
-    color: var(--warm-gray);
-    text-align: center;
-    font-style: italic;
-  }
-  .success-msg {
-    display: none;
-    text-align: center;
-    padding: 2rem 1rem;
-  }
-  .success-msg .check {
-    width: 60px; height: 60px;
-    background: var(--gold);
-    border-radius: 50%;
-    margin: 0 auto 1.25rem;
-    display: grid; place-items: center;
-    font-size: 2rem;
-    color: var(--navy);
-  }
-  .success-msg h3 {
-    font-family: var(--serif);
-    font-size: 1.4rem;
-    color: var(--navy);
-    margin-bottom: 0.85rem;
-  }
-  .success-msg p {
-    font-size: 0.95rem;
-    color: var(--warm-gray);
-    line-height: 1.7;
-  }
-
-  /* Sidebar cards */
-  .sidebar { display: flex; flex-direction: column; gap: 1rem; }
-  .sidebar-card {
-    background: var(--light);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 1.85rem 1.75rem;
-  }
-  .sidebar-card.dark {
-    background: var(--navy);
-    border-color: rgba(255,255,255,0.08);
-  }
-  .sidebar-card h3 {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: var(--navy);
-    margin-bottom: 0.85rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .sidebar-card.dark h3 { color: var(--gold); }
-  .sidebar-card h3 svg { width: 16px; height: 16px; stroke: var(--gold); stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .contact-detail {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    padding: 0.55rem 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.93rem;
-  }
-  .contact-detail:last-child { border-bottom: none; }
-  .contact-detail svg { width: 16px; height: 16px; stroke: var(--gold); stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
-  .contact-detail a { color: var(--navy); text-decoration: none; font-weight: 500; }
-  .contact-detail a:hover { color: var(--gold-700); }
-  .sidebar-card p {
-    font-size: 0.88rem;
-    color: var(--warm-gray);
-    line-height: 1.7;
-  }
-  .sidebar-card.dark p { color: rgba(255,255,255,0.65); }
-
-  /* "What happens next" steps */
-  .expect-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  .expect-list li {
-    display: flex;
-    gap: 0.85rem;
-    align-items: flex-start;
-    font-size: 0.86rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.55;
-    padding: 0.65rem 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-  .expect-list li:first-child { border-top: none; padding-top: 0; }
-  .expect-list .n {
-    font-family: var(--serif);
-    font-style: italic;
-    color: var(--gold);
-    font-size: 1rem;
-    line-height: 1;
-    flex-shrink: 0;
-    padding-top: 0.1rem;
-    min-width: 1.1rem;
-  }
-
-  /* FAQ wrapper */
-  .faq-inner { max-width: var(--container-narrow); margin: 0 auto; }
-
-  /* 12-step checklist (embedded preview) */
-  .guide-inner {
-    display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  .guide-text .eyebrow { display: inline-block; margin-bottom: 0.85rem; }
-  .guide-text .section-title { margin-bottom: 1.25rem; }
-  .band-navy .guide-text .section-title { color: var(--light); }
-  .guide-text .section-body { color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
-  .guide-meta {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.75rem;
-    padding: 1rem 0;
-    border-top: 1px solid rgba(255,255,255,0.10);
-    border-bottom: 1px solid rgba(255,255,255,0.10);
-  }
-  .guide-meta-item { display: flex; flex-direction: column; gap: 0.15rem; }
-  .guide-meta-num {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.5rem;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .guide-meta-lbl {
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    font-weight: 500;
-  }
-  .guide-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; }
-  .guide-actions .ph-note { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
-
-  .guide-paper {
-    background: var(--cream);
-    border-radius: 4px;
-    padding: 2.5rem 2.25rem 1.75rem;
-    position: relative;
-    box-shadow:
-      0 1px 0 rgba(255,255,255,0.04),
-      0 24px 60px -20px rgba(0,0,0,0.45),
-      0 8px 20px -8px rgba(0,0,0,0.30);
-    transform: rotate(-1deg);
-    text-align: center;
-    min-height: 480px;
-    display: flex;
-    flex-direction: column;
-  }
-  .guide-paper::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--light);
-    border-radius: 4px;
-    transform: rotate(2.4deg);
-    z-index: -1;
-    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.35);
-  }
-  .guide-cover-mark { margin: 0 auto 1.5rem; width: 100px; }
-  .guide-cover-mark img { width: 100%; height: auto; display: block; }
-  .guide-cover-eyebrow {
-    font-size: 0.66rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    justify-content: center;
-  }
-  .guide-cover-eyebrow span { font-size: 0.85rem; line-height: 1; }
-  .guide-cover-title {
-    font-family: var(--serif);
-    font-size: 1.65rem;
-    line-height: 1.15;
-    color: var(--navy);
-    font-weight: 600;
-    letter-spacing: -0.005em;
-    margin-bottom: 0.85rem;
-  }
-  .guide-cover-title em { color: var(--gold); font-style: italic; font-weight: 500; }
-  .guide-cover-sub {
-    font-size: 0.88rem;
-    color: var(--warm-gray);
-    line-height: 1.6;
-    max-width: 320px;
-    margin: 0 auto 1.5rem;
-  }
-  .guide-cover-rule {
-    width: 56px;
-    height: 1px;
-    background: var(--gold);
-    margin: 0 auto 1.25rem;
-    opacity: 0.6;
-  }
-  .guide-cover-by {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-  }
-  .by-label {
-    font-size: 0.66rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--warm-gray);
-    font-weight: 500;
-  }
-  .by-name {
-    font-family: var(--hand);
-    font-size: 1.5rem;
-    color: var(--gold-700);
-    line-height: 1;
-    margin: 0.3rem 0;
-  }
-  .by-role {
-    font-size: 0.74rem;
-    color: var(--warm-gray);
-    font-style: italic;
-  }
-  .guide-cover-foot {
-    border-top: 1px solid var(--border);
-    padding-top: 0.9rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.7rem;
-    color: var(--warm-gray);
-    letter-spacing: 0.04em;
-  }
-  @media (max-width: 900px) {
-    .guide-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .guide-paper { max-width: 420px; margin: 0 auto; }
-  }
-</style>
+<title>Contact &amp; FAQ | Summit Senior Services — Senior Moving Help in Greater Cleveland, OH</title>
+<meta name="description" content="Get in touch with Summit Senior Services. Request a free, no-pressure consultation for senior moving and downsizing in Greater Cleveland — by phone, text, email, or form."/>
+<link rel="canonical" href="https://www.summitseniorservicesohio.com/contact.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.summitseniorservicesohio.com/contact.html"/>
+<meta property="og:title" content="Contact Summit Senior Services | Free Senior Moving Consultation — Greater Cleveland, OH"/>
+<meta property="og:description" content="Request a free in-home consultation for senior moving and downsizing in Greater Cleveland. Call, text, email, or use our form. We respond within one business day."/>
+<meta property="og:image" content="https://www.summitseniorservicesohio.com/assets/og-image.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+<link rel="stylesheet" href="summit-redesign.css"/>
+<link rel="stylesheet" href="summit-pages.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does pricing work?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Every family's situation is different — the size of the home, the services needed, and the timeline all affect the cost. That's why we don't offer fixed packages. After a free in-home consultation, we put together a clear, written quote tailored to your specific needs. No surprises, no hidden fees."}
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to be there if I'm out of state?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Not at all. Many of our clients — especially adult children managing a parent's transition — aren't local. We keep you informed every step of the way by phone, text, or email, with photos and short updates so you always know what's happening."}
+    },
+    {
+      "@type": "Question",
+      "name": "How far in advance should we reach out?",
+      "acceptedAnswer": {"@type": "Answer", "text": "The earlier the better — especially if you have a firm move-in date at a senior-living community or a real estate closing deadline. That said, transitions don't always come with advance notice. Reach out as soon as you know you'll need help and we'll do everything we can to accommodate your timeline."}
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to items that aren't kept or sold?",
+      "acceptedAnswer": {"@type": "Answer", "text": "We coordinate everything. Depending on the items, we can arrange donations to local Cleveland-area charities, consignment with local shops, or responsible junk removal. Our goal is to make sure as little as possible goes to waste — and that nothing is left for the family to deal with after the fact."}
+    },
+    {
+      "@type": "Question",
+      "name": "How does online item selling work?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Rather than hosting a traditional estate sale, we photograph and list items the family wants to sell on Facebook Marketplace and other platforms. We handle all buyer inquiries, coordinate pickup times, and manage the transaction — a more private, flexible, and often faster alternative to a traditional estate sale."}
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with senior-living communities directly?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. We're familiar with many senior-living communities across Greater Cleveland and can coordinate directly with their move-in teams. This helps ensure a smooth transition on move-in day — the right items arrive in the right rooms, at the right time, with minimal disruption to your loved one."}
+    },
+    {
+      "@type": "Question",
+      "name": "Are you insured?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Summit Senior Services carries full liability and cargo insurance covering every job we take on. We bring proof of coverage to every consultation and can provide certificates of insurance to senior-living communities, family attorneys, or anyone else who needs them on file."}
+    },
+    {
+      "@type": "Question",
+      "name": "Who actually shows up at my house?",
+      "acceptedAnswer": {"@type": "Answer", "text": "On the consultation — me, Brian Schoeffler. On move days and sort days, it's me plus a small, vetted crew I work with regularly. You won't get a different set of strangers every visit, and you'll always have my direct phone number."}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-<nav class="site-nav">
-  <a href="index.html" class="logo"><img src="assets/summit-logo-white.png" alt="Summit Senior Services"/></a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="service-area.html">Service Area</a>
-    <a href="contact.html" class="active">FAQ &amp; Contact</a>
-  </div>
-  <div class="nav-right">
-    <a href="contact.html" class="nav-cta">Free Consultation</a>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+<!-- ─────────── NAV ─────────── -->
+<nav class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Summit Senior Services — home">
+      <img class="logo-white" src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
+      <img class="logo-navy" src="assets/summit-logo-transparent.png" alt="Summit Senior Services"/>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="service-area.html">Service Area</a>
+      <a href="contact.html" class="active">FAQ &amp; Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:2162363966" class="nav-phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>(216) 236-3966</a>
+      <a href="contact.html" class="btn btn--gold nav-cta">Free Consultation</a>
+      <button class="hamburger" onclick="summitMenu(true)" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="service-area.html">Service Area</a>
-  <a href="contact.html" class="active">FAQ &amp; Contact</a>
-  <a href="contact.html" class="mobile-cta">Free Consultation</a>
+  <button class="close" onclick="summitMenu(false)" aria-label="Close menu">&times;</button>
+  <a href="index.html" onclick="summitMenu(false)">Home</a>
+  <a href="about.html" onclick="summitMenu(false)">About</a>
+  <a href="services.html" onclick="summitMenu(false)">Services</a>
+  <a href="service-area.html" onclick="summitMenu(false)">Service Area</a>
+  <a href="contact.html" onclick="summitMenu(false)">FAQ &amp; Contact</a>
+  <a href="contact.html" class="m-cta btn" onclick="summitMenu(false)">Free Consultation</a>
 </div>
 
-<header class="page-hero">
-  <p class="eyebrow">Get In Touch</p>
-  <h1>Let's talk about <em>how we can help.</em></h1>
-  <p>No pressure. No commitment. Just a conversation.</p>
+<!-- ─────────── PAGE HERO ─────────── -->
+<header class="page-hero page-hero--photo" data-screen-label="01 Contact hero">
+  <div class="hero-bg"><image-slot id="contact-hero-bg" shape="rect" fit="cover" src="assets/hero-contact.jpg" placeholder="Drop a hero photo"></image-slot><div class="hero-shade"></div></div><div class="container">
+    <div class="page-hero-inner">
+      <p class="eyebrow" data-sl="up">Get In Touch</p>
+      <h1 data-sl="up" style="--sl-d:90ms">Let's talk about <em>how we can help.</em></h1>
+      <p class="page-hero-sub" data-sl="up" style="--sl-d:180ms">No pressure. No commitment. Just a conversation about what's needed and what's possible — and we'll be in touch within one business day.</p>
+    </div>
+  </div>
 </header>
 
-<!-- FORM + SIDEBAR -->
-<section class="band-cream">
-  <div class="band-inner">
+<!-- ─────────── FORM + SIDEBAR ─────────── -->
+<section class="section band-cream" data-screen-label="02 Form">
+  <div class="container">
     <div class="contact-grid">
 
-      <!-- FORM -->
-      <div class="form-card">
+      <div class="form-card" data-sl="left">
         <div id="formContent">
           <h2>Request a free consultation.</h2>
           <p class="form-sub">Fill out the form and we'll be in touch within one business day to schedule a time that works for you.</p>
@@ -360,22 +130,18 @@
                 <input type="text" id="lastName" name="lastName" placeholder="Smith"/>
               </div>
             </div>
-
             <div class="field">
               <label for="phone">Phone Number</label>
               <input type="tel" id="phone" name="phone" placeholder="216-236-3966" required/>
             </div>
-
             <div class="field">
               <label for="email">Email Address</label>
               <input type="email" id="email" name="email" placeholder="jane@email.com"/>
             </div>
-
             <div class="field">
               <label for="city">Your City / Area</label>
               <input type="text" id="city" name="city" placeholder="e.g. Beachwood, Solon, Chagrin Falls…"/>
             </div>
-
             <div class="field">
               <label for="timeline">When are you hoping to get started?</label>
               <select id="timeline" name="timeline">
@@ -387,52 +153,34 @@
                 <option>Just exploring options</option>
               </select>
             </div>
-
             <div class="field">
-              <label for="message">Tell us a little about your situation <span style="font-weight:300; color: var(--warm-gray)">(optional)</span></label>
+              <label for="message">Tell us a little about your situation <span class="opt">(optional)</span></label>
               <textarea id="message" name="message" placeholder="Any details that would help us prepare for our conversation…"></textarea>
             </div>
-
             <input type="hidden" name="_subject" value="New Summit Senior Services Consultation Request"/>
-
-            <button class="submit-btn" type="submit">Send My Request</button>
+            <button class="btn submit-btn" type="submit">Send My Request</button>
           </form>
-
           <p class="form-note">We respond within one business day. Your information is never shared.</p>
         </div>
 
         <div class="success-msg" id="successMsg">
           <div class="check">✓</div>
           <h3>We got your message.</h3>
-          <p>Thanks for reaching out. We'll be in touch within one business day to schedule your free consultation.<br/><br/>In the meantime, feel free to call directly at <strong>(216) 236-3966</strong>.</p>
+          <p>Thanks for reaching out. We'll be in touch within one business day to schedule your free consultation. In the meantime, feel free to call directly at <strong>(216) 236-3966</strong>.</p>
         </div>
       </div>
 
-      <!-- SIDEBAR -->
-      <div class="sidebar">
-
-        <div class="sidebar-card">
-          <h3>
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
-            Prefer to Call?
-          </h3>
-          <div class="contact-detail">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
-            <a href="tel:2162363966">(216) 236-3966</a>
-          </div>
-          <div class="contact-detail">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:info@SummitSeniorServicesOhio.com">info@SummitSeniorServicesOhio.com</a>
-          </div>
-          <div class="contact-detail">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            <a href="sms:2162363966">Text (216) 236-3966</a>
-          </div>
+      <div class="sidebar" data-sl="right">
+        <div class="side-card">
+          <h3><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>Prefer to Call?</h3>
+          <div class="contact-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg><a href="tel:2162363966">(216) 236-3966</a></div>
+          <div class="contact-row"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@SummitSeniorServicesOhio.com">info@SummitSeniorServicesOhio.com</a></div>
+          <div class="contact-row"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><a href="sms:2162363966">Text (216) 236-3966</a></div>
         </div>
 
-        <div class="sidebar-card dark">
-          <h3 style="color: var(--gold);">What Happens Next</h3>
-          <ul class="expect-list">
+        <div class="side-card dark">
+          <h3>What Happens Next</h3>
+          <ul class="expect">
             <li><span class="n">01</span><span>We'll call or email you within one business day to introduce ourselves.</span></li>
             <li><span class="n">02</span><span>We'll schedule a free in-home consultation at a time that suits you.</span></li>
             <li><span class="n">03</span><span>We'll listen to your situation and walk you through what we'd recommend.</span></li>
@@ -440,148 +188,63 @@
           </ul>
         </div>
 
-        <div class="sidebar-card">
-          <h3>
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            A Note From Us
-          </h3>
+        <div class="side-card">
+          <h3><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>A Note From Us</h3>
           <p>There are no dumb questions, and no situation too complicated. If you're not sure where to start, that's exactly what we're here for. Just reach out.</p>
         </div>
-
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="band-light" id="faq">
-  <div class="faq-inner">
-    <div class="band-header" style="margin-bottom: 2.5rem;">
-      <span class="eyebrow">Common Questions</span>
-      <h2 class="section-title">Things families ask <em>before they call.</em></h2>
-      <p class="section-body">If you don't see your question here, it doesn't mean it's a small one — just call. The first conversation answers most of them.</p>
+<!-- ─────────── FAQ ─────────── -->
+<section class="section band-light" id="faq" data-screen-label="03 FAQ">
+  <div class="container">
+    <div class="faq-narrow">
+      <div class="section-head section-head--center" data-sl="up">
+        <p class="eyebrow">Common Questions</p>
+        <h2 class="h-section">Things families ask before they call.</h2>
+        <p class="lead">If you don't see your question here, it doesn't mean it's a small one — just call. The first conversation answers most of them.</p>
+      </div>
+      <div class="faq-list" data-sl="up">
+        <div class="faq-item"><button class="faq-q" onclick="summitFaq(this)">How does pricing work?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Every family's situation is different — the size of the home, the services needed, and the timeline all affect the cost. That's why we don't offer fixed packages. After a free in-home consultation, we put together a clear, written quote tailored to your specific needs. No surprises, no hidden fees.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="summitFaq(this)">Do I need to be there if I'm out of state?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Not at all. Many of our clients — especially adult children managing a parent's transition — aren't local. We keep you informed every step of the way by phone, text, or email, with photos and short updates so you always know what's happening.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="summitFaq(this)">How far in advance should we reach out?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">The earlier the better — especially if you have a firm move-in date at a senior-living community or a real estate closing deadline. That said, transitions don't always come with advance notice. Reach out as soon as you know you'll need help and we'll do everything we can to accommodate your timeline.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="summitFaq(this)">What happens to items that aren't kept or sold?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">We coordinate everything. Depending on the items, we can arrange donations to local Cleveland-area charities, consignment with local shops, or responsible junk removal. Our goal is to make sure as little as possible goes to waste — and that nothing is left for the family to deal with after the fact.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="summitFaq(this)">How does online item selling work?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Rather than hosting a traditional estate sale, we photograph and list items the family wants to sell on Facebook Marketplace and other platforms. We handle all buyer inquiries, coordinate pickup times, and manage the transaction — a more private, flexible, and often faster alternative to a traditional estate sale.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="summitFaq(this)">Do you work with senior-living communities directly?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Yes. We're familiar with many senior-living communities across Greater Cleveland and can coordinate directly with their move-in teams. This helps ensure a smooth transition on move-in day — the right items arrive in the right rooms, at the right time, with minimal disruption to your loved one.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="summitFaq(this)">Are you insured?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Summit Senior Services carries full liability and cargo insurance covering every job we take on. We bring proof of coverage to every consultation and can provide certificates of insurance to senior-living communities, family attorneys, or anyone else who needs them on file.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="summitFaq(this)">Who actually shows up at my house?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">On the consultation — me, Brian Schoeffler. On move days and sort days, it's me plus a small, vetted crew I work with regularly. You won't get a different set of strangers every visit, and you'll always have my direct phone number.</div></div></div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How does pricing work? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">
-          Every family's situation is different — the size of the home, the services needed, and the timeline all affect the cost. That's why we don't offer fixed packages. After a free in-home consultation, we put together a clear, written quote tailored to your specific needs. No surprises, no hidden fees.
-        </div>
+<!-- ─────────── CLOSING ─────────── -->
+<section class="section closing" data-screen-label="04 Closing">
+  <div class="container">
+    <div class="closing-grid">
+      <div class="closing-media" data-sl="left">
+        <img src="assets/founder-photo.jpg" alt="Brian Schoeffler, founder of Summit Senior Services, available for a free in-home consultation"/>
       </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do I need to be there if I'm out of state? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">
-          Not at all. Many of our clients — especially adult children managing a parent's transition — aren't local. We keep you informed every step of the way by phone, text, or email, with photos and short updates so you always know what's happening. You're welcome to be involved as much or as little as you'd like.
+      <div class="closing-text" data-sl="right">
+        <h2>Easier to just call?</h2>
+        <p>I answer the phone myself most of the time. If you reach voicemail, leave a name and a city and I'll call you back the same day.</p>
+        <div class="closing-sign">
+          <span class="name">Brian</span>
+          <span class="role">Founder, Summit Senior Services</span>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How far in advance should we reach out? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">
-          The earlier the better — especially if you have a firm move-in date at a senior-living community or a real estate closing deadline. That said, transitions don't always come with advance notice. Reach out as soon as you know you'll need help and we'll do everything we can to accommodate your timeline.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">What happens to items that aren't kept or sold? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">
-          We coordinate everything. Depending on the items, we can arrange donations to local Cleveland-area charities, consignment with local shops, or responsible junk removal. Our goal is to make sure as little as possible goes to waste — and that nothing is left for the family to deal with after the fact.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How does online item selling work? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">
-          Rather than hosting a traditional estate sale, we photograph and list items the family wants to sell on Facebook Marketplace and other platforms. We handle all buyer inquiries, coordinate pickup times, and manage the transaction — so the family never has to deal with strangers or logistics. It's a more private, flexible, and often faster alternative to a traditional estate sale.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do you work with senior-living communities directly? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">
-          Yes. We're familiar with many senior-living communities across Greater Cleveland and can coordinate directly with their move-in teams. This helps ensure a smooth transition on move-in day — the right items arrive in the right rooms, at the right time, with minimal disruption to your loved one.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Are you insured? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">
-          Yes. Summit Senior Services carries full liability and cargo insurance covering every job we take on. We bring proof of coverage to every consultation and can provide certificates of insurance to senior-living communities, family attorneys, or anyone else who needs them on file.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Who actually shows up at my house? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">
-          On the consultation — me, Brian Schoeffler. On move days and sort days, it's me plus a small, vetted crew I work with regularly. You won't get a different set of strangers every visit, and you'll always have my direct phone number.
+        <div class="closing-actions">
+          <a href="tel:2162363966" class="btn btn--primary">Call (216) 236-3966</a>
+          <span class="call">or <a href="sms:2162363966">send a text</a></span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 12-STEP CHECKLIST EMBED -->
-<section class="band-navy" id="guide">
-  <div class="band-inner">
-    <div class="guide-inner">
-      <div class="guide-text">
-        <span class="eyebrow">Free Guide</span>
-        <h2 class="section-title">Want to start <em>before</em> we talk?</h2>
-        <p class="section-body">A 14-page guide for families navigating a senior move — 12 steps from the first kitchen-table conversation to the night your parent sleeps in their new home. Read it once, then come back to whichever step you're on.</p>
-
-        <div class="guide-meta">
-          <div class="guide-meta-item"><span class="guide-meta-num">12</span><span class="guide-meta-lbl">Steps</span></div>
-          <div class="guide-meta-item"><span class="guide-meta-num">14</span><span class="guide-meta-lbl">Pages</span></div>
-          <div class="guide-meta-item"><span class="guide-meta-num">30<span style="font-size:0.75em">m</span></span><span class="guide-meta-lbl">To Read</span></div>
-        </div>
-
-        <div class="guide-actions">
-          <a href="cleveland-senior-move-checklist.html" class="btn-primary">Read the Checklist</a>
-          <span class="ph-note">No sign-up · downloadable as PDF</span>
-        </div>
-      </div>
-
-      <a href="cleveland-senior-move-checklist.html" class="guide-paper" style="text-decoration:none; display:block;">
-        <div class="guide-cover-mark">
-          <img src="assets/summit-logo-full.png" alt=""/>
-        </div>
-        <div class="guide-cover-eyebrow"><span>✦</span> Free Guide · 14 Pages</div>
-        <h3 class="guide-cover-title">The Cleveland Senior <em>Move Checklist.</em></h3>
-        <p class="guide-cover-sub">12 steps for a calm, dignified senior move — from the first kitchen-table conversation to the night your parent sleeps in their new home.</p>
-        <div class="guide-cover-rule"></div>
-        <div class="guide-cover-by">
-          <span class="by-label">Written by</span>
-          <span class="by-name">Brian Schoeffler</span>
-          <span class="by-role">Founder, Summit Senior Services</span>
-        </div>
-        <div class="guide-cover-foot">
-          <span>summitseniorservicesohio.com</span>
-          <span>v1 · 2026</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CLOSING -->
-<section class="closing">
-  <div class="closing-inner">
-    <div class="closing-photo"><img src="assets/founder-photo.jpg" alt="Brian Schoeffler"/></div>
-    <div class="closing-text">
-      <h2>Easier to just call?</h2>
-      <p>I answer the phone myself most of the time. If you reach voicemail, leave a name and a city and I'll call you back the same day.</p>
-      <div class="closing-sign">Brian<small>Founder, Summit Senior Services</small></div>
-    </div>
-    <div class="closing-actions">
-      <a href="tel:2162363966" class="btn-dark">Call (216) 236-3966</a>
-      <div class="ph">or <a href="sms:2162363966">send a text</a></div>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
+<!-- ─────────── FOOTER ─────────── -->
+<footer class="footer" data-screen-label="05 Footer">
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="assets/summit-logo-white.png" alt="Summit Senior Services"/>
@@ -590,15 +253,19 @@
     <div class="footer-col">
       <h5>Services</h5>
       <a href="services.html">All Services</a>
-      <a href="services.html#downsizing">Downsizing</a>
-      <a href="services.html#move">Move Coordination</a>
-      <a href="services.html#sales">Online Item Sales</a>
+      <a href="senior-downsizing-services-cleveland.html">Downsizing &amp; Sorting</a>
+      <a href="senior-move-management-cleveland.html">Move Coordination</a>
+      <a href="senior-packing-unpacking-cleveland.html">Packing &amp; Unpacking</a>
+      <a href="estate-cleanout-cleveland.html">Estate Cleanout</a>
+      <a href="settling-in-services-cleveland.html">Settling-In Support</a>
+      <a href="floor-plan-space-planning-cleveland.html">Floor Plan &amp; Space Planning</a>
+      <a href="online-estate-sales-cleveland.html">Online Item Sales</a>
     </div>
     <div class="footer-col">
       <h5>Resources</h5>
-      <a href="cleveland-senior-move-checklist.html">Free Move Checklist</a>
+      <a href="checklist.html">Free Move Checklist</a>
       <a href="service-area.html">Service Area</a>
-      <a href="contact.html#faq">FAQ</a>
+      <a href="contact.html">FAQ</a>
       <a href="about.html">About Brian</a>
     </div>
     <div class="footer-col">
@@ -610,61 +277,16 @@
   </div>
   <div class="footer-bottom">
     <div>© 2026 Summit Senior Services. All rights reserved.</div>
-    <div><a href="privacy.html" style="color:rgba(255,255,255,0.5); text-decoration:none;">Privacy Policy</a> · Fully Insured · Locally Owned</div>
+    <div><a href="privacy-policy.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Privacy Policy</a> · Fully Insured · Locally Owned</div>
   </div>
 </footer>
 
-<div class="mobile-cta-bar">
-  <a href="tel:2162363966" class="mcta-call"><span class="mcta-icon">☎</span>Call Now</a>
-  <a href="contact.html" class="mcta-quote"><span class="mcta-icon">✉</span>Free Consult</a>
-  <a href="sms:2162363966" class="mcta-text"><span class="mcta-icon">✦</span>Text Us</a>
+<div class="mcta">
+  <a href="tel:2162363966" class="call">☎ Call / Text</a>
+  <a href="#faq" class="quote">See FAQ</a>
 </div>
 
-<script>
-  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-  function toggleFaq(btn) {
-    const answer = btn.nextElementSibling;
-    const icon = btn.querySelector('.faq-icon');
-    const isOpen = answer.classList.contains('open');
-    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-    document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('open'));
-    if (!isOpen) {
-      answer.classList.add('open');
-      icon.classList.add('open');
-    }
-  }
-
-  // Form submission with Formspree
-  const contactForm = document.getElementById('contact-form');
-  contactForm.addEventListener('submit', async function(event) {
-    event.preventDefault();
-    const submitButton = contactForm.querySelector('.submit-btn');
-    submitButton.disabled = true;
-    submitButton.textContent = 'Sending…';
-
-    try {
-      const formData = new FormData(contactForm);
-      const response = await fetch(contactForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        document.getElementById('formContent').style.display = 'none';
-        document.getElementById('successMsg').style.display = 'block';
-        contactForm.reset();
-      } else {
-        alert('Something went wrong. Please try again or call us directly at (216) 236-3966.');
-        submitButton.disabled = false;
-        submitButton.textContent = 'Send My Request';
-      }
-    } catch (error) {
-      alert('Something went wrong. Please try again or call us directly at (216) 236-3966.');
-      submitButton.disabled = false;
-      submitButton.textContent = 'Send My Request';
-    }
-  });
-</script>
+<script src="image-slot.js"></script>
+<script src="summit-site.js"></script>
 </body>
 </html>
