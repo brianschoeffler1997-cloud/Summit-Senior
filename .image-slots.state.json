@@ -1,4 +1,6 @@
 {
-  "svc-packing": { "s": 1, "x": 0, "y": 0 },
-  "svc-downsizing": { "s": 1, "x": 0, "y": 0 }
+  "svc-packing": { "s": 1, "x": 0, "y": 100 },
+  "svc-downsizing": { "s": 1, "x": 0, "y": 100 },
+  "svc-coordination": { "s": 1, "x": 0, "y": 100 },
+  "svc-donation": { "s": 1, "x": 0, "y": 100 }
 }
