@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blog | Summit Senior Services</title>
+<meta name="description" content="Helpful articles on senior moving, downsizing, and home transitions for families in Greater Cleveland and Northeast Ohio."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#1a2e44;--gold:#c9a84c;--cream:#f8f5ef;--warm-gray:#6b6560;--light:#ffffff;--border:#e2ddd6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);}
+nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.logo{text-decoration:none;}.logo img{height:48px;filter:brightness(10) saturate(0);}
+.nav-links{display:flex;align-items:center;gap:.25rem;}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:.4rem .75rem;border-radius:2px;transition:color .15s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-cta{background:var(--gold);color:var(--navy);font-weight:500;font-size:.82rem;padding:.55rem 1.25rem;border-radius:2px;text-decoration:none;white-space:nowrap;}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+.mobile-menu{display:none;flex-direction:column;background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding:.5rem 1.5rem 1rem;}
+.mobile-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.95rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.mobile-menu a:last-child{border-bottom:none;}.mobile-menu a.active{color:#fff;}
+.mobile-menu .mobile-cta{margin-top:.75rem;background:var(--gold);color:var(--navy);font-weight:500;padding:.75rem 1rem;border-radius:2px;text-align:center;border-bottom:none;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}.mobile-menu.open{display:flex;}}
+.page-header{background:var(--navy);padding:3.5rem 1.5rem 3rem;text-align:center;color:#fff;}
+.page-header .eyebrow{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;}
+.page-header h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;line-height:1.2;margin-bottom:.75rem;}
+.page-header .sub{font-size:1rem;color:rgba(255,255,255,.7);max-width:520px;margin:0 auto;line-height:1.6;}
+.blog-section{max-width:900px;margin:0 auto;padding:3rem 1.5rem 5rem;}
+.post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
+.post-card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:1.75rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;transition:box-shadow .2s;}
+.post-card:hover{box-shadow:0 4px 20px rgba(26,46,68,.1);}
+.post-date{font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);}
+.post-card h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;line-height:1.35;flex:1;}
+.post-card h2 a{color:var(--navy);text-decoration:none;transition:color .15s;}
+.post-card h2 a:hover{color:var(--gold);}
+.read-more{font-size:.82rem;font-weight:500;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;border-bottom:1px solid var(--gold);padding-bottom:1px;width:fit-content;}
+.read-more:hover{color:var(--gold);}
+.state-msg{text-align:center;padding:3rem 0;color:var(--warm-gray);}
+footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:2rem 1.5rem;font-size:.82rem;}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;}footer a:hover{color:#fff;}
+</style>
+</head>
+<body>
+<nav>
+<a href="/index.html" class="logo"><img src="/summit-logo.png" alt="Summit Senior Services"/></a>
+<div class="nav-links">
+<a href="/index.html">Home</a>
+<a href="/summit-senior-services-about.html">About</a>
+<a href="/index.html#services">Services</a>
+<a href="/summit-senior-services-service-area.html">Service Area</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/summit-senior-services-contact.html">FAQ &amp; Contact</a>
+</div>
+<div class="nav-right">
+<a href="/summit-senior-services-contact.html" class="nav-cta">Free Consultation</a>
+<button class="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="/index.html">Home</a>
+<a href="/summit-senior-services-about.html">About</a>
+<a href="/index.html#services">Services</a>
+<a href="/summit-senior-services-service-area.html">Service Area</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/summit-senior-services-contact.html">FAQ &amp; Contact</a>
+<a href="/summit-senior-services-contact.html" class="mobile-cta">Free Consultation</a>
+</div>
+<div class="page-header">
+<p class="eyebrow">Resources &amp; Tips</p>
+<h1>The Summit Senior Services Blog</h1>
+<p class="sub">Practical advice on senior moving, downsizing, and transitions for families in Greater Cleveland and Northeast Ohio.</p>
+</div>
+<section class="blog-section">
+<div id="post-grid" class="post-grid">
+<p class="state-msg" id="loading-msg">Loading posts&#8230;</p>
+</div>
+</section>
+<footer>
+<p>&copy; <span id="yr"></span> Summit Senior Services &mdash; Greater Cleveland, Ohio &nbsp;|&nbsp; <a href="/summit-senior-services-contact.html">Contact Us</a></p>
+</footer>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+(async()=>{
+const grid=document.getElementById('post-grid'),loading=document.getElementById('loading-msg');
+try{
+const res=await fetch('https://api.github.com/repos/brianschoeffler1997-cloud/Summit-Senior/contents/blog');
+if(!res.ok)throw new Error();
+const files=await res.json();
+const htmlFiles=files.filter(f=>f.name.endsWith('.html')&&f.name!=='index.html').sort((a,b)=>b.name.localeCompare(a.name));
+if(!htmlFiles.length){loading.textContent='No posts yet — check back soon!';return;}
+const posts=await Promise.all(htmlFiles.map(async f=>{
+try{const r=await fetch(f.download_url);const h=await r.text();const m=h.match(/<h1[^>]*>([sS]*?)</h1>/i);
+const title=m?m[1].replace(/<[^>]+>/g,'').trim():f.name.replace(/.html$/,'');
+const dm=f.name.match(/^(d{4}-d{2}-d{2})/);
+const date=dm?new Date(dm[1]+'T12:00:00').toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}):'';
+return{title,date,url:'/blog/'+f.name};}catch{return{title:f.name,date:'',url:'/blog/'+f.name};}}));
+loading.remove();
+grid.innerHTML=posts.map(p=>'<article class="post-card"><div class="post-date">'+p.date+'</div><h2><a href="'+p.url+'">'+p.title+'</a></h2><a href="'+p.url+'" class="read-more">Read Article &#8594;</a></article>').join('');
+}catch(e){loading.textContent='Unable to load posts right now. Please try again shortly.';}
+})();
+</script>
+</body>
+</html>
