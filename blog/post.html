@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blog | Summit Senior Services</title>
+<meta name="description" id="meta-desc" content="Helpful articles on senior moving, downsizing, and home transitions for families in Greater Cleveland and Northeast Ohio."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#1a2e44;--gold:#c9a84c;--cream:#f8f5ef;--warm-gray:#6b6560;--light:#ffffff;--border:#e2ddd6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);}
+nav{background:var(--navy);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.logo{text-decoration:none;}.logo img{height:42px;width:auto;display:block;}
+.nav-links{display:flex;align-items:center;gap:.25rem;}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;padding:.4rem .75rem;border-radius:2px;transition:color .15s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-cta{background:var(--gold);color:var(--navy);font-weight:500;font-size:.82rem;padding:.55rem 1.25rem;border-radius:2px;text-decoration:none;white-space:nowrap;}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+.mobile-menu{display:none;flex-direction:column;background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding:.5rem 1.5rem 1rem;}
+.mobile-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.95rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.mobile-menu a:last-child{border-bottom:none;}.mobile-menu a.active{color:#fff;}
+.mobile-menu .mobile-cta{margin-top:.75rem;background:var(--gold);color:var(--navy);font-weight:500;padding:.75rem 1rem;border-radius:2px;text-align:center;border-bottom:none;}
+@media(max-width:768px){.nav-links{display:none;}.nav-cta{display:none;}.hamburger{display:flex;}.mobile-menu.open{display:flex;}}
+
+/* Article */
+.article-wrap{max-width:720px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
+.crumb{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--gold);text-decoration:none;margin-bottom:1.5rem;}
+.crumb:hover{color:var(--navy);}
+.article-meta{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem;}
+article{font-size:1.06rem;line-height:1.8;color:#3a4654;}
+article h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.2vw,2.7rem);font-weight:700;line-height:1.18;color:var(--navy);margin:0 0 1.5rem;letter-spacing:-.01em;}
+article h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.8rem);font-weight:600;color:var(--navy);line-height:1.3;margin:2.5rem 0 .9rem;}
+article h3{font-family:'DM Sans',sans-serif;font-size:1.18rem;font-weight:600;color:var(--navy);margin:1.9rem 0 .7rem;}
+article p{margin:0 0 1.3rem;}
+article ul,article ol{margin:0 0 1.4rem 1.3rem;}
+article li{margin:0 0 .65rem;padding-left:.3rem;}
+article ul li::marker{color:var(--gold);}
+article a{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;}
+article a:hover{color:var(--gold);}
+article strong{color:var(--navy);font-weight:600;}
+article img{max-width:100%;height:auto;border-radius:6px;margin:1.5rem 0;}
+article blockquote{border-left:3px solid var(--gold);padding:.4rem 0 .4rem 1.3rem;margin:0 0 1.4rem;color:var(--warm-gray);font-style:italic;}
+.article-cta{margin-top:3rem;background:var(--navy);border-radius:8px;padding:2rem 1.75rem;text-align:center;}
+.article-cta p{color:rgba(255,255,255,.78);font-size:.96rem;margin:0 0 1.2rem;line-height:1.6;}
+.article-cta .ey{font-family:'Playfair Display',serif;color:#fff;font-size:1.25rem;margin-bottom:.5rem;}
+.article-cta a{display:inline-block;background:var(--gold);color:var(--navy);font-weight:600;font-size:.9rem;padding:.8rem 1.8rem;border-radius:3px;text-decoration:none;}
+.state-msg{text-align:center;padding:4rem 0;color:var(--warm-gray);}
+footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:2rem 1.5rem;font-size:.82rem;}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;}footer a:hover{color:#fff;}
+</style>
+</head>
+<body>
+<nav>
+<a href="/index.html" class="logo"><img src="/assets/summit-logo-white.png" alt="Summit Senior Services"/></a>
+<div class="nav-links">
+<a href="/index.html">Home</a>
+<a href="/about.html">About</a>
+<a href="/index.html#services">Services</a>
+<a href="/service-area.html">Service Area</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/contact.html">FAQ &amp; Contact</a>
+</div>
+<div class="nav-right">
+<a href="/contact.html" class="nav-cta">Free Consultation</a>
+<button class="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="/index.html">Home</a>
+<a href="/about.html">About</a>
+<a href="/index.html#services">Services</a>
+<a href="/service-area.html">Service Area</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/contact.html">FAQ &amp; Contact</a>
+<a href="/contact.html" class="mobile-cta">Free Consultation</a>
+</div>
+
+<div class="article-wrap">
+<a href="/blog/" class="crumb">&#8592; Back to Blog</a>
+<div class="article-meta" id="article-meta"></div>
+<article id="article"><p class="state-msg" id="loading-msg">Loading article&#8230;</p></article>
+<div class="article-cta">
+<p class="ey">Planning a senior move or downsizing?</p>
+<p>Summit Senior Services helps Greater Cleveland families through every step &mdash; with patience, care, and a custom plan. Free in-home consultation, no obligation.</p>
+<a href="/contact.html">Get a Free Consultation</a>
+</div>
+</div>
+
+<footer>
+<p>&copy; <span id="yr"></span> Summit Senior Services &mdash; Greater Cleveland, Ohio &nbsp;|&nbsp; <a href="/contact.html">Contact Us</a></p>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+(async () => {
+  const article = document.getElementById('article');
+  const metaEl = document.getElementById('article-meta');
+  const params = new URLSearchParams(location.search);
+  const file = params.get('p') || '';
+  // Only allow a plain .html filename inside the blog folder.
+  if (!/^[A-Za-z0-9._-]+\.html$/.test(file) || file.includes('..') || file === 'index.html' || file === 'post.html') {
+    article.innerHTML = '<p class="state-msg">Article not found. <a href="/blog/">Return to the blog</a>.</p>';
+    return;
+  }
+  try {
+    const res = await fetch('/blog/' + file);
+    if (!res.ok) throw new Error('not found');
+    const raw = await res.text();
+    // Pull the optional "Meta description:" comment for the page description.
+    const dm = raw.match(/<!--\s*Meta description:\s*([\s\S]*?)-->/i);
+    if (dm) document.getElementById('meta-desc').setAttribute('content', dm[1].trim());
+    // Strip comments before injecting.
+    const clean = raw.replace(/<!--[\s\S]*?-->/g, '').trim();
+    article.innerHTML = clean;
+    // Title + date from the post.
+    const h1 = article.querySelector('h1');
+    const title = h1 ? h1.textContent.trim() : 'Blog';
+    document.title = title + ' | Summit Senior Services';
+    const dd = file.match(/(\d{4}-\d{2}-\d{2})/);
+    metaEl.textContent = dd
+      ? new Date(dd[1] + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+      : 'Summit Senior Services Blog';
+  } catch (e) {
+    article.innerHTML = '<p class="state-msg">Sorry, this article could not be loaded. <a href="/blog/">Return to the blog</a>.</p>';
+  }
+})();
+</script>
+</body>
+</html>
